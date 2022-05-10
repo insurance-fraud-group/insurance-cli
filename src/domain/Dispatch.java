@@ -1,6 +1,7 @@
 package domain;
 
 import domain.employee.compensation.AccidentInvestigator;
+import dto.DispatchServiceDto;
 import java.io.File;
 import java.util.List;
 
@@ -13,8 +14,12 @@ public class Dispatch {
   private int damage;
   private List<File> evidenceMedia;
 
-  public Dispatch() {
-
+  public Dispatch(DispatchServiceDto dto) {
+    this.id = dto.getId();
+    this.accident = dto.getAccident();
+    this.accidentDescription = dto.getAccidentDescription();
+    this.damage = dto.getDamage();
+    this.evidenceMedia = dto.getEvidenceMedia();
   }
 
   public int getId() {
@@ -64,5 +69,12 @@ public class Dispatch {
 
   public void setEvidenceMedia(List<File> evidenceMedia) {
     this.evidenceMedia = evidenceMedia;
+  }
+
+  public void update(DispatchServiceDto dto) {
+    this.accident = dto.getAccident();
+    this.accidentDescription = dto.getAccidentDescription();
+    this.damage = dto.getDamage();
+    this.evidenceMedia = dto.getEvidenceMedia();
   }
 }

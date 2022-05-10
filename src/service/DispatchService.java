@@ -1,14 +1,15 @@
 package service;
 
 import domain.Dispatch;
+import dto.DispatchServiceDto;
 
 public interface DispatchService {
 
-  void create(Dispatch dispatch);
+  void create(DispatchServiceDto dto);
 
   void delete(int id);
 
   Dispatch read(int id);
 
-  void update(Dispatch dispatch);
+  void update(DispatchServiceDto dto);
 }
