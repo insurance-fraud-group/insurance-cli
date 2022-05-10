@@ -1,5 +1,6 @@
 package domain;
 
+import dto.AccidentServiceDto;
 import enums.AccidentType;
 import java.awt.geom.Point2D;
 import java.time.LocalDateTime;
@@ -13,8 +14,13 @@ public class Accident {
   private boolean victim;
   private AccidentType accidentType;
 
-  public Accident() {
-
+  public Accident(AccidentServiceDto dto) {
+    this.id = dto.getId();
+    this.customer = dto.getCustomer();
+    this.eventLocation = dto.getEventLocation();
+    this.eventTime = dto.getEventTime();
+    this.victim = dto.isVictim();
+    this.accidentType = dto.getAccidentType();
   }
 
   public int getId() {
@@ -63,5 +69,13 @@ public class Accident {
 
   public void setAccidentType(AccidentType accidentType) {
     this.accidentType = accidentType;
+  }
+
+  public void update(AccidentServiceDto dto) {
+    this.customer = dto.getCustomer();
+    this.eventLocation = dto.getEventLocation();
+    this.eventTime = dto.getEventTime();
+    this.victim = dto.isVictim();
+    this.accidentType = dto.getAccidentType();
   }
 }
