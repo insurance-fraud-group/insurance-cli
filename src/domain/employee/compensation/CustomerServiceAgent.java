@@ -1,8 +1,8 @@
 package domain.employee.compensation;
 
-public class CSAgent extends Compensation {
+public class CustomerServiceAgent extends Compensation {
 
-  public CSAgent() {
+  public CustomerServiceAgent() {
 
   }
 
