@@ -1,24 +1,15 @@
-package domain;
+package dto;
 
 import domain.employee.Employee;
-import dto.AcceptancePolicyDto;
 import java.util.Date;
 
-public class AcceptancePolicy {
+public class AcceptancePolicyDto {
 
   private int id;
   private Date createdDate;
   private String description;
   private String name;
   private Employee writer;
-
-  public AcceptancePolicy(AcceptancePolicyDto dto) {
-    this.id = dto.getId();
-    this.createdDate = dto.getCreatedDate();
-    this.description = dto.getDescription();
-    this.name = dto.getName();
-    this.writer = dto.getWriter();
-  }
 
   public int getId() {
     return id;
@@ -58,12 +49,5 @@ public class AcceptancePolicy {
 
   public void setWriter(Employee writer) {
     this.writer = writer;
-  }
-
-  public void update(AcceptancePolicyDto dto) {
-    this.createdDate = dto.getCreatedDate();
-    this.description = dto.getDescription();
-    this.name = dto.getName();
-    this.writer = dto.getWriter();
   }
 }
