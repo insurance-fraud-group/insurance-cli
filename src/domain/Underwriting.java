@@ -1,6 +1,7 @@
 package domain;
 
 import domain.product.Product;
+import dto.UnderwritingServiceDto;
 
 public class Underwriting {
 
@@ -12,8 +13,14 @@ public class Underwriting {
   private int physicalFactorScore;
   private Product product;
 
-  public Underwriting() {
-
+  public Underwriting(UnderwritingServiceDto dto) {
+    this.id = dto.getId();
+    this.customer = dto.getCustomer();
+    this.environmentalFactorScore = dto.getEnvironmentalFactorScore();
+    this.financialFactorScore = dto.getFinancialFactorScore();
+    this.moralFactorScore = dto.getMoralFactorScore();
+    this.physicalFactorScore = dto.getPhysicalFactorScore();
+    this.product = dto.getProduct();
   }
 
   public int getId() {
@@ -70,5 +77,14 @@ public class Underwriting {
 
   public void setProduct(Product product) {
     this.product = product;
+  }
+
+  public void update(UnderwritingServiceDto dto) {
+    this.customer = dto.getCustomer();
+    this.environmentalFactorScore = dto.getEnvironmentalFactorScore();
+    this.financialFactorScore = dto.getFinancialFactorScore();
+    this.moralFactorScore = dto.getMoralFactorScore();
+    this.physicalFactorScore = dto.getPhysicalFactorScore();
+    this.product = dto.getProduct();
   }
 }
