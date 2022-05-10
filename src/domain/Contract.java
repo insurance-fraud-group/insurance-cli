@@ -1,6 +1,7 @@
 package domain;
 
 import domain.product.Product;
+import dto.ContractServiceDto;
 import java.io.File;
 
 public class Contract {
@@ -11,8 +12,12 @@ public class Contract {
   private Product product;
   private File subscription;
 
-  public Contract() {
-
+  public Contract(ContractServiceDto dto) {
+    this.id = dto.getId();
+    this.completion = dto.isCompletion();
+    this.customer = dto.getCustomer();
+    this.product = dto.getProduct();
+    this.subscription = dto.getSubscription();
   }
 
   public int getId() {
@@ -53,5 +58,12 @@ public class Contract {
 
   public void setSubscription(File subscription) {
     this.subscription = subscription;
+  }
+
+  public void update(ContractServiceDto dto) {
+    this.completion = dto.isCompletion();
+    this.customer = dto.getCustomer();
+    this.product = dto.getProduct();
+    this.subscription = dto.getSubscription();
   }
 }

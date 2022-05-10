@@ -1,14 +1,15 @@
 package service;
 
 import domain.Contract;
+import dto.ContractServiceDto;
 
 public interface ContractService {
 
-  void create(Contract contract);
+  void create(ContractServiceDto dto);
 
   void delete(int id);
 
   Contract read(int id);
 
-  void update(Contract contract);
+  void update(ContractServiceDto dto);
 }
