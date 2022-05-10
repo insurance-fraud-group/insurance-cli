@@ -1,14 +1,15 @@
 package service;
 
 import domain.Adjust;
+import dto.AdjustServiceDto;
 
 public interface AdjustService {
 
-  void create(Adjust adjust);
+  void create(AdjustServiceDto dto);
 
   void delete(int id);
 
-  Adjust read();
+  Adjust read(int id);
 
-  void update(Adjust adjust);
+  void update(AdjustServiceDto dto);
 }

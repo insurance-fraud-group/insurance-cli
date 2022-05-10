@@ -1,6 +1,7 @@
 package service.impl;
 
 import domain.Customer;
+import dto.CustomerServiceDto;
 import java.util.List;
 import service.CustomerService;
 
@@ -12,19 +13,22 @@ public class CustomerServiceImpl implements CustomerService {
 
   }
 
-  public void create(Customer customer) {
-
+  public void create(CustomerServiceDto dto) {
+    Customer customer = new Customer(dto);
+    customerList.add(customer);
   }
 
   public void delete(int id) {
-
+    customerList.remove(id);
   }
 
   public Customer read(int id) {
-    return null;
+    return customerList.get(id);
   }
 
-  public void update(Customer customer) {
-
+  public void update(CustomerServiceDto dto) {
+    int id = dto.getId();
+    Customer customer = customerList.get(id);
+    customer.update(dto);
   }
 }

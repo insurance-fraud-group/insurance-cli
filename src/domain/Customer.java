@@ -1,5 +1,6 @@
 package domain;
 
+import dto.CustomerServiceDto;
 import java.time.LocalDate;
 
 public class Customer {
@@ -13,8 +14,14 @@ public class Customer {
   private String phoneNumber;
   private boolean sex;
 
-  public Customer() {
-
+  public Customer(CustomerServiceDto dto) {
+    this.id = dto.getId();
+    this.accountNumber = dto.getAccountNumber();
+    this.address = dto.getAddress();
+    this.birth = dto.getBirth();
+    this.job = dto.getName();
+    this.phoneNumber = dto.getPhoneNumber();
+    this.sex = dto.getSex();
   }
 
   public int getId() {
@@ -73,11 +80,20 @@ public class Customer {
     this.phoneNumber = phoneNumber;
   }
 
-  public boolean isSex() {
+  public boolean getSex() {
     return sex;
   }
 
   public void setSex(boolean sex) {
     this.sex = sex;
+  }
+
+  public void update(CustomerServiceDto dto) {
+    this.accountNumber = dto.getAccountNumber();
+    this.address = dto.getAddress();
+    this.birth = dto.getBirth();
+    this.job = dto.getName();
+    this.phoneNumber = dto.getPhoneNumber();
+    this.sex = dto.getSex();
   }
 }

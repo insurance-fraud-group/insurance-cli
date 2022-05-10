@@ -1,5 +1,7 @@
 package domain;
 
+import dto.AdjustServiceDto;
+
 public class Adjust {
 
   private int id;
@@ -8,8 +10,12 @@ public class Adjust {
   private boolean indemnity;
   private int payment;
 
-  public Adjust() {
-
+  public Adjust(AdjustServiceDto dto) {
+    this.id = dto.getId();
+    this.accident = dto.getAccident();
+    this.basis = dto.getBasis();
+    this.indemnity = dto.isIndemnity();
+    this.payment = dto.getPayment();
   }
 
   public int getId() {
@@ -50,5 +56,12 @@ public class Adjust {
 
   public void setPayment(int payment) {
     this.payment = payment;
+  }
+
+  public void update(AdjustServiceDto dto) {
+    this.accident = dto.getAccident();
+    this.basis = dto.getBasis();
+    this.indemnity = dto.isIndemnity();
+    this.payment = dto.getPayment();
   }
 }
