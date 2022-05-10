@@ -1,14 +1,15 @@
 package service;
 
 import domain.Customer;
+import dto.CustomerServiceDto;
 
 public interface CustomerService {
 
-  void create(Customer customer);
+  void create(CustomerServiceDto dto);
 
   void delete(int id);
 
   Customer read(int id);
 
-  void update(Customer customer);
+  void update(CustomerServiceDto dto);
 }
