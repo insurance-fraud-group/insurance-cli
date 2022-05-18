@@ -2,15 +2,17 @@ package service.impl;
 
 import domain.Dispatch;
 import dto.DispatchServiceDto;
+
+import java.util.ArrayList;
 import java.util.List;
 import service.DispatchService;
 
 public class DispatchServiceImpl implements DispatchService {
 
-  private List<Dispatch> dispatchList;
+  private final List<Dispatch> dispatchList;
 
   public DispatchServiceImpl() {
-
+  dispatchList = new ArrayList<>();
   }
 
   public void create(DispatchServiceDto dto) {

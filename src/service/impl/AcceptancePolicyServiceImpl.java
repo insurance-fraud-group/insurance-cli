@@ -8,7 +8,7 @@ import service.AcceptancePolicyService;
 
 public class AcceptancePolicyServiceImpl implements AcceptancePolicyService {
 
-  private List<AcceptancePolicy> acceptancePolicyList;
+  private final List<AcceptancePolicy> acceptancePolicyList;
 
   public AcceptancePolicyServiceImpl() {
     acceptancePolicyList = new ArrayList<>();
