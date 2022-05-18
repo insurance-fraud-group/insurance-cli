@@ -2,15 +2,17 @@ package service.impl;
 
 import domain.Accident;
 import dto.AccidentServiceDto;
+
+import java.util.ArrayList;
 import java.util.List;
 import service.AccidentService;
 
 public class AccidentServiceImpl implements AccidentService {
 
-  private List<Accident> accidentList;
+  private final List<Accident> accidentList;
 
   public AccidentServiceImpl() {
-
+    accidentList = new ArrayList<>();
   }
 
   public void create(AccidentServiceDto dto) {

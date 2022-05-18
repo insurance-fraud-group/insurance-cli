@@ -2,15 +2,17 @@ package service.impl;
 
 import domain.Customer;
 import dto.CustomerServiceDto;
+
+import java.util.ArrayList;
 import java.util.List;
 import service.CustomerService;
 
 public class CustomerServiceImpl implements CustomerService {
 
-  private List<Customer> customerList;
+  private final List<Customer> customerList;
 
   public CustomerServiceImpl() {
-
+    customerList = new ArrayList<>();
   }
 
   public void create(CustomerServiceDto dto) {
