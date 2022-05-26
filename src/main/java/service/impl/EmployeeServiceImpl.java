@@ -1,6 +1,6 @@
 package service.impl;
 
-import domain.employee.Employee;
+import domain.Employee;
 import java.util.ArrayList;
 import java.util.List;
 import service.EmployeeService;

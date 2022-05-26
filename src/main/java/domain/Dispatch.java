@@ -1,6 +1,5 @@
 package domain;
 
-import domain.employee.Employee;
 import java.io.File;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
