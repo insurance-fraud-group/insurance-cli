@@ -1,6 +1,6 @@
 package service.impl;
 
-import domain.product.Product;
+import domain.Product;
 
 import java.util.ArrayList;
 import java.util.List;

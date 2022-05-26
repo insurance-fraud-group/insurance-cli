@@ -1,6 +1,7 @@
-package domain.product;
+package domain;
 
 import enums.Authorize;
+import enums.ProductType;
 import enums.Treaty;
 import java.io.File;
 import javax.persistence.Entity;
@@ -22,6 +23,7 @@ public class Product {
   @Id
   private String productCode;
 
+  private ProductType productType;
   private File clauses;
   private String coverDescription;
   private int entryAge;
