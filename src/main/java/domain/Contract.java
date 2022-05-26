@@ -1,6 +1,5 @@
 package domain;
 
-import domain.product.Product;
 import java.io.File;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

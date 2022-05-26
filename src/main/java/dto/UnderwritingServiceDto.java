@@ -1,7 +1,7 @@
 package dto;
 
 import domain.Customer;
-import domain.product.Product;
+import domain.Product;
 import lombok.Builder;
 import lombok.Data;
 
