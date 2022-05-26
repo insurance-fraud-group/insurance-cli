@@ -30,8 +30,8 @@ public class Underwriting {
   private int physicalFactorScore;
 
   @OneToOne
-  @JoinColumn(name = "product_id")
-  private Product product;
+  @JoinColumn(name = "insurance_id")
+  private Insurance insurance;
 
   @OneToOne
   @JoinColumn(name = "customer_id")

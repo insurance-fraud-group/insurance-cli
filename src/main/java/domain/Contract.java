@@ -33,6 +33,6 @@ public class Contract {
   private Customer customer;
 
   @OneToOne
-  @JoinColumn(name = "product_id")
-  private Product product;
+  @JoinColumn(name = "insurance_id")
+  private Insurance insurance;
 }
