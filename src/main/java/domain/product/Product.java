@@ -3,10 +3,25 @@ package domain.product;
 import enums.Authorize;
 import enums.Treaty;
 import java.io.File;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 
+  @Id
   private String productCode;
+
   private File clauses;
   private String coverDescription;
   private int entryAge;
@@ -16,8 +31,4 @@ public class Product {
   private int premiumRate;
   private Authorize authorize;
   private Treaty treaty;
-
-  public Product() {
-
-  }
 }

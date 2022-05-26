@@ -1,80 +1,40 @@
 package domain;
 
-import domain.employee.compensation.AccidentInvestigator;
-import dto.DispatchServiceDto;
+import domain.employee.Employee;
 import java.io.File;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Dispatch {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  private Accident accident;
-  private String accidentDescription;
-  private AccidentInvestigator accidentInvestigator;
+
   private int damage;
-  private List<File> evidenceMedia;
+  private String accidentDescription;
+  private File evidenceMedia;
 
-  public Dispatch(DispatchServiceDto dto) {
-    this.id = dto.getId();
-    this.accident = dto.getAccident();
-    this.accidentDescription = dto.getAccidentDescription();
-    this.damage = dto.getDamage();
-    this.evidenceMedia = dto.getEvidenceMedia();
-  }
+  @OneToOne
+  @JoinColumn(name = "accident_id")
+  private Accident accident;
 
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public Accident getAccident() {
-    return accident;
-  }
-
-  public void setAccident(Accident accident) {
-    this.accident = accident;
-  }
-
-  public String getAccidentDescription() {
-    return accidentDescription;
-  }
-
-  public void setAccidentDescription(String accidentDescription) {
-    this.accidentDescription = accidentDescription;
-  }
-
-  public AccidentInvestigator getAccidentInvestigator() {
-    return accidentInvestigator;
-  }
-
-  public void setAccidentInvestigator(
-          AccidentInvestigator accidentInvestigator) {
-    this.accidentInvestigator = accidentInvestigator;
-  }
-
-  public int getDamage() {
-    return damage;
-  }
-
-  public void setDamage(int damage) {
-    this.damage = damage;
-  }
-
-  public List<File> getEvidenceMedia() {
-    return evidenceMedia;
-  }
-
-  public void setEvidenceMedia(List<File> evidenceMedia) {
-    this.evidenceMedia = evidenceMedia;
-  }
-
-  public void update(DispatchServiceDto dto) {
-    this.accident = dto.getAccident();
-    this.accidentDescription = dto.getAccidentDescription();
-    this.damage = dto.getDamage();
-    this.evidenceMedia = dto.getEvidenceMedia();
-  }
+  @OneToOne
+  @JoinColumn(name = "employee_id")
+  private Employee accidentInvestigator;
 }
