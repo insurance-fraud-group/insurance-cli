@@ -1,6 +1,6 @@
 package dto;
 
-import domain.employee.Employee;
+import domain.Employee;
 import java.util.Date;
 import lombok.Builder;
 import lombok.Data;
