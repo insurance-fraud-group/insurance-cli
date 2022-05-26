@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mysql:
+    container_name: insurance-db
+    image: mysql/mysql-server:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pw
+      MYSQL_DATABASE: insurance_db
+      MYSQL_USER: fraud
+      MYSQL_PASSWORD: fraud_pw
+    command:
+      - --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    restart: always
