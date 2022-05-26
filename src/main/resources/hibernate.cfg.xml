@@ -14,5 +14,15 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
+    <!--mapping configs-->
+    <mapping class="domain.AcceptancePolicy"/>
+    <mapping class="domain.Accident"/>
+    <mapping class="domain.Adjust"/>
+    <mapping class="domain.Contract"/>
+    <mapping class="domain.Customer"/>
+    <mapping class="domain.Dispatch"/>
+    <mapping class="domain.Employee"/>
+    <mapping class="domain.Product"/>
+    <mapping class="domain.Underwriting"/>
   </session-factory>
 </hibernate-configuration>
