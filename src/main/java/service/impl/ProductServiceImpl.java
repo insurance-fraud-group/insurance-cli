@@ -14,19 +14,4 @@ public class ProductServiceImpl implements ProductService {
     productList = new ArrayList<>();
   }
 
-  public void create(Product insurance) {
-
-  }
-
-  public void delete(String productCode) {
-
-  }
-
-  public Product read(String productCode) {
-    return null;
-  }
-
-  public void update(Product insurance) {
-
-  }
 }
