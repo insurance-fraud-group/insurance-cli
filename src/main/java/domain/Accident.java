@@ -1,7 +1,6 @@
 package domain;
 
 import enums.AccidentType;
-import java.awt.geom.Point2D;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +26,7 @@ public class Accident {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  private Point2D.Double eventLocation;
+  private String eventLocation;
   private LocalDateTime eventTime;
   private boolean victim;
   private AccidentType accidentType;
