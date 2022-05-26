@@ -1,6 +1,6 @@
 package service.impl;
 
-import domain.Product;
+import domain.Insurance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,10 +8,10 @@ import service.ProductService;
 
 public class ProductServiceImpl implements ProductService {
 
-  private final List<Product> productList;
+  private final List<Insurance> insuranceList;
 
   public ProductServiceImpl() {
-    productList = new ArrayList<>();
+    insuranceList = new ArrayList<>();
   }
 
 }

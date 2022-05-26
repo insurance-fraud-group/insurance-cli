@@ -22,7 +22,7 @@
     <mapping class="domain.Customer"/>
     <mapping class="domain.Dispatch"/>
     <mapping class="domain.Employee"/>
-    <mapping class="domain.Product"/>
+    <mapping class="domain.Insurance"/>
     <mapping class="domain.Underwriting"/>
   </session-factory>
 </hibernate-configuration>
