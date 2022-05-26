@@ -14,12 +14,10 @@ public class Hibernate {
 
   static {
     try {
-      if(sessionFactory == null){
-        standardServiceRegistry = new StandardServiceRegistryBuilder().configure().build();
-        MetadataSources metadataSources = new MetadataSources(standardServiceRegistry);
-        Metadata metadata = metadataSources.getMetadataBuilder().build();
-        sessionFactory = metadata.getSessionFactoryBuilder().build();
-      }
+      standardServiceRegistry = new StandardServiceRegistryBuilder().configure().build();
+      MetadataSources metadataSources = new MetadataSources(standardServiceRegistry);
+      Metadata metadata = metadataSources.getMetadataBuilder().build();
+      sessionFactory = metadata.getSessionFactoryBuilder().build();
     } catch (HibernateException e) {
       e.printStackTrace();
       if(standardServiceRegistry != null){
