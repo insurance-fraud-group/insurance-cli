@@ -1,0 +1,18 @@
+plugins {
+    id 'application'
+}
+
+group = 'insurance-fraud-group'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+
+application {
+    mainClass = 'InsuranceSystem'
+}
