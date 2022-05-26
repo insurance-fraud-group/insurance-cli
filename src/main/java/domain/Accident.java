@@ -1,81 +1,38 @@
 package domain;
 
-import dto.AccidentServiceDto;
 import enums.AccidentType;
 import java.awt.geom.Point2D;
 import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Accident {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  private Customer customer;
-  private Point2D eventLocation;
+
+  private Point2D.Double eventLocation;
   private LocalDateTime eventTime;
   private boolean victim;
   private AccidentType accidentType;
 
-  public Accident(AccidentServiceDto dto) {
-    this.id = dto.getId();
-    this.customer = dto.getCustomer();
-    this.eventLocation = dto.getEventLocation();
-    this.eventTime = dto.getEventTime();
-    this.victim = dto.isVictim();
-    this.accidentType = dto.getAccidentType();
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public Customer getCustomer() {
-    return customer;
-  }
-
-  public void setCustomer(Customer customer) {
-    this.customer = customer;
-  }
-
-  public Point2D getEventLocation() {
-    return eventLocation;
-  }
-
-  public void setEventLocation(Point2D eventLocation) {
-    this.eventLocation = eventLocation;
-  }
-
-  public LocalDateTime getEventTime() {
-    return eventTime;
-  }
-
-  public void setEventTime(LocalDateTime eventTime) {
-    this.eventTime = eventTime;
-  }
-
-  public boolean isVictim() {
-    return victim;
-  }
-
-  public void setVictim(boolean victim) {
-    this.victim = victim;
-  }
-
-  public AccidentType getAccidentType() {
-    return accidentType;
-  }
-
-  public void setAccidentType(AccidentType accidentType) {
-    this.accidentType = accidentType;
-  }
-
-  public void update(AccidentServiceDto dto) {
-    this.customer = dto.getCustomer();
-    this.eventLocation = dto.getEventLocation();
-    this.eventTime = dto.getEventTime();
-    this.victim = dto.isVictim();
-    this.accidentType = dto.getAccidentType();
-  }
+  @OneToOne
+  @JoinColumn(name = "customer_id")
+  private Customer customer;
 }

@@ -1,11 +1,28 @@
 package domain;
 
-import dto.CustomerServiceDto;
 import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
   private String accountNumber;
   private String address;
   private LocalDate birth;
@@ -13,87 +30,4 @@ public class Customer {
   private String name;
   private String phoneNumber;
   private boolean sex;
-
-  public Customer(CustomerServiceDto dto) {
-    this.id = dto.getId();
-    this.accountNumber = dto.getAccountNumber();
-    this.address = dto.getAddress();
-    this.birth = dto.getBirth();
-    this.job = dto.getName();
-    this.phoneNumber = dto.getPhoneNumber();
-    this.sex = dto.getSex();
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getAccountNumber() {
-    return accountNumber;
-  }
-
-  public void setAccountNumber(String accountNumber) {
-    this.accountNumber = accountNumber;
-  }
-
-  public String getAddress() {
-    return address;
-  }
-
-  public void setAddress(String address) {
-    this.address = address;
-  }
-
-  public LocalDate getBirth() {
-    return birth;
-  }
-
-  public void setBirth(LocalDate birth) {
-    this.birth = birth;
-  }
-
-  public String getJob() {
-    return job;
-  }
-
-  public void setJob(String job) {
-    this.job = job;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getPhoneNumber() {
-    return phoneNumber;
-  }
-
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
-  }
-
-  public boolean getSex() {
-    return sex;
-  }
-
-  public void setSex(boolean sex) {
-    this.sex = sex;
-  }
-
-  public void update(CustomerServiceDto dto) {
-    this.accountNumber = dto.getAccountNumber();
-    this.address = dto.getAddress();
-    this.birth = dto.getBirth();
-    this.job = dto.getName();
-    this.phoneNumber = dto.getPhoneNumber();
-    this.sex = dto.getSex();
-  }
 }
