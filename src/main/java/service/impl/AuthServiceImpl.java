@@ -7,7 +7,11 @@ import service.AuthService;
 
 public class AuthServiceImpl implements AuthService {
 
-  private EmployeeRepository employeeRepository = new EmployeeRepository();
+  private final EmployeeRepository employeeRepository;
+
+  public AuthServiceImpl() {
+    employeeRepository = new EmployeeRepository();
+  }
 
   @Override
   public AuthDto.SignupResponse signup(AuthDto.SignupRequest request) {
