@@ -10,7 +10,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.22'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
     implementation 'org.hibernate:hibernate-entitymanager:5.6.8.Final'
     implementation 'mysql:mysql-connector-java:8.0.29'
 }
