@@ -1,6 +1,6 @@
 package dto;
 
-import enums.EmployeeType;
+import domain.enums.EmployeeType;
 import lombok.Builder;
 import lombok.Data;
 

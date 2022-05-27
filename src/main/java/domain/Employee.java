@@ -1,6 +1,6 @@
 package domain;
 
-import enums.EmployeeType;
+import domain.enums.EmployeeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

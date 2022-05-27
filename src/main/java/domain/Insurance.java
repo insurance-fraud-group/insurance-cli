@@ -1,8 +1,8 @@
 package domain;
 
-import enums.Authorize;
-import enums.InsuranceType;
-import enums.Treaty;
+import domain.enums.Authorize;
+import domain.enums.InsuranceType;
+import domain.enums.Treaty;
 import java.io.File;
 import javax.persistence.Entity;
 import javax.persistence.Id;
