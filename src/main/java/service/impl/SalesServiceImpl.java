@@ -71,7 +71,7 @@ public class SalesServiceImpl implements SalesService {
 
   @Override
   public List<Contract> getUnsignedContract() {
-    return contractRepository.findBySigned(false);
+    return contractRepository.findAllBy("signed", false);
   }
 
   @Override
