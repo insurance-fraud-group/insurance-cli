@@ -25,7 +25,7 @@ public class Contract {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  private boolean completion;
+  private boolean signed;
   private File subscription;
 
   @OneToOne
