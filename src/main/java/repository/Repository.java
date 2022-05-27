@@ -9,7 +9,7 @@ import utils.Hibernate;
 
 public abstract class Repository<T, ID> {
 
-  private String tableName = ((ParameterizedType) getClass().getGenericSuperclass())
+  private String domainName = ((ParameterizedType) getClass().getGenericSuperclass())
       .getActualTypeArguments()[0].getTypeName();
   private Transaction tx = null;
 
@@ -55,12 +55,12 @@ public abstract class Repository<T, ID> {
   }
 
   public T findById(ID id) {
-    String queryString = String.format("from %s where id=%d", tableName, id);
+    String queryString = String.format("from %s where id=%d", domainName, id);
     return (T) transactionByQuery("uniqueResult", queryString);
   }
 
   public List<T> findAll() {
-    String queryString = String.format("from %s where", tableName);
+    String queryString = String.format("from %s where", domainName);
     return (List<T>) transactionByQuery("getResultList", queryString);
   }
 }
