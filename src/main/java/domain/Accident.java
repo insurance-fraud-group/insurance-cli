@@ -1,6 +1,6 @@
 package domain;
 
-import enums.AccidentType;
+import domain.enums.AccidentType;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
