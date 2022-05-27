@@ -24,9 +24,7 @@ public class Employee {
   private int id;
 
   private EmployeeType employeeType;
-  private int age;
   private String email;
+  private String password;
   private String name;
-  private String phoneNumber;
-  private boolean sex;
 }
