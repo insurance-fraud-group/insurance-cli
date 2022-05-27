@@ -16,13 +16,13 @@ public interface SalesService {
 
   Employee getEmployee(int id);
 
-  Customer createCustomer(Customer customer);
+  void createCustomer(Customer customer);
 
   List<Customer> getCustomerList();
 
   Customer getCustomer(int id);
 
-  Contract createContract(Insurance insurance, Customer customer);
+  void createContract(Insurance insurance, Customer customer);
 
   List<Contract> getUnsignedContract();
 
