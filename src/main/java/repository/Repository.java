@@ -9,7 +9,7 @@ import utils.Hibernate;
 
 public abstract class Repository<T, ID> {
 
-  private String domainName = ((ParameterizedType) getClass().getGenericSuperclass())
+  private final String domainName = ((ParameterizedType) getClass().getGenericSuperclass())
       .getActualTypeArguments()[0].getTypeName();
   private Transaction tx = null;
 
@@ -55,12 +55,23 @@ public abstract class Repository<T, ID> {
   }
 
   public T findById(ID id) {
-    String queryString = String.format("from %s where id=%d", domainName, id);
+    String queryString = String.format("from %s where id=%s", domainName, id);
+    return (T) transactionByQuery("uniqueResult", queryString);
+  }
+
+  public T findBy(String field, Object value) {
+    String queryString = String.format("from %s where %s='%s'", domainName, field, value);
+    System.out.println(queryString);
     return (T) transactionByQuery("uniqueResult", queryString);
   }
 
   public List<T> findAll() {
-    String queryString = String.format("from %s where", domainName);
+    String queryString = String.format("from %s", domainName);
+    return (List<T>) transactionByQuery("getResultList", queryString);
+  }
+
+  public List<T> findAllBy(String field, Object value) {
+    String queryString = String.format("from %s where %s='%s'", domainName, field, value);
     return (List<T>) transactionByQuery("getResultList", queryString);
   }
 }
