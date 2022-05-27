@@ -1,6 +1,8 @@
 package dto;
 
 import domain.enums.EmployeeType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,18 +12,22 @@ public class AuthDto {
   @Builder
   public static class SignupRequest {
 
-    private EmployeeType employeeType;
     private String email;
     private String password;
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private EmployeeType employeeType;
   }
 
   @Data
   @Builder
   public static class SignupResponse {
 
-    private EmployeeType employeeType;
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private EmployeeType employeeType;
   }
 
   @Data
@@ -36,7 +42,9 @@ public class AuthDto {
   @Builder
   public static class SigninResponse {
 
-    private EmployeeType employeeType;
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private EmployeeType employeeType;
   }
 }
