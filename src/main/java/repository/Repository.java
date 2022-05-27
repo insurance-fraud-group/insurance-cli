@@ -9,75 +9,69 @@ import utils.Hibernate;
 
 public abstract class Repository<T, ID> {
 
-  private String tableName = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0].getTypeName();
+  private final String domainName = ((ParameterizedType) getClass().getGenericSuperclass())
+      .getActualTypeArguments()[0].getTypeName();
   private Transaction tx = null;
 
-  public void save(T object) {
+  public void transaction(String methodName, T object) {
     try (Session session = Hibernate.getSessionFactory().openSession()) {
       tx = session.beginTransaction();
-      session.save(object);
+      System.out.println(session.getClass().getName());
+      session.getClass().getMethod(methodName, Object.class).invoke(session, object);
       tx.commit();
     } catch (Exception e) {
       if (tx != null) {
         tx.rollback();
       }
-      throw e;
+      throw new RuntimeException(e);
     }
+  }
+
+  public Object transactionByQuery (String methodName, String queryString) {
+    try (Session session = Hibernate.getSessionFactory().openSession()) {
+      tx = session.beginTransaction();
+      Query query = session.createQuery(queryString);
+      Object result = query.getClass().getMethod(methodName).invoke(query);
+      tx.commit();
+      return result;
+    } catch (Exception e) {
+      if (tx != null) {
+        tx.rollback();
+      }
+      throw new RuntimeException(e);
+    }
+  }
+
+  public void save(T object) {
+    transaction("save", object);
   }
 
   public void update(T object) {
-    try (Session session = Hibernate.getSessionFactory().openSession()) {
-      tx = session.beginTransaction();
-      session.update(object);
-      tx.commit();
-    } catch (Exception e) {
-      if (tx != null) {
-        tx.rollback();
-      }
-      throw e;
-    }
+    transaction("update", object);
   }
 
   public void delete(T object) {
-    try (Session session = Hibernate.getSessionFactory().openSession()) {
-      tx = session.beginTransaction();
-      session.delete(object);
-      tx.commit();
-    } catch (Exception e) {
-      if (tx != null) {
-        tx.rollback();
-      }
-      throw e;
-    }
+    transaction("delete", object);
   }
 
   public T findById(ID id) {
-    try (Session session = Hibernate.getSessionFactory().openSession()) {
-      tx = session.beginTransaction();
-      Query query = session.createQuery(String.format("from %s where id=:id", tableName))
-          .setParameter("id", id);
-      T object = (T) query.uniqueResult();
-      tx.commit();
-      return object;
-    } catch (Exception e) {
-      if (tx != null) {
-        tx.rollback();
-      }
-      throw e;
-    }
+    String queryString = String.format("from %s where id=%s", domainName, id);
+    return (T) transactionByQuery("uniqueResult", queryString);
+  }
+
+  public T findBy(String field, Object value) {
+    String queryString = String.format("from %s where %s='%s'", domainName, field, value);
+    System.out.println(queryString);
+    return (T) transactionByQuery("uniqueResult", queryString);
   }
 
   public List<T> findAll() {
-    try (Session session = Hibernate.getSessionFactory().openSession()) {
-      tx = session.beginTransaction();
-      Query query = session.createQuery("from " + tableName);
-      tx.commit();
-      return query.list();
-    } catch (Exception e) {
-      if (tx != null) {
-        tx.rollback();
-      }
-      throw e;
-    }
+    String queryString = String.format("from %s", domainName);
+    return (List<T>) transactionByQuery("getResultList", queryString);
+  }
+
+  public List<T> findAllBy(String field, Object value) {
+    String queryString = String.format("from %s where %s='%s'", domainName, field, value);
+    return (List<T>) transactionByQuery("getResultList", queryString);
   }
 }

@@ -26,7 +26,7 @@ public class AuthServiceImpl implements AuthService {
 
   @Override
   public AuthDto.SigninResponse signin(AuthDto.SigninRequest request) {
-    Employee employee = employeeRepository.findByEmail(request.getEmail());
+    Employee employee = employeeRepository.findBy("email", request.getEmail());
 
     if (request.getPassword().equals(employee.getPassword())) {
       return AuthDto.SigninResponse.builder().employeeType(employee.getEmployeeType())
