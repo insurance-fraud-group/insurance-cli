@@ -1,5 +1,7 @@
 package repository;
 
-public class AdjustRepository {
+import domain.Adjust;
+
+public class AdjustRepository extends Repository<Adjust, Integer>{
 
 }

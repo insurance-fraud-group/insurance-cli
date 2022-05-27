@@ -1,5 +1,7 @@
 package repository;
 
-public class DispatchRepository {
+import domain.Dispatch;
+
+public class DispatchRepository extends Repository<Dispatch, Integer>{
 
 }

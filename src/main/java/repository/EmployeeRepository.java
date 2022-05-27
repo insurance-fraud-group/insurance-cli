@@ -6,14 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import utils.Hibernate;
 
-public class EmployeeRepository {
-
-  public void save(Employee employee) {
-    Session session = Hibernate.getSessionFactory().openSession();
-    Transaction tx = session.beginTransaction();
-    session.save(employee);
-    tx.commit();
-  }
+public class EmployeeRepository extends Repository<Employee, Integer> {
 
   public Employee findByEmail(String email) {
     Session session = Hibernate.getSessionFactory().openSession();

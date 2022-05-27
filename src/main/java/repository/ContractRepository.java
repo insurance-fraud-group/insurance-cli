@@ -1,5 +1,7 @@
 package repository;
 
-public class ContractRepository {
+import domain.Contract;
+
+public class ContractRepository extends Repository<Contract, Integer>{
 
 }

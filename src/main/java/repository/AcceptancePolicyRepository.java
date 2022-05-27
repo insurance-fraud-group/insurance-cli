@@ -1,5 +1,7 @@
 package repository;
 
-public class AcceptancePolicyRepository {
+import domain.AcceptancePolicy;
+
+public class AcceptancePolicyRepository extends Repository<AcceptancePolicy, Integer>{
 
 }

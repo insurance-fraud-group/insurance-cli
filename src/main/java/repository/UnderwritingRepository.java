@@ -1,5 +1,7 @@
 package repository;
 
-public class UnderwritingRepository {
+import domain.Underwriting;
+
+public class UnderwritingRepository extends Repository<Underwriting, Integer>{
 
 }

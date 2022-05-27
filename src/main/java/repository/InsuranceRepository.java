@@ -1,5 +1,7 @@
 package repository;
 
-public class InsuranceRepository {
+import domain.Insurance;
+
+public class InsuranceRepository extends Repository<Insurance, String>{
 
 }
