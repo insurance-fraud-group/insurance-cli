@@ -20,13 +20,13 @@ public class Hibernate {
       sessionFactory = metadata.getSessionFactoryBuilder().build();
     } catch (HibernateException e) {
       e.printStackTrace();
-      if(standardServiceRegistry != null){
+      if (standardServiceRegistry != null) {
         StandardServiceRegistryBuilder.destroy(standardServiceRegistry);
       }
     }
   }
 
-  public static SessionFactory getSessionFactory(){
+  public static SessionFactory getSessionFactory() {
     return sessionFactory;
   }
 }
