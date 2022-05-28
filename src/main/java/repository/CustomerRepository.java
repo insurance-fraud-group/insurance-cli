@@ -2,6 +2,6 @@ package repository;
 
 import domain.Customer;
 
-public class CustomerRepository extends Repository<Customer, Integer>{
+public class CustomerRepository extends Repository<Customer, Integer> {
 
 }
