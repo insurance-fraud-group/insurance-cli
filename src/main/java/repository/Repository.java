@@ -27,10 +27,10 @@ public abstract class Repository<T, ID> {
     }
   }
 
-  public Object transactionByQuery (String methodName, String queryString) {
+  public Object transactionByQuery(String methodName, String queryString) {
     try (Session session = Hibernate.getSessionFactory().openSession()) {
       tx = session.beginTransaction();
-      Query query = session.createQuery(queryString);
+      Query<?> query = session.createQuery(queryString);
       Object result = query.getClass().getMethod(methodName).invoke(query);
       tx.commit();
       return result;
