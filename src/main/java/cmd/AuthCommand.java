@@ -33,7 +33,7 @@ public class AuthCommand {
   }
 
   public static void signin() {
-    System.out.println("[Sign In]");
+    System.out.println("\n[Sign In]");
     AuthDto.SigninRequest request = AuthDto.SigninRequest.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
@@ -42,7 +42,7 @@ public class AuthCommand {
   }
 
   public static void signup() {
-    System.out.println("[Sign Up]");
+    System.out.println("\n[Sign Up]");
     AuthDto.SignupRequest request = AuthDto.SignupRequest.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
