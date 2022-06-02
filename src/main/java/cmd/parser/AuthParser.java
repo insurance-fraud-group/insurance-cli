@@ -45,16 +45,16 @@ public class AuthParser extends Parser {
 
   public String getEmail() {
     System.out.print("Enter Email : ");
-    return sc.nextLine();
+    return sc.next();
   }
 
   public String getPassword() {
     System.out.print("Enter Password : ");
-    return sc.nextLine();
+    return sc.next();
   }
 
   public String getName() {
     System.out.print("Enter Name : ");
-    return sc.nextLine();
+    return sc.next();
   }
 }
