@@ -6,6 +6,7 @@ import cmd.parser.Parser;
 import dto.AuthDto;
 import java.util.Arrays;
 import service.impl.AuthServiceImpl;
+import utils.Session;
 
 public class AuthCommand {
 
@@ -38,7 +39,9 @@ public class AuthCommand {
         .email(parser.getEmail())
         .password(parser.getPassword())
         .build();
-    authService.signin(request);
+    AuthDto.SigninResponse response = authService.signin(request);
+    Session.getInstance().setName(response.getName());
+    Session.getInstance().setEmployeeType(response.getEmployeeType());
   }
 
   public static void signup() {
@@ -49,6 +52,8 @@ public class AuthCommand {
         .name(parser.getName())
         .employeeType(parser.getEmployeeType())
         .build();
-    authService.signup(request);
+    AuthDto.SignupResponse response = authService.signup(request);
+    Session.getInstance().setName(response.getName());
+    Session.getInstance().setEmployeeType(response.getEmployeeType());
   }
 }
