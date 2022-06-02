@@ -23,7 +23,7 @@ public class AuthParser extends Parser {
     System.out.println("Auth");
   }
 
-  public String getEmployeeType() {
+  public EmployeeType getEmployeeType() {
     System.out.println("Employee Type");
     Arrays.stream(EmployeeType.values()).forEach(type -> {
       System.out.println(
@@ -40,7 +40,7 @@ public class AuthParser extends Parser {
 
     int employeeType = sc.nextInt();
     return (employeeType < 1 || employeeType > EmployeeType.values().length) ? getEmployeeType()
-        : EmployeeType.values()[employeeType - 1].name();
+        : EmployeeType.values()[employeeType - 1];
   }
 
   public String getEmail() {
