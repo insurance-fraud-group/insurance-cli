@@ -1,20 +1,20 @@
-package command;
+package cmd.parser;
 
 import domain.enums.EmployeeType;
 import java.util.Arrays;
 
-public class AuthCommand extends Command {
+public class AuthParser extends Parser {
 
   private static class InstanceHolder {
 
-    private static final AuthCommand INSTANCE = new AuthCommand();
+    private static final AuthParser INSTANCE = new AuthParser();
   }
 
-  private AuthCommand() {
+  private AuthParser() {
     super();
   }
 
-  public static AuthCommand getInstance() {
+  public static AuthParser getInstance() {
     return InstanceHolder.INSTANCE;
   }
 

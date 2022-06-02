@@ -1,8 +1,8 @@
-package command;
+package cmd.parser;
 
 import java.util.Scanner;
 
-public abstract class Command {
+public abstract class Parser {
 
   private static class ScannerHolder {
 
@@ -15,7 +15,7 @@ public abstract class Command {
 
   protected Scanner sc;
 
-  public Command() {
+  public Parser() {
     sc = getScanner();
   }
 

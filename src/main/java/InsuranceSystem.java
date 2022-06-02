@@ -1,6 +1,8 @@
+import cmd.AuthCommand;
+
 public class InsuranceSystem {
 
   public static void main(String[] args) {
-    System.out.println("Hello world!");
+    AuthCommand.getInstance().run();
   }
 }
