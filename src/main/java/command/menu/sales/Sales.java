@@ -1,8 +1,9 @@
-package command.menu;
+package command.menu.sales;
 
 import command.SalesCommand;
+import command.menu.Menu;
 
-public enum SalesMenu implements Menu{
+public enum Sales implements Menu {
 
   SalesManagement("영업 관리", SalesCommand::manageSales),
   ContractManagement("계약 관리", SalesCommand::manageContract),
@@ -12,7 +13,7 @@ public enum SalesMenu implements Menu{
   private String label;
   private Runnable runnable;
 
-  SalesMenu(String label, Runnable runnable) {
+  Sales(String label, Runnable runnable) {
     this.label = label;
     this.runnable = runnable;
   }
