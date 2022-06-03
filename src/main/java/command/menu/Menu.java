@@ -4,5 +4,7 @@ public interface Menu {
 
   int ordinal();
 
+  void execute();
+
   String toString();
 }

@@ -1,6 +1,5 @@
 package command;
 
-import command.menu.AuthMenu;
 import command.menu.Menu;
 import command.parser.Parser;
 import java.util.Arrays;
@@ -20,7 +19,7 @@ public class Command {
     System.out.print("> ");
     int selectedMenu = Parser.getScanner().nextInt();
 
-    Arrays.stream(AuthMenu.values()).forEach(menu -> {
+    Arrays.stream(menus).forEach(menu -> {
       if (selectedMenu == menu.ordinal() + 1) {
         menu.execute();
       }
