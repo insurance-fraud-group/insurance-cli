@@ -12,7 +12,7 @@ public class AuthCommand extends Command{
   private static final AuthServiceImpl authService = new AuthServiceImpl();
 
   public static void run() {
-    run("[사용자 인증]", AuthMenu.values());
+    print("[사용자 인증]", AuthMenu.values());
   }
 
   public static void signin() {
