@@ -8,11 +8,11 @@ public enum AuthMenu {
   SignUp("회원가입", AuthCommand::signup),
   ;
 
-  private String message;
+  private String label;
   private Runnable runnable;
 
-  AuthMenu(String message, Runnable runnable) {
-    this.message = message;
+  AuthMenu(String label, Runnable runnable) {
+    this.label = label;
     this.runnable = runnable;
   }
 
@@ -22,6 +22,6 @@ public enum AuthMenu {
 
   @Override
   public String toString() {
-    return this.message;
+    return this.label;
   }
 }
