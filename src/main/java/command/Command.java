@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Command {
 
-  public static void run(String title, Menu[] menus) {
+  public static void print(String title, Menu[] menus) {
     System.out.println(title);
 
     Arrays.stream(menus).forEach(menu -> {
