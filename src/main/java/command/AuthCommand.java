@@ -1,60 +1,59 @@
 package command;
 
-import domain.enums.EmployeeType;
+import command.menu.AuthMenu;
+import command.parser.AuthParser;
+import command.parser.Parser;
+import domain.Employee;
 import java.util.Arrays;
+import service.impl.AuthServiceImpl;
+import utils.Session;
 
-public class AuthCommand extends Command {
+public class AuthCommand {
 
-  private static class InstanceHolder {
+  private static final AuthParser parser = AuthParser.getInstance();
+  private static final AuthServiceImpl authService = new AuthServiceImpl();
 
-    private static final AuthCommand INSTANCE = new AuthCommand();
-  }
+  public static void run() {
+    System.out.println("[사용자 인증]");
 
-  private AuthCommand() {
-    super();
-  }
-
-  public static AuthCommand getInstance() {
-    return InstanceHolder.INSTANCE;
-  }
-
-  @Override
-  public void initialize() {
-    System.out.println("Auth");
-  }
-
-  public String getEmployeeType() {
-    System.out.println("Employee Type");
-    Arrays.stream(EmployeeType.values()).forEach(type -> {
+    Arrays.stream(AuthMenu.values()).forEach(menu -> {
       System.out.println(
-          Integer.toString(type.ordinal() + 1)
+          Integer.toString(menu.ordinal() + 1)
               .concat(". ")
-              .concat(type.name()));
+              .concat(menu.toString()));
     });
 
-    System.out.print("Enter Employee Type : ");
-    while (!sc.hasNextInt()) {
-      sc.next();
-      System.out.println("Please enter a number within the range.");
-    }
+    System.out.print("> ");
+    int selectedMenu = Parser.getScanner().nextInt();
 
-    int employeeType = sc.nextInt();
-    return (employeeType < 1 || employeeType > EmployeeType.values().length) ? getEmployeeType()
-        : EmployeeType.values()[employeeType - 1].name();
+    Arrays.stream(AuthMenu.values()).forEach(menu -> {
+      if (selectedMenu == menu.ordinal() + 1) {
+        menu.execute();
+      }
+    });
   }
 
-  public String getEmail() {
-    System.out.print("Enter Email : ");
-    return sc.nextLine();
+  public static void signin() {
+    System.out.println("\n[로그인]");
+    Employee request = Employee.builder()
+        .email(parser.getEmail())
+        .password(parser.getPassword())
+        .build();
+    Employee response = authService.signin(request);
+    Session.getInstance().setName(response.getName());
+    Session.getInstance().setEmployeeType(response.getEmployeeType());
   }
 
-  public String getPassword() {
-    System.out.print("Enter Password : ");
-    return sc.nextLine();
-  }
-
-  public String getName() {
-    System.out.print("Enter Name : ");
-    return sc.nextLine();
+  public static void signup() {
+    System.out.println("\n[회원가입]");
+    Employee request = Employee.builder()
+        .email(parser.getEmail())
+        .password(parser.getPassword())
+        .name(parser.getName())
+        .employeeType(parser.getEmployeeType())
+        .build();
+    Employee response = authService.signup(request);
+    Session.getInstance().setName(response.getName());
+    Session.getInstance().setEmployeeType(response.getEmployeeType());
   }
 }

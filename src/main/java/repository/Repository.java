@@ -16,7 +16,6 @@ public abstract class Repository<T, ID> {
   public void transaction(String methodName, T object) {
     try (Session session = Hibernate.getSessionFactory().openSession()) {
       tx = session.beginTransaction();
-      System.out.println(session.getClass().getName());
       session.getClass().getMethod(methodName, Object.class).invoke(session, object);
       tx.commit();
     } catch (Exception e) {
@@ -61,7 +60,6 @@ public abstract class Repository<T, ID> {
 
   public T findBy(String field, Object value) {
     String queryString = String.format("from %s where %s='%s'", domainName, field, value);
-    System.out.println(queryString);
     return (T) transactionByQuery("uniqueResult", queryString);
   }
 

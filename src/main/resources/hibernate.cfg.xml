@@ -12,7 +12,7 @@
     <property name="hibernate.connection.password">fraud_pw</property>
     <!--connection configs-->
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.show_sql">false</property>
     <property name="hibernate.format_sql">true</property>
     <!--mapping configs-->
     <mapping class="domain.AcceptancePolicy"/>
