@@ -2,7 +2,7 @@ package command.menu;
 
 import command.AuthCommand;
 
-public enum AuthMenu {
+public enum AuthMenu implements Menu{
 
   SignIn("로그인", AuthCommand::signin),
   SignUp("회원가입", AuthCommand::signup),

@@ -2,35 +2,17 @@ package command;
 
 import command.menu.AuthMenu;
 import command.parser.AuthParser;
-import command.parser.Parser;
 import domain.Employee;
-import java.util.Arrays;
 import service.impl.AuthServiceImpl;
 import utils.Session;
 
-public class AuthCommand {
+public class AuthCommand extends Command{
 
   private static final AuthParser parser = AuthParser.getInstance();
   private static final AuthServiceImpl authService = new AuthServiceImpl();
 
   public static void run() {
-    System.out.println("[사용자 인증]");
-
-    Arrays.stream(AuthMenu.values()).forEach(menu -> {
-      System.out.println(
-          Integer.toString(menu.ordinal() + 1)
-              .concat(". ")
-              .concat(menu.toString()));
-    });
-
-    System.out.print("> ");
-    int selectedMenu = Parser.getScanner().nextInt();
-
-    Arrays.stream(AuthMenu.values()).forEach(menu -> {
-      if (selectedMenu == menu.ordinal() + 1) {
-        menu.execute();
-      }
-    });
+    run("[사용자 인증]", AuthMenu.values());
   }
 
   public static void signin() {
