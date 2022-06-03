@@ -1,7 +1,7 @@
 package service.impl;
 
 import domain.Employee;
-import dto.AuthDto;
+import utils.dto.AuthDto;
 import repository.EmployeeRepository;
 import service.AuthService;
 

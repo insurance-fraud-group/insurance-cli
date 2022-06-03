@@ -1,6 +1,6 @@
 package service;
 
-import dto.AuthDto;
+import utils.dto.AuthDto;
 
 public interface AuthService {
 

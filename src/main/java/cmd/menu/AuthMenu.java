@@ -4,8 +4,8 @@ import cmd.AuthCommand;
 
 public enum AuthMenu {
 
-  SignIn("Sign In", AuthCommand::signin),
-  SignUp("Sign Up", AuthCommand::signup),
+  SignIn("로그인", AuthCommand::signin),
+  SignUp("회원가입", AuthCommand::signup),
   ;
 
   private String message;

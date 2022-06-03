@@ -24,7 +24,7 @@ public class AuthParser extends Parser {
   }
 
   public EmployeeType getEmployeeType() {
-    System.out.println("Employee Type");
+    System.out.println("직군을 선택해주세요");
     Arrays.stream(EmployeeType.values()).forEach(type -> {
       System.out.println(
           Integer.toString(type.ordinal() + 1)
@@ -32,7 +32,7 @@ public class AuthParser extends Parser {
               .concat(type.name()));
     });
 
-    System.out.print("Enter Employee Type : ");
+    System.out.print("직군 : ");
     while (!sc.hasNextInt()) {
       sc.next();
       System.out.println("Please enter a number within the range.");
@@ -44,17 +44,17 @@ public class AuthParser extends Parser {
   }
 
   public String getEmail() {
-    System.out.print("Enter Email : ");
+    System.out.print("이메일 : ");
     return sc.next();
   }
 
   public String getPassword() {
-    System.out.print("Enter Password : ");
+    System.out.print("패스워드 : ");
     return sc.next();
   }
 
   public String getName() {
-    System.out.print("Enter Name : ");
+    System.out.print("이름 : ");
     return sc.next();
   }
 }

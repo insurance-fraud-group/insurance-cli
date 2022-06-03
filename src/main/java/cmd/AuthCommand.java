@@ -3,7 +3,7 @@ package cmd;
 import cmd.menu.AuthMenu;
 import cmd.parser.AuthParser;
 import cmd.parser.Parser;
-import dto.AuthDto;
+import utils.dto.AuthDto;
 import java.util.Arrays;
 import service.impl.AuthServiceImpl;
 import utils.Session;
@@ -14,7 +14,7 @@ public class AuthCommand {
   private static final AuthServiceImpl authService = new AuthServiceImpl();
 
   public static void run() {
-    System.out.println("[Auth]");
+    System.out.println("[사용자 인증]");
 
     Arrays.stream(AuthMenu.values()).forEach(menu -> {
       System.out.println(
@@ -34,7 +34,7 @@ public class AuthCommand {
   }
 
   public static void signin() {
-    System.out.println("\n[Sign In]");
+    System.out.println("\n[로그인]");
     AuthDto.SigninRequest request = AuthDto.SigninRequest.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
@@ -45,7 +45,7 @@ public class AuthCommand {
   }
 
   public static void signup() {
-    System.out.println("\n[Sign Up]");
+    System.out.println("\n[회원가입]");
     AuthDto.SignupRequest request = AuthDto.SignupRequest.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())

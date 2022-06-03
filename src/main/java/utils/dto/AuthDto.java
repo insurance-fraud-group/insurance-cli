@@ -1,4 +1,4 @@
-package dto;
+package utils.dto;
 
 import domain.enums.EmployeeType;
 import javax.persistence.EnumType;
