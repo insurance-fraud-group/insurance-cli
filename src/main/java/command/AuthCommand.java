@@ -6,7 +6,7 @@ import domain.Employee;
 import service.impl.AuthServiceImpl;
 import utils.Session;
 
-public class AuthCommand extends Command{
+public class AuthCommand extends Command {
 
   private static final AuthParser parser = AuthParser.getInstance();
   private static final AuthServiceImpl authService = new AuthServiceImpl();
