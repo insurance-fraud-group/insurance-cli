@@ -3,7 +3,7 @@ package cmd;
 import cmd.menu.AuthMenu;
 import cmd.parser.AuthParser;
 import cmd.parser.Parser;
-import utils.dto.AuthDto;
+import domain.Employee;
 import java.util.Arrays;
 import service.impl.AuthServiceImpl;
 import utils.Session;
@@ -35,24 +35,24 @@ public class AuthCommand {
 
   public static void signin() {
     System.out.println("\n[로그인]");
-    AuthDto.SigninRequest request = AuthDto.SigninRequest.builder()
+    Employee request = Employee.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
         .build();
-    AuthDto.SigninResponse response = authService.signin(request);
+    Employee response = authService.signin(request);
     Session.getInstance().setName(response.getName());
     Session.getInstance().setEmployeeType(response.getEmployeeType());
   }
 
   public static void signup() {
     System.out.println("\n[회원가입]");
-    AuthDto.SignupRequest request = AuthDto.SignupRequest.builder()
+    Employee request = Employee.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
         .name(parser.getName())
         .employeeType(parser.getEmployeeType())
         .build();
-    AuthDto.SignupResponse response = authService.signup(request);
+    Employee response = authService.signup(request);
     Session.getInstance().setName(response.getName());
     Session.getInstance().setEmployeeType(response.getEmployeeType());
   }

@@ -1,10 +1,10 @@
 package service;
 
-import utils.dto.AuthDto;
+import domain.Employee;
 
 public interface AuthService {
 
-  AuthDto.SignupResponse signup(AuthDto.SignupRequest request);
+  Employee signup(Employee request);
 
-  AuthDto.SigninResponse signin(AuthDto.SigninRequest request);
+  Employee signin(Employee request);
 }
