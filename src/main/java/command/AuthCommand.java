@@ -1,8 +1,8 @@
-package cmd;
+package command;
 
-import cmd.menu.AuthMenu;
-import cmd.parser.AuthParser;
-import cmd.parser.Parser;
+import command.menu.AuthMenu;
+import command.parser.AuthParser;
+import command.parser.Parser;
 import domain.Employee;
 import java.util.Arrays;
 import service.impl.AuthServiceImpl;

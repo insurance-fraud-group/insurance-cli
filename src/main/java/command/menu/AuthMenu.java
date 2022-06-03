@@ -1,6 +1,6 @@
-package cmd.menu;
+package command.menu;
 
-import cmd.AuthCommand;
+import command.AuthCommand;
 
 public enum AuthMenu {
 

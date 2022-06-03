@@ -1,4 +1,4 @@
-package cmd.parser;
+package command.parser;
 
 import java.util.Scanner;
 

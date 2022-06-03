@@ -1,4 +1,4 @@
-package cmd.parser;
+package command.parser;
 
 import domain.enums.EmployeeType;
 import java.util.Arrays;
