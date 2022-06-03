@@ -4,10 +4,8 @@ import domain.enums.EmployeeType;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 public class Session {
 
   private static class SessionHolder {
@@ -15,7 +13,7 @@ public class Session {
     private static final Session INSTANCE = new Session();
   }
 
-  public static Session getInstance() {
+  public static Session getSession() {
     return SessionHolder.INSTANCE;
   }
 
@@ -23,4 +21,14 @@ public class Session {
 
   @Enumerated(EnumType.STRING)
   private EmployeeType employeeType;
+
+  private boolean exist = false;
+
+  public void register(String name, EmployeeType employeeType) {
+    this.name = name;
+    this.employeeType = employeeType;
+    this.exist = true;
+
+    System.out.println(String.format("\n%s님 환영합니다!", this.name));
+  }
 }
