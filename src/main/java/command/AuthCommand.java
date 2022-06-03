@@ -40,8 +40,7 @@ public class AuthCommand {
         .password(parser.getPassword())
         .build();
     Employee response = authService.signin(request);
-    Session.getInstance().setName(response.getName());
-    Session.getInstance().setEmployeeType(response.getEmployeeType());
+    Session.getSession().register(response.getName(), response.getEmployeeType());
   }
 
   public static void signup() {
@@ -53,7 +52,6 @@ public class AuthCommand {
         .employeeType(parser.getEmployeeType())
         .build();
     Employee response = authService.signup(request);
-    Session.getInstance().setName(response.getName());
-    Session.getInstance().setEmployeeType(response.getEmployeeType());
+    Session.getSession().register(response.getName(), response.getEmployeeType());
   }
 }

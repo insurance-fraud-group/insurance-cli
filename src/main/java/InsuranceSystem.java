@@ -11,6 +11,8 @@ public class InsuranceSystem {
 
     AuthCommand.run();
 
-    System.out.println(String.format("\n%s님 환영합니다!", Session.getInstance().getName()));
+    if(!Session.getSession().isExist()) {
+      System.exit(0);
+    }
   }
 }
