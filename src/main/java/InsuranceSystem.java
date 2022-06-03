@@ -1,4 +1,7 @@
 import command.AuthCommand;
+import command.menu.CommandMenu;
+import domain.enums.EmployeeType;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.Session;
@@ -14,5 +17,12 @@ public class InsuranceSystem {
     if(!Session.getSession().isExist()) {
       System.exit(0);
     }
+
+    Arrays.stream(CommandMenu.values()).forEach(command -> {
+      EmployeeType employeeType = Session.getSession().getEmployeeType();
+      if (employeeType.name().equals(command.name())) {
+        command.execute();
+      }
+    });
   }
 }
