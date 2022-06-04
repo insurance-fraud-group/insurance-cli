@@ -5,7 +5,9 @@ import java.util.List;
 
 public interface UnderwritingService {
 
-  List<Underwriting> createAcceptancePolicy();
+  List<Underwriting> searchAcceptancePolicy();
+
+  void createAcceptancePolicy(Underwriting underwriting);
 
   void manageLossRate();
 

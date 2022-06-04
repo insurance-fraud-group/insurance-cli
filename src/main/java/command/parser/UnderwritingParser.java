@@ -47,18 +47,14 @@ public class UnderwritingParser extends Parser {
   }
 
 
-  public String getInsuranceCode() {
-    System.out.print("상품코드 : ");
+  public String getName() {
+    System.out.print("정책명 : ");
     return sc.next();
   }
 
-  public int getPremium() {
-    System.out.print("보험료 : ");
-    return sc.nextInt();
+  public String getDescription() {
+    System.out.print("상세 내용 : ");
+    return sc.next();
   }
 
-  public int getPremiumRate() {
-    System.out.print("이율 : ");
-    return sc.nextInt();
-  }
 }
