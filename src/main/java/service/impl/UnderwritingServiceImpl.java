@@ -8,9 +8,15 @@ import service.UnderwritingService;
 public class UnderwritingServiceImpl implements UnderwritingService {
 
   private final UnderwritingRepository underwritingRepository = new UnderwritingRepository();
+
   @Override
-  public List<Underwriting> createAcceptancePolicy() {
-    return underwritingRepository.findAll();
+  public List<Underwriting> searchAcceptancePolicy() {
+    return  underwritingRepository.findAll();
+  }
+
+  @Override
+  public void createAcceptancePolicy(Underwriting underwriting) {
+    underwritingRepository.save(underwriting);
   }
 
   @Override
