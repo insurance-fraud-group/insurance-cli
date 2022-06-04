@@ -14,7 +14,7 @@ public class InsuranceSystem {
 
     AuthCommand.run();
 
-    if(!Session.getSession().isExist()) {
+    if (!Session.getSession().isExist()) {
       System.exit(0);
     }
 
