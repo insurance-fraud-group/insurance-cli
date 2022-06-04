@@ -45,10 +45,26 @@ public class Command {
     tt.printTable();
   }
 
+  public static void printTable(List<?> list, String... args) {
+
+    if (list.isEmpty()) {
+      System.out.println("데이터가 존재하지 않습니다.");
+    }
+
+    TextTable tt = new TextTable(args, getData(list, args));
+    tt.printTable();
+  }
+
   public static void printTable(Object object) {
     List<Object> list = new ArrayList<>();
     list.add(object);
     printTable(list);
+  }
+
+  public static void printTable(Object object, String... args) {
+    List<Object> list = new ArrayList<>();
+    list.add(object);
+    printTable(list, args);
   }
 
   private static String[] getTitle(List<?> list) {
@@ -84,7 +100,30 @@ public class Command {
       columnId.set(0);
       rowId.getAndIncrement();
     });
+    return data;
+  }
 
+  private static String[][] getData(List<?> list, String... args) {
+    String[][] data = new String[list.size()][args.length];
+
+    AtomicInteger rowId = new AtomicInteger();
+    AtomicInteger columnId = new AtomicInteger();
+
+    list.forEach(element -> {
+      Arrays.stream(args).forEach(arg -> {
+        try {
+          Field field = element.getClass().getDeclaredField(arg);
+          field.setAccessible(true);
+          data[rowId.get()][columnId.get()] =
+              field.get(element) == null ? "" : field.get(element).toString();
+          columnId.getAndIncrement();
+        } catch (Exception e) {
+          throw new RuntimeException(e);
+        }
+      });
+      columnId.set(0);
+      rowId.getAndIncrement();
+    });
     return data;
   }
 }
