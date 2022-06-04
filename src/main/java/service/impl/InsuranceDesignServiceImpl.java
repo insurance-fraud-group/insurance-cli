@@ -8,8 +8,13 @@ import service.InsuranceDesignService;
 
 public class InsuranceDesignServiceImpl implements InsuranceDesignService {
 
-  private final InsuranceRepository insuranceRepository = new InsuranceRepository();
-  private final UnderwritingRepository underwritingRepository = new UnderwritingRepository();
+  private final InsuranceRepository insuranceRepository;
+  private final UnderwritingRepository underwritingRepository;
+
+  public InsuranceDesignServiceImpl() {
+    insuranceRepository = new InsuranceRepository();
+    underwritingRepository = new UnderwritingRepository();
+  }
 
   @Override
   public List<Insurance> searchInsurance() {
@@ -23,6 +28,6 @@ public class InsuranceDesignServiceImpl implements InsuranceDesignService {
 
   @Override
   public void requestInsuranceApproval(String insuranceCode) {
-   underwritingRepository.setInsuranceCode(insuranceCode);
+    underwritingRepository.setInsuranceCode(insuranceCode);
   }
 }
