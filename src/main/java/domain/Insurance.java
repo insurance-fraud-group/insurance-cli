@@ -1,6 +1,6 @@
 package domain;
 
-import domain.enums.Authorize;
+import domain.enums.AuthorizeType;
 import domain.enums.InsuranceType;
 import domain.enums.Treaty;
 import java.io.File;
@@ -37,7 +37,7 @@ public class Insurance {
   private InsuranceType insuranceType;
 
   @Enumerated(EnumType.STRING)
-  private Authorize authorize;
+  private AuthorizeType authorizeType;
 
   @Enumerated(EnumType.STRING)
   private Treaty treaty;

@@ -6,11 +6,11 @@ import command.menu.sales.SalesManagement;
 public class SalesCommand extends Command {
 
   public static void run() {
-    print("[영업]", Sales.values());
+    printMenu("영업", Sales.values());
   }
 
   public static void manageSales() {
-    print("[영업 관리]", SalesManagement.values());
+    printMenu("영업 관리", SalesManagement.values());
   }
 
   public static void manageInsurance() {
