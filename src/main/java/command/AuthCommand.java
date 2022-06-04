@@ -21,8 +21,7 @@ public class AuthCommand extends Command {
         .email(parser.getEmail())
         .password(parser.getPassword())
         .build();
-    Employee response = authService.signin(request);
-    Session.getSession().register(response.getName(), response.getEmployeeType());
+    Session.getSession().register(authService.signin(request));
   }
 
   public static void signup() {
@@ -33,7 +32,6 @@ public class AuthCommand extends Command {
         .name(parser.getName())
         .employeeType(parser.getEmployeeType())
         .build();
-    Employee response = authService.signup(request);
-    Session.getSession().register(response.getName(), response.getEmployeeType());
+    Session.getSession().register(authService.signup(request));
   }
 }
