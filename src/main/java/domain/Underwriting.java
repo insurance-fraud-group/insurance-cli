@@ -1,5 +1,6 @@
 package domain;
 
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Getter
@@ -24,10 +26,20 @@ public class Underwriting {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  private String name;
+  private String description;
+
+  @CreationTimestamp
+  private LocalDate date;
+
   private int environmentalFactorScore;
   private int financialFactorScore;
   private int moralFactorScore;
   private int physicalFactorScore;
+
+  @ManyToOne
+  @JoinColumn(name = "employee_id")
+  private Employee writer;
 
   @ManyToOne
   @JoinColumn(name = "insurance_id")
@@ -36,4 +48,9 @@ public class Underwriting {
   @ManyToOne
   @JoinColumn(name = "customer_id")
   private Customer customer;
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }

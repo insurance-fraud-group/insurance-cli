@@ -46,4 +46,9 @@ public class Insurance {
 
   @OneToMany
   private List<Contract> contractList;
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }

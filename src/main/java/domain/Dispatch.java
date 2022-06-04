@@ -36,4 +36,9 @@ public class Dispatch {
   @OneToOne
   @JoinColumn(name = "employee_id")
   private Employee accidentInvestigator;
+
+  @Override
+  public String toString() {
+    return accidentDescription;
+  }
 }

@@ -35,4 +35,9 @@ public class Contract {
   @ManyToOne
   @JoinColumn(name = "insurance_id")
   private Insurance insurance;
+
+  @Override
+  public String toString() {
+    return customer.toString() + "'s " + insurance.toString();
+  }
 }

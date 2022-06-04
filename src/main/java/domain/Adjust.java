@@ -31,4 +31,9 @@ public class Adjust {
   @OneToOne
   @JoinColumn(name = "accident_id")
   private Accident accident;
+
+  @Override
+  public String toString() {
+    return basis;
+  }
 }
