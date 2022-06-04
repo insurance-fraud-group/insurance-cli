@@ -6,14 +6,16 @@ public enum EmployeeType {
   CUSTOMER_SERVICE_AGENT("고객서비스 담당자"),
   ACTUARY("보험계리사"),
   SALES("영업부"),
-  UNDERWRITER("언더라이터");
+  UNDERWRITER("Underwriter");
 
   private final String label;
 
-  EmployeeType(String label){
+  EmployeeType(String label) {
     this.label = label;
   }
 
   @Override
-  public String toString(){return this.label;}
+  public String toString() {
+    return this.label;
+  }
 }

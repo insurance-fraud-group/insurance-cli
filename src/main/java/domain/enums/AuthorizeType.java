@@ -8,10 +8,12 @@ public enum AuthorizeType {
 
   private final String label;
 
-  AuthorizeType(String label){
+  AuthorizeType(String label) {
     this.label = label;
   }
 
   @Override
-  public String toString(){return this.label;}
+  public String toString() {
+    return this.label;
   }
+}

@@ -3,7 +3,7 @@ package command.menu;
 import command.CompensationCommand;
 
 public enum CompensationMenu {
-   ACCIDENTCONSULTING("사고 접수 상담", CompensationCommand::consultAccident);
+  ACCIDENTCONSULTING("사고 접수 상담", CompensationCommand::consultAccident);
 
   private final String label;
   private final Runnable runnable;
