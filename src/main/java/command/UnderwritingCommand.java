@@ -1,7 +1,6 @@
 package command;
 
 import command.menu.underwriting.UnderwritingMenu;
-import command.menu.underwriting.UWAcceptanceManagement;
 import command.menu.underwriting.UWManagement;
 import command.parser.UnderwritingParser;
 import domain.Underwriting;
@@ -26,10 +25,6 @@ public class UnderwritingCommand extends Command {
 
   public static void createAcceptancePolicy() {
     System.out.println("\n[인수정책 수립]");
-    System.out.println("\n[현재 수립된 인수정책 리스트]");
-    List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
-    printTable(underwritingList);
-
     System.out.println("\n[인수정책을 수립해주세요]");
     Underwriting input = Underwriting.builder()
         .name(underwritingParser.getName())
@@ -38,7 +33,10 @@ public class UnderwritingCommand extends Command {
     underwritingImpl.createAcceptancePolicy(input);
     System.out.println("\n[인수정책 수립이 완료되었습니다]");
 
-    printMenu("손해율관리", UWAcceptanceManagement.values());
+    System.out.println("\n[현재 수립된 인수정책 리스트]");
+    List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
+    printTable(underwritingList);
+
   }
 
   public static void underwrite() {
