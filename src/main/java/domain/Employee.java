@@ -31,4 +31,9 @@ public class Employee {
 
   @Enumerated(EnumType.STRING)
   private EmployeeType employeeType;
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }
