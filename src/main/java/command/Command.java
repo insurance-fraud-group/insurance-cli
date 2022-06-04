@@ -4,6 +4,7 @@ import command.menu.Menu;
 import command.parser.Parser;
 import dnl.utils.text.table.TextTable;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -42,6 +43,12 @@ public class Command {
 
     TextTable tt = new TextTable(getTitle(list), getData(list));
     tt.printTable();
+  }
+
+  public static void printTable(Object object) {
+    List<Object> list = new ArrayList<>();
+    list.add(object);
+    printTable(list);
   }
 
   private static String[] getTitle(List<?> list) {
