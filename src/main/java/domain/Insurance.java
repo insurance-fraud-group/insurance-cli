@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -44,7 +45,7 @@ public class Insurance {
   @Enumerated(EnumType.STRING)
   private Treaty treaty;
 
-  @OneToMany
+  @OneToMany(mappedBy = "insurance", fetch = FetchType.EAGER)
   private List<Contract> contractList;
 
   @Override

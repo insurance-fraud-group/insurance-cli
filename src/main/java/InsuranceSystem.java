@@ -19,7 +19,7 @@ public class InsuranceSystem {
     }
 
     Arrays.stream(CommandMenu.values()).forEach(command -> {
-      EmployeeType employeeType = Session.getSession().getEmployeeType();
+      EmployeeType employeeType = Session.getSession().getEmployee().getEmployeeType();
       if (employeeType.name().equals(command.name())) {
         command.execute();
       }
