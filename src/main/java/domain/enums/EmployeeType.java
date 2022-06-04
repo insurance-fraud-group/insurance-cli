@@ -6,7 +6,7 @@ public enum EmployeeType {
   CUSTOMER_SERVICE_AGENT("고객서비스 담당자"),
   ACTUARY("보험계리사"),
   SALES("영업부"),
-  UNDERWRITER("Underwriter");
+  UNDERWRITER("언더라이터");
 
   private final String label;
 
