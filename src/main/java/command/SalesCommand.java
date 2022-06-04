@@ -19,10 +19,14 @@ public class SalesCommand extends Command {
   }
 
   public static void manageInsurance() {
-    printTitle("보험 관리");
+    String[] args = {"insuranceCode", "name", "insuranceType", "coverDescription"};
     List<Insurance> insuranceList = salesService.getInsuranceList();
+    printTitle("보험 관리");
+    printTable(insuranceList, args);
 
-    Command.printTable(insuranceList);
+    Insurance insurance = insuranceList.get(input());
+    printTitle("보험 정보 조회");
+    printTable(insurance);
   }
 
   public static void manageCustomer() {
