@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,11 +28,11 @@ public class Contract {
   private boolean signed;
   private File subscription;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "customer_id")
   private Customer customer;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "insurance_id")
   private Insurance insurance;
 }

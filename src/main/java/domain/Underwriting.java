@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,11 +29,11 @@ public class Underwriting {
   private int moralFactorScore;
   private int physicalFactorScore;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "insurance_id")
   private Insurance insurance;
 
-  @OneToOne
+  @ManyToOne
   @JoinColumn(name = "customer_id")
   private Customer customer;
 }
