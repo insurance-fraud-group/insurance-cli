@@ -10,25 +10,30 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Command {
 
-  public static void print(String title, Menu[] menus) {
-    System.out.println(title);
+  public static int input() {
+    System.out.print("> ");
+    return Parser.getScanner().nextInt() - 1;
+  }
+  public static void printTitle(String title) {
+    System.out.println("\n[" + title + "]");
+  }
 
+  public static void printMenu(String title, Menu[] menus) {
+    printTitle(title);
     Arrays.stream(menus).forEach(menu -> System.out.println(
         Integer.toString(menu.ordinal() + 1)
             .concat(". ")
             .concat(menu.toString())));
 
-    System.out.print("> ");
-    int selectedMenu = Parser.getScanner().nextInt();
-
+    int selectedMenu = input();
     Arrays.stream(menus).forEach(menu -> {
-      if (selectedMenu == menu.ordinal() + 1) {
+      if (selectedMenu == menu.ordinal()) {
         menu.execute();
       }
     });
   }
 
-  public static void printList(List<?> list) {
+  public static void printTable(List<?> list) {
 
     if (list.isEmpty()) {
       return;

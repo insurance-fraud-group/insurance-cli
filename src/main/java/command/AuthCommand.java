@@ -12,11 +12,11 @@ public class AuthCommand extends Command {
   private static final AuthServiceImpl authService = new AuthServiceImpl();
 
   public static void run() {
-    print("[사용자 인증]", AuthMenu.values());
+    printMenu("사용자 인증", AuthMenu.values());
   }
 
   public static void signin() {
-    System.out.println("\n[로그인]");
+    printTitle("로그인");
     Employee request = Employee.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
@@ -26,7 +26,7 @@ public class AuthCommand extends Command {
   }
 
   public static void signup() {
-    System.out.println("\n[회원가입]");
+    printTitle("회원가입");
     Employee request = Employee.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
