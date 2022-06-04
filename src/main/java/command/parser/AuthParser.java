@@ -2,6 +2,7 @@ package command.parser;
 
 import domain.enums.EmployeeType;
 import java.util.Arrays;
+import utils.Password;
 
 public class AuthParser extends Parser {
 
@@ -50,7 +51,7 @@ public class AuthParser extends Parser {
 
   public String getPassword() {
     System.out.print("패스워드 : ");
-    return sc.next();
+    return Password.encrypt(sc.next());
   }
 
   public String getName() {

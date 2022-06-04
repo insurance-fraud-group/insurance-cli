@@ -1,8 +1,6 @@
 package utils;
 
-import domain.enums.EmployeeType;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import domain.Employee;
 import lombok.Getter;
 
 @Getter
@@ -17,18 +15,14 @@ public class Session {
     return SessionHolder.INSTANCE;
   }
 
-  private String name;
+  private Employee user = null;
 
-  @Enumerated(EnumType.STRING)
-  private EmployeeType employeeType;
+  public void register(Employee user) {
+    this.user = user;
+    System.out.println(String.format("\n%s님 환영합니다!", user.getName()));
+  }
 
-  private boolean exist = false;
-
-  public void register(String name, EmployeeType employeeType) {
-    this.name = name;
-    this.employeeType = employeeType;
-    this.exist = true;
-
-    System.out.println(String.format("\n%s님 환영합니다!", this.name));
+  public boolean isExist() {
+    return user != null;
   }
 }
