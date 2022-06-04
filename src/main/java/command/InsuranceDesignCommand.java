@@ -3,6 +3,7 @@ package command;
 import command.menu.InsuranceDesignMenu;
 import command.parser.InsuranceParser;
 import domain.Insurance;
+import domain.enums.AuthorizeType;
 import java.util.List;
 import service.impl.InsuranceDesignServiceImpl;
 
@@ -30,6 +31,7 @@ public class InsuranceDesignCommand extends Command{
         .entryAge(insuranceParser.getEntryAge())
         .premium(insuranceParser.getPremium())
         .premiumRate(insuranceParser.getPremiumRate())
+        .authorizeType(AuthorizeType.AUTHORIZE_WAITED)
         .build();
     insuranceImpl.designInsurance(insurance);
   }
