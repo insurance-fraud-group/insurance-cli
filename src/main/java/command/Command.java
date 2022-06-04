@@ -37,7 +37,7 @@ public class Command {
   public static void printTable(List<?> list) {
 
     if (list.isEmpty()) {
-      return;
+      System.out.println("데이터가 존재하지 않습니다.");
     }
 
     TextTable tt = new TextTable(getTitle(list), getData(list));
@@ -56,9 +56,9 @@ public class Command {
     return title;
   }
 
-  private static Object[][] getData(List<?> list) {
+  private static String[][] getData(List<?> list) {
     Field[] fields = list.get(0).getClass().getDeclaredFields();
-    Object[][] data = new Object[list.size()][fields.length];
+    String[][] data = new String[list.size()][fields.length];
 
     AtomicInteger rowId = new AtomicInteger();
     AtomicInteger columnId = new AtomicInteger();
@@ -67,7 +67,8 @@ public class Command {
       Arrays.stream(fields).forEach(field -> {
         try {
           field.setAccessible(true);
-          data[rowId.get()][columnId.get()] = field.get(element);
+          data[rowId.get()][columnId.get()] =
+              field.get(element) == null ? "" : field.get(element).toString();
           columnId.getAndIncrement();
         } catch (IllegalAccessException e) {
           throw new RuntimeException(e);

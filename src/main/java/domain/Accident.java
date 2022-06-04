@@ -15,6 +15,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Getter
@@ -28,8 +29,10 @@ public class Accident {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  private String eventLocation;
+  @CreationTimestamp
   private LocalDateTime eventTime;
+
+  private String eventLocation;
   private boolean victim;
 
   @Enumerated(EnumType.STRING)
@@ -38,4 +41,9 @@ public class Accident {
   @OneToOne
   @JoinColumn(name = "customer_id")
   private Customer customer;
+
+  @Override
+  public String toString() {
+    return eventLocation;
+  }
 }

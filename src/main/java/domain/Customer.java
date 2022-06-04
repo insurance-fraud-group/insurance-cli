@@ -30,4 +30,9 @@ public class Customer {
   private String name;
   private String phoneNumber;
   private boolean sex;
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }

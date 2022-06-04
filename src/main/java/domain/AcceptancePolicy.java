@@ -32,4 +32,9 @@ public class AcceptancePolicy {
   @OneToOne
   @JoinColumn(name = "employee_id")
   private Employee writer;
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }
