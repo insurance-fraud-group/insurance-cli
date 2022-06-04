@@ -4,12 +4,11 @@ import command.AuthCommand;
 
 public enum AuthMenu implements Menu {
 
-  SignIn("로그인", AuthCommand::signin),
-  SignUp("회원가입", AuthCommand::signup),
-  ;
+  SignIn("로그인", AuthCommand::signIn),
+  SignUp("회원가입", AuthCommand::signUp);
 
-  private String label;
-  private Runnable runnable;
+  private final String label;
+  private final Runnable runnable;
 
   AuthMenu(String label, Runnable runnable) {
     this.label = label;

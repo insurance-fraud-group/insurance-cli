@@ -4,7 +4,7 @@ import domain.Employee;
 
 public interface AuthService {
 
-  Employee signup(Employee request);
+  Employee signUp(Employee request);
 
-  Employee signin(Employee request);
+  Employee signIn(Employee request);
 }

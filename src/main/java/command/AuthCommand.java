@@ -15,16 +15,16 @@ public class AuthCommand extends Command {
     printMenu("사용자 인증", AuthMenu.values());
   }
 
-  public static void signin() {
+  public static void signIn() {
     printTitle("로그인");
     Employee request = Employee.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
         .build();
-    Session.getSession().register(authService.signin(request));
+    Session.getSession().register(authService.signIn(request));
   }
 
-  public static void signup() {
+  public static void signUp() {
     printTitle("회원가입");
     Employee request = Employee.builder()
         .email(parser.getEmail())
@@ -32,6 +32,6 @@ public class AuthCommand extends Command {
         .name(parser.getName())
         .employeeType(parser.getEmployeeType())
         .build();
-    Session.getSession().register(authService.signup(request));
+    Session.getSession().register(authService.signUp(request));
   }
 }
