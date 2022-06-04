@@ -12,6 +12,7 @@ public class UnderwritingCommand extends Command {
   private static final UnderwritingParser underwritingParser = UnderwritingParser.getInstance();
   private static final UnderwritingServiceImpl underwritingImpl = new UnderwritingServiceImpl();
 
+
   public static void run() {
     printMenu("인수심사", UnderwritingMenu.values());
   }
@@ -36,6 +37,10 @@ public class UnderwritingCommand extends Command {
     System.out.println("현재 수립된 인수정책 리스트");
     List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
     printTable(underwritingList);
+
+  }
+
+  public static void manageLossRate() {
 
   }
 

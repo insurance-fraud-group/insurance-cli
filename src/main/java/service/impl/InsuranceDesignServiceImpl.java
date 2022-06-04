@@ -1,6 +1,7 @@
 package service.impl;
 
 import domain.Insurance;
+import domain.enums.AuthorizeType;
 import java.util.List;
 import repository.InsuranceRepository;
 import repository.UnderwritingRepository;
@@ -27,7 +28,8 @@ public class InsuranceDesignServiceImpl implements InsuranceDesignService {
   }
 
   @Override
-  public void requestInsuranceApproval(String insuranceCode) {
-    underwritingRepository.setInsuranceCode(insuranceCode);
+  public void requestInsuranceApproval(Insurance insurance) {
+    insurance.setAuthorizeType(AuthorizeType.AUTHORIZE_REQUEST);
+    insuranceRepository.update(insurance);
   }
 }

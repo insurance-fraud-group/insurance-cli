@@ -18,9 +18,8 @@ public class UnderwritingParser extends Parser {
 
   @Override
   public void initialize() {
-    System.out.println("Insurance");
+    System.out.println("Underwriting");
   }
-
 
   public String getName() {
     System.out.print("정책명 : ");
