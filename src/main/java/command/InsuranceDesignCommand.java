@@ -4,6 +4,7 @@ import command.menu.InsuranceDesignMenu;
 import command.parser.InsuranceParser;
 import domain.Insurance;
 import domain.enums.AuthorizeType;
+import domain.enums.InsuranceType;
 import java.util.List;
 import service.impl.InsuranceDesignServiceImpl;
 
@@ -24,10 +25,13 @@ public class InsuranceDesignCommand extends Command {
 
   public static void designInsurance() {
     printTitle("보험설계");
+    InsuranceType insuranceType = insuranceParser.getInsuranceType();
+    int count = insuranceImpl.getCountByInsuranceType(insuranceType);
+
     Insurance insurance = Insurance.builder()
-        .insuranceCode(insuranceParser.getInsuranceCode())
+        .insuranceType(insuranceType)
+        .insuranceCode(insuranceType.name() + "-" + (count + 1))
         .name(insuranceParser.getName())
-        .insuranceType(insuranceParser.getInsuranceType())
         .coverDescription(insuranceParser.getCoverDescription())
         .interestRate(insuranceParser.getInterestRate())
         .entryAge(insuranceParser.getEntryAge())
@@ -49,5 +53,4 @@ public class InsuranceDesignCommand extends Command {
     insuranceImpl.requestInsuranceApproval(insurance);
     System.out.println("선택한 상품에 대한 인가 요청이 완료되었습니다.");
   }
-
 }
