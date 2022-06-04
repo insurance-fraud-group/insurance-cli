@@ -37,7 +37,7 @@ public class Command {
   public static void printTable(List<?> list) {
 
     if (list.isEmpty()) {
-      return;
+      System.out.println("데이터가 존재하지 않습니다.");
     }
 
     TextTable tt = new TextTable(getTitle(list), getData(list));
