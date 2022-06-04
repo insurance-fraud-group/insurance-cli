@@ -8,15 +8,15 @@ import domain.Insurance;
 import domain.Underwriting;
 import domain.enums.InsuranceType;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import repository.UnderwritingRepository;
 import service.impl.UnderwritingServiceImpl;
 
 public class UnderwritingCommand extends Command {
 
   private static final UnderwritingParser underwritingParser = UnderwritingParser.getInstance();
   private static final UnderwritingServiceImpl underwritingImpl = new UnderwritingServiceImpl();
+  private static final Employee employee = new Employee();
 
 
   public static void run() {
@@ -35,15 +35,17 @@ public class UnderwritingCommand extends Command {
   public static void createAcceptancePolicy() {
     printTitle("인수정책 수립");
     System.out.println("인수정책을 수립해주세요");
+
     Underwriting input = Underwriting.builder()
         .name(underwritingParser.getName())
         .description(underwritingParser.getDescription())
+        .writer(underwritingImpl.getEmployeeName(employee))
         .build();
     underwritingImpl.createAcceptancePolicy(input);
     System.out.println("인수정책 수립이 완료되었습니다");
 
     System.out.println("현재 수립된 인수정책 리스트");
-    String[] args = {"name", "description", "writer", "data"};
+    String[] args = {"name", "description", "writer", "date"};
     List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
     String[][] data = getData(underwritingList, args);
     printTable(data);
@@ -52,7 +54,7 @@ public class UnderwritingCommand extends Command {
   public static void manageLossRate() {
     printTitle("손해율 관리");
     System.out.println("현재 등록된 보험 리스트");
-    List<Insurance> insuranceList = underwritingImpl.getInsuranceist();
+    List<Insurance> insuranceList = underwritingImpl.manageLossRate();
     printTable(insuranceList);
 
     InsuranceType insuranceType = underwritingParser.getInsuranceType();
