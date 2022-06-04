@@ -2,11 +2,12 @@ package service.impl;
 
 import domain.Underwriting;
 import java.util.List;
+import repository.InsuranceRepository;
 import repository.UnderwritingRepository;
 import service.UnderwritingService;
 
 public class UnderwritingServiceImpl implements UnderwritingService {
-
+  private final InsuranceRepository insuranceRepository = new InsuranceRepository();
   private final UnderwritingRepository underwritingRepository = new UnderwritingRepository();
 
   @Override

@@ -3,6 +3,7 @@ package command;
 import command.menu.InsuranceDesignMenu;
 import command.parser.InsuranceParser;
 import domain.Insurance;
+import domain.enums.AuthorizeType;
 import java.util.List;
 import service.impl.InsuranceDesignServiceImpl;
 
@@ -30,6 +31,7 @@ public class InsuranceDesignCommand extends Command{
         .entryAge(insuranceParser.getEntryAge())
         .premium(insuranceParser.getPremium())
         .premiumRate(insuranceParser.getPremiumRate())
+        .authorizeType(AuthorizeType.AUTHORIZE_WAITED)
         .build();
     insuranceImpl.designInsurance(insurance);
   }
@@ -42,7 +44,7 @@ public class InsuranceDesignCommand extends Command{
     System.out.println("인가 요청할 보험을 선택해주세요");
     int selectedMenu = input();
     Insurance insurance = insuranceList.get(selectedMenu);
-    insuranceImpl.requestInsuranceApproval(insurance.getInsuranceCode());
+    insuranceImpl.requestInsuranceApproval(insurance);
     System.out.println("선택한 상품에 대한 인가 요청이 완료되었습니다.");
   }
 
