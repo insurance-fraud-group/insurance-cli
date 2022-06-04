@@ -9,7 +9,6 @@ import domain.Underwriting;
 import domain.enums.InsuranceType;
 import java.util.List;
 import java.util.stream.Collectors;
-import repository.UnderwritingRepository;
 import service.impl.UnderwritingServiceImpl;
 
 public class UnderwritingCommand extends Command {
@@ -26,7 +25,7 @@ public class UnderwritingCommand extends Command {
 
   public static void searchAcceptancePolicy() {
     printTitle("인수정책 조회");
-    String[] args = {"name", "description", "writer", "data"};
+    String[] args = {"name", "description", "writer", "date"};
     List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
     String[][] data = getData(underwritingList, args);
     printTable(data);
@@ -63,14 +62,46 @@ public class UnderwritingCommand extends Command {
         .collect(Collectors.toList());
     printTable(filteredList);
 
-    System.out.println("관리할 상품을 선택해주세요");
+    System.out.println("관리할 보험을 선택해주세요");
     int selectedMenu = input();
-    System.out.println("선택한 상품의 요율은 아래와 같습니다");
+    System.out.println("선택한 보험의 요율은 아래와 같습니다");
     System.out.println((insuranceList.get(selectedMenu).getPremiumRate()));
 
   }
 
   public static void underwrite() {
+    printTitle("인수심사");
+    System.out.println("인수심사 대기 리스트");
+    List<Insurance> insuranceList = underwritingImpl.getInsuranceList();
+    List<Insurance> filteredList = insuranceList.stream()
+        .filter(i -> i.getAuthorizeType().toString().equals("인가요청"))
+        .collect(Collectors.toList());
+    printTable(filteredList);
+
+    System.out.println("인수심사할 보험을 선택해주세요");
+    int selectedMenu = input();
+    System.out.println("인수심사 대기 고객의 이름,보험정보, 보험료는 다음과 같습니다.");
+    String name = insuranceList.get(selectedMenu).getName();
+    String coverDescription = insuranceList.get(selectedMenu).getCoverDescription();
+    int premium = insuranceList.get(selectedMenu).getPremium();
+    Insurance insurance = insuranceList.get(selectedMenu);
+
+    System.out.println("이름:" + name + " 보험정보:" + coverDescription + " 보험료:" + premium);
+    System.out.println("신체,재정,환경,도덕적 요인 점수를 입력해주세요 (1~5점 사이)");
+    Underwriting underwriting = Underwriting.builder()
+        .physicalFactorScore(underwritingParser.getPhysicalFactorScore())
+        .financialFactorScore(underwritingParser.getFinancialFactorScore())
+        .environmentalFactorScore(underwritingParser.getEnvironmentFactorScore())
+        .moralFactorScore(underwritingParser.getMoralFactorScore())
+        .build();
+    boolean result = underwritingImpl.underwrite(underwriting);
+
+    if (result) {
+      System.out.println("선택된 보험에 인수가 승인되었습니다.");
+    } else {
+      System.out.println("선택된 보험에 인수가 거절되었습니다");
+    }
+    underwritingImpl.updateInsuranceApproval(insurance,result);
 
     printMenu("인수심사", UWManagement.values());
   }

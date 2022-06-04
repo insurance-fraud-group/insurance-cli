@@ -15,9 +15,13 @@ public interface UnderwritingService {
 
   List<Insurance> manageLossRate();
 
-  void underwrite();
+  boolean underwrite(Underwriting underwriting);
+
+  void updateInsuranceApproval(Insurance insurance, boolean result);
 
   void manageCollaboration();
 
   void manageReinsurance();
+
+
 }
