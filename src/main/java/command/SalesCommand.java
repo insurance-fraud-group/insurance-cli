@@ -5,6 +5,7 @@ import command.menu.sales.Sales;
 import command.menu.sales.SalesManagement;
 import command.parser.SalesParser;
 import domain.Customer;
+import domain.Employee;
 import domain.Insurance;
 import java.util.List;
 import service.impl.SalesServiceImpl;
@@ -65,7 +66,15 @@ public class SalesCommand extends Command {
   }
 
   public static void manageOrganization() {
+    printTitle("조직 관리");
+    System.out.println("상세 정보를 조회할 사원을 선택해주세요.");
+    List<Employee> employeeList = salesService.getEmployeeList();
+    printTable(employeeList, "id", "name");
 
+    Employee employee = employeeList.get(input());
+    String[] args = {"id", "name", "email", "employeeType"};
+    printTitle("사원 인적 정보");
+    printTable(employee, args);
   }
 
   public static void manageContract() {
