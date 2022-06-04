@@ -30,7 +30,7 @@ public class AuthParser extends Parser {
       System.out.println(
           Integer.toString(type.ordinal() + 1)
               .concat(". ")
-              .concat(type.name()));
+              .concat(type.toString()));
     });
 
     System.out.print("직군 : ");
