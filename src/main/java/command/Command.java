@@ -79,7 +79,7 @@ public class Command {
     return title;
   }
 
-  private static String[][] getData(List<?> list) {
+  public static String[][] getData(List<?> list) {
     Field[] fields = list.get(0).getClass().getDeclaredFields();
     String[][] data = new String[list.size()][fields.length];
 
@@ -103,7 +103,7 @@ public class Command {
     return data;
   }
 
-  private static String[][] getData(List<?> list, String... args) {
+  public static String[][] getData(List<?> list, String... args) {
     String[][] data = new String[list.size()][args.length];
 
     AtomicInteger rowId = new AtomicInteger();

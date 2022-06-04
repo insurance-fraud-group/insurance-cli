@@ -20,8 +20,10 @@ public class UnderwritingCommand extends Command {
 
   public static void searchAcceptancePolicy() {
     printTitle("인수정책 조회");
+    String[] args = {"name", "description", "writer", "data"};
     List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
-    printTable(underwritingList);
+    String[][] data = getData(underwritingList, args);
+    printTable(data);
   }
 
   public static void createAcceptancePolicy() {
@@ -35,9 +37,10 @@ public class UnderwritingCommand extends Command {
     System.out.println("인수정책 수립이 완료되었습니다");
 
     System.out.println("현재 수립된 인수정책 리스트");
+    String[] args = {"name", "description", "writer", "data"};
     List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
-    printTable(underwritingList);
-
+    String[][] data = getData(underwritingList, args);
+    printTable(data);
   }
 
   public static void underwrite() {
