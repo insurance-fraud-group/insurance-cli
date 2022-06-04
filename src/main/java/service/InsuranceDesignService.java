@@ -9,7 +9,5 @@ public interface InsuranceDesignService {
 
   void designInsurance(Insurance insurance);
 
-  void requestInsuranceApproval(String insuranceCode);
-
   void requestInsuranceApproval(Insurance insurance);
 }

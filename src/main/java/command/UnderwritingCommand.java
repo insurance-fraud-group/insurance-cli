@@ -40,10 +40,6 @@ public class UnderwritingCommand extends Command {
 
   }
 
-  public static void manageLossRate() {
-
-  }
-
   public static void underwrite() {
 
     printMenu("인수심사", UWManagement.values());
