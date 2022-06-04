@@ -14,6 +14,7 @@ public class Command {
     System.out.print("> ");
     return Parser.getScanner().nextInt() - 1;
   }
+
   public static void printTitle(String title) {
     System.out.println("\n[" + title + "]");
   }
