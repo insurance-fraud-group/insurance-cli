@@ -18,22 +18,22 @@ public class UnderwritingCommand extends Command {
 
 
   public static void searchAcceptancePolicy() {
-    System.out.println("\n[인수정책 조회]");
+    printTitle("인수정책 조회");
     List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
     printTable(underwritingList);
   }
 
   public static void createAcceptancePolicy() {
-    System.out.println("\n[인수정책 수립]");
-    System.out.println("\n[인수정책을 수립해주세요]");
+    printTitle("인수정책 수립");
+    System.out.println("인수정책을 수립해주세요");
     Underwriting input = Underwriting.builder()
         .name(underwritingParser.getName())
         .description(underwritingParser.getDescription())
         .build();
     underwritingImpl.createAcceptancePolicy(input);
-    System.out.println("\n[인수정책 수립이 완료되었습니다]");
+    System.out.println("인수정책 수립이 완료되었습니다");
 
-    System.out.println("\n[현재 수립된 인수정책 리스트]");
+    System.out.println("현재 수립된 인수정책 리스트");
     List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
     printTable(underwritingList);
 

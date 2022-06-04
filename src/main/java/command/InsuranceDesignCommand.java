@@ -14,13 +14,13 @@ public class InsuranceDesignCommand extends Command{
   }
 
   public static void searchInsurance(){
-    System.out.println("\n[보험조회]");
+    printTitle("보험조회");
     List<Insurance> insuranceList = insuranceImpl.searchInsurance();
     printTable(insuranceList);
   }
 
   public static void designInsurance(){
-    System.out.println("\n[보험설계]");
+    printTitle("보험설계");
     Insurance insurance = Insurance.builder()
         .insuranceCode(insuranceParser.getInsuranceCode())
         .name(insuranceParser.getName())
@@ -35,7 +35,7 @@ public class InsuranceDesignCommand extends Command{
   }
 
   public static void requestInsurance(){
-    System.out.println("\n[보험인가 요청]");
+    printTitle("보험인가 요청");
     System.out.print("보험리스트 : ");
     List<Insurance> insuranceList = insuranceImpl.searchInsurance();
     printTable(insuranceList);
