@@ -1,10 +1,10 @@
 package domain.enums;
 
 public enum InsuranceType {
-  AUTOMOBILE_Insurance("자동차보험"),
-  DRIVER_Insurance("운전자보험"),
-  FIRE_Insurance("화재보험"),
-  TRAVEL_Insurance("여행자보험");
+  AUTOMOBILE("자동차보험"),
+  DRIVER("운전자보험"),
+  FIRE("화재보험"),
+  TRAVEL("여행자보험");
 
   private final String label;
 

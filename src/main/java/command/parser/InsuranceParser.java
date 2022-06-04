@@ -21,12 +21,6 @@ public class InsuranceParser extends Parser {
     System.out.println("Insurance");
   }
 
-
-  public String getInsuranceCode() {
-    System.out.print("상품코드 : ");
-    return sc.next();
-  }
-
   public String getName() {
     System.out.print("상품명 : ");
     return sc.next();

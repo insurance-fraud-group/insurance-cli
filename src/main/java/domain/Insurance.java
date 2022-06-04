@@ -28,7 +28,6 @@ public class Insurance {
   @Id
   private String insuranceCode;
 
-  private File clauses;
   private String coverDescription;
   private int entryAge;
   private int interestRate;
