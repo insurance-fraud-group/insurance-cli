@@ -7,20 +7,22 @@ import domain.enums.AuthorizeType;
 import java.util.List;
 import service.impl.InsuranceDesignServiceImpl;
 
-public class InsuranceDesignCommand extends Command{
+public class InsuranceDesignCommand extends Command {
+
   private static final InsuranceParser insuranceParser = InsuranceParser.getInstance();
   private static final InsuranceDesignServiceImpl insuranceImpl = new InsuranceDesignServiceImpl();
-  public static void run(){
+
+  public static void run() {
     printMenu("보험개발", InsuranceDesignMenu.values());
   }
 
-  public static void searchInsurance(){
+  public static void searchInsurance() {
     printTitle("보험조회");
     List<Insurance> insuranceList = insuranceImpl.searchInsurance();
     printTable(insuranceList);
   }
 
-  public static void designInsurance(){
+  public static void designInsurance() {
     printTitle("보험설계");
     Insurance insurance = Insurance.builder()
         .insuranceCode(insuranceParser.getInsuranceCode())
@@ -36,7 +38,7 @@ public class InsuranceDesignCommand extends Command{
     insuranceImpl.designInsurance(insurance);
   }
 
-  public static void requestInsurance(){
+  public static void requestInsurance() {
     printTitle("보험인가 요청");
     System.out.print("보험리스트 : ");
     List<Insurance> insuranceList = insuranceImpl.searchInsurance();

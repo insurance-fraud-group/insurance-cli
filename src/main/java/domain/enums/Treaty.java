@@ -16,10 +16,12 @@ public enum Treaty {
 
   private final String label;
 
-  Treaty(String label){
+  Treaty(String label) {
     this.label = label;
   }
 
   @Override
-  public String toString(){return this.label;}
+  public String toString() {
+    return this.label;
+  }
 }

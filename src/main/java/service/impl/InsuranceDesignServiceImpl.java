@@ -9,8 +9,13 @@ import service.InsuranceDesignService;
 
 public class InsuranceDesignServiceImpl implements InsuranceDesignService {
 
-  private final InsuranceRepository insuranceRepository = new InsuranceRepository();
-  private final UnderwritingRepository underwritingRepository = new UnderwritingRepository();
+  private final InsuranceRepository insuranceRepository;
+  private final UnderwritingRepository underwritingRepository;
+
+  public InsuranceDesignServiceImpl() {
+    insuranceRepository = new InsuranceRepository();
+    underwritingRepository = new UnderwritingRepository();
+  }
 
   @Override
   public List<Insurance> searchInsurance() {

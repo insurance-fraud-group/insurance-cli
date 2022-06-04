@@ -7,11 +7,10 @@ public enum Sales implements Menu {
 
   SalesManagement("영업 관리", SalesCommand::manageSales),
   ContractManagement("계약 관리", SalesCommand::manageContract),
-  PaymentManagement("납입금 관리", SalesCommand::managePayment),
-  ;
+  PaymentManagement("납입금 관리", SalesCommand::managePayment);
 
-  private String label;
-  private Runnable runnable;
+  private final String label;
+  private final Runnable runnable;
 
   Sales(String label, Runnable runnable) {
     this.label = label;

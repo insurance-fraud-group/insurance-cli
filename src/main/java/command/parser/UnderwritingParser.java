@@ -1,10 +1,5 @@
 package command.parser;
 
-import domain.enums.EmployeeType;
-import domain.enums.InsuranceType;
-import domain.enums.Treaty;
-import java.util.Arrays;
-
 public class UnderwritingParser extends Parser {
 
 

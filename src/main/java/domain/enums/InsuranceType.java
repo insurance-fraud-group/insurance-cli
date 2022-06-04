@@ -8,10 +8,12 @@ public enum InsuranceType {
 
   private final String label;
 
-  InsuranceType(String label){
+  InsuranceType(String label) {
     this.label = label;
   }
 
   @Override
-  public String toString(){return this.label;}
+  public String toString() {
+    return this.label;
+  }
 }

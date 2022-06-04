@@ -19,7 +19,7 @@ public class Session {
 
   public void register(Employee user) {
     this.user = user;
-    System.out.println(String.format("\n%s님 환영합니다!", user.getName()));
+    System.out.printf("\n%s님 환영합니다!%n", user.getName());
   }
 
   public boolean isExist() {

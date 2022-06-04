@@ -1,7 +1,7 @@
 package command;
 
-import command.menu.underwriting.UnderwritingMenu;
 import command.menu.underwriting.UWManagement;
+import command.menu.underwriting.UnderwritingMenu;
 import command.parser.UnderwritingParser;
 import domain.Underwriting;
 import java.util.List;
@@ -40,10 +40,6 @@ public class UnderwritingCommand extends Command {
 
   }
 
-  public static void manageLossRate() {
-
-  }
-
   public static void underwrite() {
 
     printMenu("인수심사", UWManagement.values());
@@ -57,5 +53,7 @@ public class UnderwritingCommand extends Command {
 
   }
 
+  public static void manageLossRate() {
 
+  }
 }

@@ -7,8 +7,7 @@ public interface InsuranceDesignService {
 
   List<Insurance> searchInsurance();
 
-  void designInsurance(Insurance insurance) ;
+  void designInsurance(Insurance insurance);
 
   void requestInsuranceApproval(Insurance insurance);
-
 }

@@ -11,10 +11,9 @@ public enum CommandMenu {
   CUSTOMER_SERVICE_AGENT(CompensationCommand::run),
   ACTUARY(InsuranceDesignCommand::run),
   SALES(SalesCommand::run),
-  UNDERWRITER(UnderwritingCommand::run),
-  ;
+  UNDERWRITER(UnderwritingCommand::run);
 
-  private Runnable runnable;
+  private final Runnable runnable;
 
   CommandMenu(Runnable runnable) {
     this.runnable = runnable;

@@ -7,12 +7,16 @@ import repository.UnderwritingRepository;
 import service.UnderwritingService;
 
 public class UnderwritingServiceImpl implements UnderwritingService {
-  private final InsuranceRepository insuranceRepository = new InsuranceRepository();
-  private final UnderwritingRepository underwritingRepository = new UnderwritingRepository();
+
+  private final UnderwritingRepository underwritingRepository;
+
+  public UnderwritingServiceImpl() {
+    underwritingRepository = new UnderwritingRepository();
+  }
 
   @Override
   public List<Underwriting> searchAcceptancePolicy() {
-    return  underwritingRepository.findAll();
+    return underwritingRepository.findAll();
   }
 
   @Override

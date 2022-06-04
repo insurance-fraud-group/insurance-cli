@@ -10,10 +10,12 @@ public enum EmployeeType {
 
   private final String label;
 
-  EmployeeType(String label){
+  EmployeeType(String label) {
     this.label = label;
   }
 
   @Override
-  public String toString(){return this.label;}
+  public String toString() {
+    return this.label;
+  }
 }

@@ -7,11 +7,10 @@ public enum SalesManagement implements Menu {
 
   InsuranceManagement("보험 관리", SalesCommand::manageInsurance),
   CustomerManagement("고객 관리", SalesCommand::manageCustomer),
-  OrganizationManagement("조직 관리", SalesCommand::manageOrganization),
-  ;
+  OrganizationManagement("조직 관리", SalesCommand::manageOrganization);
 
-  private String label;
-  private Runnable runnable;
+  private final String label;
+  private final Runnable runnable;
 
   SalesManagement(String label, Runnable runnable) {
     this.label = label;

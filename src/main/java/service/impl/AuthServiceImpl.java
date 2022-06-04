@@ -13,7 +13,7 @@ public class AuthServiceImpl implements AuthService {
   }
 
   @Override
-  public Employee signup(Employee request) {
+  public Employee signUp(Employee request) {
     Employee employee = Employee.builder().employeeType(request.getEmployeeType())
         .email(request.getEmail()).password(request.getPassword()).name(request.getName()).build();
 
@@ -24,7 +24,7 @@ public class AuthServiceImpl implements AuthService {
   }
 
   @Override
-  public Employee signin(Employee request) {
+  public Employee signIn(Employee request) {
     Employee employee = employeeRepository.findBy("email", request.getEmail());
 
     if (request.getPassword().equals(employee.getPassword())) {
