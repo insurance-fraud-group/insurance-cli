@@ -33,8 +33,8 @@ public class AcceptancePolicy {
   private Date createdDate;
 
   @OneToOne
-  @JoinColumn(name = "employee_id")
-  private Employee writer;
+  @JoinColumn(name = "user_id")
+  private User writer;
 
   @Override
   public String toString() {

@@ -2,7 +2,7 @@ package service;
 
 import domain.Contract;
 import domain.Customer;
-import domain.Employee;
+import domain.User;
 import domain.Insurance;
 import java.util.List;
 
@@ -10,7 +10,7 @@ public interface SalesService {
 
   List<Insurance> getInsuranceList();
 
-  List<Employee> getEmployeeList();
+  List<User> getEmployeeList();
 
   void createCustomer(Customer customer);
 

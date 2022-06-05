@@ -38,8 +38,8 @@ public class Underwriting {
   private int physicalFactorScore;
 
   @ManyToOne
-  @JoinColumn(name = "employee_id")
-  private Employee writer;
+  @JoinColumn(name = "user_id")
+  private User writer;
 
   @OneToOne
   @JoinColumn(name = "contract_id")

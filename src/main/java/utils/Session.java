@@ -1,7 +1,7 @@
 package utils;
 
 import command.AuthCmd;
-import domain.Employee;
+import domain.User;
 import lombok.Getter;
 
 @Getter
@@ -16,9 +16,9 @@ public class Session {
     return SessionHolder.INSTANCE;
   }
 
-  private Employee user = null;
+  private User user = null;
 
-  public void register(Employee user) {
+  public void register(User user) {
     if (user == null) {
       System.out.println("로그인에 실패했습니다.");
       AuthCmd.run();

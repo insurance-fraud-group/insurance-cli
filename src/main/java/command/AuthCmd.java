@@ -3,8 +3,8 @@ package command;
 import command.menu.AuthMenu;
 import command.menu.SignInMenu;
 import command.parser.AuthParser;
-import domain.Employee;
-import domain.enums.EmployeeType;
+import domain.User;
+import domain.enums.UserType;
 import java.util.Arrays;
 import service.impl.AuthServiceImpl;
 import utils.Session;
@@ -22,7 +22,7 @@ public class AuthCmd extends Command {
 
   public static void signIn() {
     printTitle("로그인");
-    Employee request = Employee.builder()
+    User request = User.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
         .build();
@@ -31,11 +31,11 @@ public class AuthCmd extends Command {
 
   public static void signUp() {
     printTitle("회원가입");
-    Employee request = Employee.builder()
+    User request = User.builder()
         .email(parser.getEmail())
         .password(parser.getPassword())
         .name(parser.getName())
-        .employeeType(parser.getEmployeeType())
+        .userType(parser.getEmployeeType())
         .build();
     Session.getSession().register(authService.signUp(request));
   }
@@ -47,8 +47,8 @@ public class AuthCmd extends Command {
     }
 
     Arrays.stream(SignInMenu.values()).forEach(command -> {
-      EmployeeType employeeType = Session.getSession().getUser().getEmployeeType();
-      if (employeeType.name().equals(command.name())) {
+      UserType userType = Session.getSession().getUser().getUserType();
+      if (userType.name().equals(command.name())) {
         command.execute();
       }
     });

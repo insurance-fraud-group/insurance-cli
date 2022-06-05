@@ -1,7 +1,7 @@
 package service.impl;
 
 import domain.AcceptancePolicy;
-import domain.Employee;
+import domain.User;
 import domain.Underwriting;
 import java.util.List;
 import repository.AcceptancePolicyRepository;
@@ -13,16 +13,16 @@ public class UnderwritingServiceImpl implements UnderwritingService {
 
   private final UnderwritingRepository underwritingRepository;
   private final AcceptancePolicyRepository acceptancePolicyRepository;
-  private final EmployeeRepository employeeRepository;
+  private final EmployeeRepository userRepository;
 
   public UnderwritingServiceImpl() {
     underwritingRepository = new UnderwritingRepository();
-    employeeRepository = new EmployeeRepository();
+    userRepository = new EmployeeRepository();
     acceptancePolicyRepository = new AcceptancePolicyRepository();
   }
 
-  public Employee getEmployeeName(Employee employee) {
-    return employeeRepository.findBy("name", employee);
+  public User getEmployeeName(User user) {
+    return userRepository.findBy("name", user);
   }
 
   @Override

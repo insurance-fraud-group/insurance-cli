@@ -32,8 +32,8 @@ public class Dispatch {
   private Accident accident;
 
   @OneToOne
-  @JoinColumn(name = "employee_id")
-  private Employee accidentInvestigator;
+  @JoinColumn(name = "user_id")
+  private User accidentInvestigator;
 
   @Override
   public String toString() {

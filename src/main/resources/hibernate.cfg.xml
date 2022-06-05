@@ -21,7 +21,7 @@
     <mapping class="domain.Contract"/>
     <mapping class="domain.Customer"/>
     <mapping class="domain.Dispatch"/>
-    <mapping class="domain.Employee"/>
+    <mapping class="domain.User"/>
     <mapping class="domain.Insurance"/>
     <mapping class="domain.Underwriting"/>
     <mapping class="domain.Transaction"/>

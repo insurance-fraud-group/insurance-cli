@@ -1,6 +1,6 @@
 package command.parser;
 
-import domain.enums.EmployeeType;
+import domain.enums.UserType;
 import java.util.Arrays;
 import utils.Password;
 
@@ -24,9 +24,9 @@ public class AuthParser extends Parser {
     System.out.println("Auth");
   }
 
-  public EmployeeType getEmployeeType() {
+  public UserType getEmployeeType() {
     System.out.println("직군을 선택해주세요");
-    Arrays.stream(EmployeeType.values()).forEach(type -> {
+    Arrays.stream(UserType.values()).forEach(type -> {
       System.out.println(
           Integer.toString(type.ordinal() + 1)
               .concat(". ")
@@ -35,9 +35,9 @@ public class AuthParser extends Parser {
 
     System.out.print("직군 : ");
 
-    int employeeType = validateInteger();
-    return (employeeType < 1 || employeeType > EmployeeType.values().length) ? getEmployeeType()
-        : EmployeeType.values()[employeeType - 1];
+    int userType = validateInteger();
+    return (userType < 1 || userType > UserType.values().length) ? getEmployeeType()
+        : UserType.values()[userType - 1];
   }
 
   public String getEmail() {

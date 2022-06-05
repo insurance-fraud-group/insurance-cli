@@ -1,7 +1,6 @@
 package command.parser;
 
-import domain.enums.AccidentType;
-import domain.enums.EmployeeType;
+import domain.enums.UserType;
 import domain.enums.InsuranceType;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -53,7 +52,7 @@ public abstract class Parser {
     System.out.print("보험종류 : ");
 
     int insuranceType = validateInteger();
-    return (insuranceType < 1 || insuranceType > EmployeeType.values().length) ? getInsuranceType()
+    return (insuranceType < 1 || insuranceType > UserType.values().length) ? getInsuranceType()
         : InsuranceType.values()[insuranceType - 1];
   }
 

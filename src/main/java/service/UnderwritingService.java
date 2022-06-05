@@ -1,7 +1,7 @@
 package service;
 
 import domain.AcceptancePolicy;
-import domain.Employee;
+import domain.User;
 import domain.Underwriting;
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface UnderwritingService {
 
   void createAcceptancePolicy(AcceptancePolicy acceptancePolicy);
 
-  Employee getEmployeeName(Employee employee);
+  User getEmployeeName(User user);
 
   List<Underwriting> searchUnderwriting();
 

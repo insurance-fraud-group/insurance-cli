@@ -1,31 +1,31 @@
 package service.impl;
 
-import domain.Employee;
+import domain.User;
 import repository.EmployeeRepository;
 import service.AuthService;
 
 public class AuthServiceImpl implements AuthService {
 
-  private final EmployeeRepository employeeRepository;
+  private final EmployeeRepository userRepository;
 
   public AuthServiceImpl() {
-    employeeRepository = new EmployeeRepository();
+    userRepository = new EmployeeRepository();
   }
 
   @Override
-  public Employee signUp(Employee request) {
-    Employee employee = Employee.builder().employeeType(request.getEmployeeType())
+  public User signUp(User request) {
+    User user = User.builder().userType(request.getUserType())
         .email(request.getEmail()).password(request.getPassword()).name(request.getName()).build();
-    employeeRepository.save(employee);
-    return employee;
+    userRepository.save(user);
+    return user;
   }
 
   @Override
-  public Employee signIn(Employee request) {
-    Employee employee = employeeRepository.findBy("email", request.getEmail());
-    if (employee == null) {
+  public User signIn(User request) {
+    User user = userRepository.findBy("email", request.getEmail());
+    if (user == null) {
       return null;
     }
-    return request.getPassword().equals(employee.getPassword()) ? employee : null;
+    return request.getPassword().equals(user.getPassword()) ? user : null;
   }
 }
