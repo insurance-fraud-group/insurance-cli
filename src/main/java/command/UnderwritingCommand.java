@@ -14,19 +14,20 @@ import service.impl.UnderwritingServiceImpl;
 public class UnderwritingCommand extends Command {
 
   private static final UnderwritingParser underwritingParser = UnderwritingParser.getInstance();
-  private static final UnderwritingServiceImpl underwritingImpl = new UnderwritingServiceImpl();
+  private static final UnderwritingServiceImpl underwritingService = new UnderwritingServiceImpl();
   private static final Employee employee = new Employee();
 
 
   public static void run() {
-    executeCommand("인수심사", UnderwritingMenu.values());
+    printTitle("인수 심사");
+    executeCommand(UnderwritingMenu.values());
   }
 
 
   public static void searchAcceptancePolicy() {
     printTitle("인수정책 조회");
     String[] args = {"name", "description", "writer", "date"};
-    List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
+    List<Underwriting> underwritingList = underwritingService.searchAcceptancePolicy();
     printTable(underwritingList, args);
     AuthCommand.initialize();
   }
@@ -34,17 +35,15 @@ public class UnderwritingCommand extends Command {
   public static void createAcceptancePolicy() {
     printTitle("인수정책 수립");
     System.out.println("인수정책을 수립해주세요");
-    Underwriting input = Underwriting.builder()
-        .name(underwritingParser.getName())
+    Underwriting input = Underwriting.builder().name(underwritingParser.getName())
         .description(underwritingParser.getDescription())
-        .writer(underwritingImpl.getEmployeeName(employee))
-        .build();
-    underwritingImpl.createAcceptancePolicy(input);
+        .writer(underwritingService.getEmployeeName(employee)).build();
+    underwritingService.createAcceptancePolicy(input);
     System.out.println("인수정책 수립이 완료되었습니다");
 
     System.out.println("현재 수립된 인수정책 리스트");
     String[] args = {"name", "description", "writer", "date"};
-    List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
+    List<Underwriting> underwritingList = underwritingService.searchAcceptancePolicy();
     printTable(underwritingList, args);
     AuthCommand.initialize();
   }
@@ -52,7 +51,7 @@ public class UnderwritingCommand extends Command {
   public static void manageLossRate() {
     printTitle("손해율 관리");
     System.out.println("현재 등록된 보험 리스트");
-    List<Insurance> insuranceList = underwritingImpl.manageLossRate();
+    List<Insurance> insuranceList = underwritingService.manageLossRate();
     printTable(insuranceList);
 
     InsuranceType insuranceType = underwritingParser.getInsuranceType();
@@ -71,16 +70,16 @@ public class UnderwritingCommand extends Command {
   public static void underwrite() {
     printTitle("인수심사");
     System.out.println("인수심사 대기 리스트");
-    List<Insurance> insuranceList = underwritingImpl.getInsuranceList();
+    List<Insurance> insuranceList = underwritingService.getInsuranceList();
     List<Insurance> filteredList = insuranceList.stream()
-        .filter(i -> i.getAuthorizeType().toString().equals("인가요청"))
-        .collect(Collectors.toList());
+        .filter(i -> i.getAuthorizeType().toString().equals("인가요청")).collect(Collectors.toList());
     printTable(filteredList);
 
     System.out.println("인수심사할 보험을 선택해주세요");
     int selectedMenu = input();
     Insurance insurance = filteredList.get(selectedMenu);
-    System.out.println("인수심사 대기 고객의 이름,보험정보, 보험료는 다음과 같습니다.");
+
+    System.out.println("인수심사 대기 고객의 이름, 보험정보, 보험료는 다음과 같습니다.");
     String name = filteredList.get(selectedMenu).getName();
     String coverDescription = filteredList.get(selectedMenu).getCoverDescription();
     int premium = filteredList.get(selectedMenu).getPremium();
@@ -91,19 +90,19 @@ public class UnderwritingCommand extends Command {
         .physicalFactorScore(underwritingParser.getPhysicalFactorScore())
         .financialFactorScore(underwritingParser.getFinancialFactorScore())
         .environmentalFactorScore(underwritingParser.getEnvironmentFactorScore())
-        .moralFactorScore(underwritingParser.getMoralFactorScore())
-        .build();
-    boolean result = underwritingImpl.underwrite(underwriting);
+        .moralFactorScore(underwritingParser.getMoralFactorScore()).build();
+    boolean result = underwritingService.underwrite(underwriting);
 
     if (result) {
       System.out.println("선택된 보험에 인수가 승인되었습니다.");
     } else {
       System.out.println("선택된 보험에 인수가 거절되었습니다");
     }
-    underwritingImpl.updateInsuranceApproval(insurance, result);
+    underwritingService.updateInsuranceApproval(insurance, result);
 
     System.out.println("선택된 보험을 다른 방식으로 처리하시겠습니까?");
-    executeCommand("공동인수 , 재보험", UWManagement.values());
+    printTitle("공동인수 , 재보험");
+    executeCommand(UWManagement.values());
   }
 
   public static void manageCollaboration() {

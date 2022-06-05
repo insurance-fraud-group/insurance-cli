@@ -15,7 +15,8 @@ public class AuthCommand extends Command {
   private static final AuthServiceImpl authService = new AuthServiceImpl();
 
   public static void run() {
-    executeCommand("사용자 인증", AuthMenu.values());
+    printTitle("사용자 인증");
+    executeCommand(AuthMenu.values());
     initialize();
   }
 

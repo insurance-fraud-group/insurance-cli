@@ -1,7 +1,7 @@
 package command;
 
-import command.menu.sales.ContractProgress;
 import command.menu.sales.ContractManagement;
+import command.menu.sales.ContractProgress;
 import command.menu.sales.CustomerManagement;
 import command.menu.sales.Sales;
 import command.menu.sales.SalesManagement;
@@ -20,11 +20,13 @@ public class SalesCommand extends Command {
   private static final SalesServiceImpl salesService = new SalesServiceImpl();
 
   public static void run() {
-    executeCommand("영업", Sales.values());
+    printTitle("영업");
+    executeCommand(Sales.values());
   }
 
   public static void manageSales() {
-    executeCommand("영업 관리", SalesManagement.values());
+    printTitle("영업 관리");
+    executeCommand(SalesManagement.values());
   }
 
   public static void manageInsurance() {
@@ -43,7 +45,8 @@ public class SalesCommand extends Command {
   }
 
   public static void manageCustomer() {
-    executeCommand("고객 관리", CustomerManagement.values());
+    printTitle("고객 관리");
+    executeCommand(CustomerManagement.values());
   }
 
   public static void searchCustomer() {
@@ -90,7 +93,8 @@ public class SalesCommand extends Command {
   }
 
   public static void manageContract() {
-    executeCommand("계약 관리", ContractManagement.values());
+    printTitle("계약 관리");
+    executeCommand(ContractManagement.values());
   }
 
   public static void searchAllContract() {
@@ -125,7 +129,8 @@ public class SalesCommand extends Command {
 
   public static void proceedContract(Contract contract) {
 
-    int selectedMenu = selectCommand("계약 진행", ContractProgress.values());
+    printTitle("계약 진행");
+    int selectedMenu = selectCommand(ContractProgress.values());
     Arrays.stream(ContractProgress.values()).forEach(menu -> {
       if (selectedMenu == menu.ordinal()) {
         menu.execute(contract);
