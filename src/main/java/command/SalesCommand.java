@@ -139,6 +139,18 @@ public class SalesCommand extends Command {
     });
   }
 
+  public static void concludeContract(Contract contract) {
+    printTitle("계약 체결");
+    System.out.println("계약을 체결하시겠습니까?");
+    if (selectYesOrNo()) {
+      salesService.makeContractSigned(contract.getId());
+      System.out.println("계약 체결이 완료되었습니다.");
+      AuthCommand.initialize();
+    } else {
+      System.out.println("계약 체결을 취소합니다.");
+      proceedContract(contract);
+    }
+  }
 
   public static void makeContract() {
 
