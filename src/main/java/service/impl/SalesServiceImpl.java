@@ -8,6 +8,7 @@ import domain.Transaction;
 import domain.Underwriting;
 import domain.enums.TransactionType;
 import java.util.List;
+import java.util.stream.Collectors;
 import repository.ContractRepository;
 import repository.CustomerRepository;
 import repository.EmployeeRepository;
@@ -73,8 +74,10 @@ public class SalesServiceImpl implements SalesService {
   }
 
   @Override
-  public List<Contract> getUnsignedContractList() {
-    return contractRepository.findAllBy("signed", false);
+  public List<Contract> getUWCompletedContracts() {
+    List<Contract> unsignedContractList = contractRepository.findAllBy("signed", false);
+    return unsignedContractList != null ? unsignedContractList.stream()
+        .filter(contract -> contract.getUnderwriting().isSigned()).collect(Collectors.toList()) : null;
   }
 
   @Override

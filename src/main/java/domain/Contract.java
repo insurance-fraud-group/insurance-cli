@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,6 +41,9 @@ public class Contract {
   @ManyToOne
   @JoinColumn(name = "insurance_id")
   private Insurance insurance;
+
+  @OneToOne(mappedBy = "contract", orphanRemoval = true)
+  private Underwriting underwriting;
 
   @Override
   public String toString() {

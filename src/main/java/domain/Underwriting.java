@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,7 +41,7 @@ public class Underwriting {
   @JoinColumn(name = "employee_id")
   private Employee writer;
 
-  @ManyToOne
+  @OneToOne
   @JoinColumn(name = "contract_id")
   private Contract contract;
 
