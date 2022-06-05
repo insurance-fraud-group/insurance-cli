@@ -1,6 +1,7 @@
 package domain;
 
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,6 +33,7 @@ public class Underwriting {
   @CreationTimestamp
   private LocalDate date;
 
+  private String supplier;
   private int environmentalFactorScore;
   private int financialFactorScore;
   private int moralFactorScore;
