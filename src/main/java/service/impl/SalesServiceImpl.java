@@ -85,11 +85,10 @@ public class SalesServiceImpl implements SalesService {
   }
 
   @Override
-  public Contract makeContractSigned(int id) {
+  public void makeContractSigned(int id) {
     Contract contract = contractRepository.findById(id);
     contract.setSigned(true);
     contractRepository.update(contract);
-    return contract;
   }
 
   @Override
