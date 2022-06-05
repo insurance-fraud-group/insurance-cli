@@ -50,7 +50,6 @@ public class AccidentParser extends Parser {
 
   public boolean getVictim() {
     System.out.print("가해/피해 여부(1/2) : ");
-    int i = validateInteger(1, 2);
-    return (i == 1) ? true : false;
+    return validateInteger(1, 2) == 1;
   }
 }
