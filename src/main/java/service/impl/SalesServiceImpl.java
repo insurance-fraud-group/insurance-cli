@@ -91,6 +91,6 @@ public class SalesServiceImpl implements SalesService {
   }
 
   public List<Transaction> getTransactionHistory() {
-    return transactionRepository.findAllBy("transactionType", TransactionType.DEPOSIT);
+    return transactionRepository.findAllBy("type", TransactionType.DEPOSIT);
   }
 }
