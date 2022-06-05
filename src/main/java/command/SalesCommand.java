@@ -64,15 +64,9 @@ public class SalesCommand extends Command {
   public static void signUpCustomer() {
     printTitle("신규 고객");
     System.out.println("신규 고객 정보를 입력해주세요.");
-    Customer customer = Customer.builder()
-        .accountNumber(parser.getAccountNumber())
-        .address(parser.getAddress())
-        .birth(parser.getBirth())
-        .job(parser.getJob())
-        .name(parser.getName())
-        .phoneNumber(parser.getPhoneNumber())
-        .sex(parser.getSex())
-        .build();
+    Customer customer = Customer.builder().accountNumber(parser.getAccountNumber())
+        .address(parser.getAddress()).birth(parser.getBirth()).job(parser.getJob())
+        .name(parser.getName()).phoneNumber(parser.getPhoneNumber()).sex(parser.getSex()).build();
 
     salesService.createCustomer(customer);
     System.out.println("신규 고객 가입이 완료되었습니다.");
@@ -166,7 +160,22 @@ public class SalesCommand extends Command {
   }
 
   public static void makeContract() {
+    printTitle("계약 생성");
 
+    System.out.println("계약할 고객을 선택해주세요");
+    List<Customer> customerList = salesService.getCustomerList();
+    printTable(customerList);
+    Customer customer = customerList.get(input());
+
+    System.out.println("계약할 보험을 선택해주세요");
+    List<Insurance> insuranceList = salesService.getInsuranceList();
+    printTable(insuranceList);
+    Insurance insurance = insuranceList.get(input());
+
+    salesService.createContract(insurance, customer);
+    System.out.println("계약 생성이 완료되었습니다.");
+
+    AuthCommand.initialize();
   }
 
   public static void managePayment() {
