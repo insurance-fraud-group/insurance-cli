@@ -21,6 +21,7 @@ public class InsuranceDesignCommand extends Command {
     printTitle("보험조회");
     List<Insurance> insuranceList = insuranceImpl.searchInsurance();
     printTable(insuranceList);
+    AuthCommand.initialize();
   }
 
   public static void designInsurance() {
@@ -40,6 +41,8 @@ public class InsuranceDesignCommand extends Command {
         .authorizeType(AuthorizeType.AUTHORIZE_WAITED)
         .build();
     insuranceImpl.designInsurance(insurance);
+    System.out.println("보험설계가 완료되었습니다.");
+    AuthCommand.initialize();
   }
 
   public static void requestInsurance() {
@@ -52,5 +55,6 @@ public class InsuranceDesignCommand extends Command {
     Insurance insurance = insuranceList.get(selectedMenu);
     insuranceImpl.requestInsuranceApproval(insurance);
     System.out.println("선택한 상품에 대한 인가 요청이 완료되었습니다.");
+    AuthCommand.initialize();
   }
 }

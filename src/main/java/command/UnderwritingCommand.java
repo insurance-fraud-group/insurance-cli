@@ -27,14 +27,13 @@ public class UnderwritingCommand extends Command {
     printTitle("인수정책 조회");
     String[] args = {"name", "description", "writer", "date"};
     List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
-    String[][] data = getData(underwritingList, args);
-    printTable(data);
+    printTable(underwritingList, args);
+    AuthCommand.initialize();
   }
 
   public static void createAcceptancePolicy() {
     printTitle("인수정책 수립");
     System.out.println("인수정책을 수립해주세요");
-
     Underwriting input = Underwriting.builder()
         .name(underwritingParser.getName())
         .description(underwritingParser.getDescription())
@@ -46,8 +45,8 @@ public class UnderwritingCommand extends Command {
     System.out.println("현재 수립된 인수정책 리스트");
     String[] args = {"name", "description", "writer", "date"};
     List<Underwriting> underwritingList = underwritingImpl.searchAcceptancePolicy();
-    String[][] data = getData(underwritingList, args);
-    printTable(data);
+    printTable(underwritingList, args);
+    AuthCommand.initialize();
   }
 
   public static void manageLossRate() {
@@ -66,7 +65,7 @@ public class UnderwritingCommand extends Command {
     int selectedMenu = input();
     System.out.println("선택한 보험의 요율은 아래와 같습니다");
     System.out.println((insuranceList.get(selectedMenu).getPremiumRate()));
-
+    AuthCommand.initialize();
   }
 
   public static void underwrite() {
@@ -80,11 +79,11 @@ public class UnderwritingCommand extends Command {
 
     System.out.println("인수심사할 보험을 선택해주세요");
     int selectedMenu = input();
+    Insurance insurance = filteredList.get(selectedMenu);
     System.out.println("인수심사 대기 고객의 이름,보험정보, 보험료는 다음과 같습니다.");
-    String name = insuranceList.get(selectedMenu).getName();
-    String coverDescription = insuranceList.get(selectedMenu).getCoverDescription();
-    int premium = insuranceList.get(selectedMenu).getPremium();
-    Insurance insurance = insuranceList.get(selectedMenu);
+    String name = filteredList.get(selectedMenu).getName();
+    String coverDescription = filteredList.get(selectedMenu).getCoverDescription();
+    int premium = filteredList.get(selectedMenu).getPremium();
 
     System.out.println("이름:" + name + " 보험정보:" + coverDescription + " 보험료:" + premium);
     System.out.println("신체,재정,환경,도덕적 요인 점수를 입력해주세요 (1~5점 사이)");
@@ -101,16 +100,22 @@ public class UnderwritingCommand extends Command {
     } else {
       System.out.println("선택된 보험에 인수가 거절되었습니다");
     }
-    underwritingImpl.updateInsuranceApproval(insurance,result);
+    underwritingImpl.updateInsuranceApproval(insurance, result);
 
-    printMenu("인수심사", UWManagement.values());
+    System.out.println("선택된 보험을 다른 방식으로 처리하시겠습니까?");
+    printMenu("공동인수 , 재보험", UWManagement.values());
+
   }
 
   public static void manageCollaboration() {
-
+    printTitle("공동 인수 관리");
+    System.out.println("공동 인수 관리 ~~");
+    AuthCommand.initialize();
   }
 
   public static void manageReinsurance() {
-
+    printTitle("재보험 처리");
+    System.out.println("재보험 처리 ~~");
+    AuthCommand.initialize();
   }
 }
