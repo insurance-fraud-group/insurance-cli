@@ -2,6 +2,7 @@ package command.parser;
 
 import domain.enums.AccidentType;
 import domain.enums.InsuranceType;
+import domain.enums.VictimType;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -48,8 +49,8 @@ public class AccidentParser extends Parser {
     return sc.next();
   }
 
-  public boolean getVictim() {
+  public VictimType getVictim() {
     System.out.print("가해/피해 여부(1/2) : ");
-    return validateInteger(1, 2) == 1;
+    return (validateInteger(1, 2) == 1) ? VictimType.ATTACKER : VictimType.VICTIM;
   }
 }
