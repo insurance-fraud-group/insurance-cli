@@ -3,21 +3,29 @@ package command.menu.underwriting;
 
 import command.UnderwritingCmd;
 import command.menu.Menu;
+import domain.Underwriting;
+import java.util.function.Consumer;
 
 public enum UWManagement implements Menu {
-  CollaborationManagement("공동인수 관리", UnderwritingCmd::manageCollaboration),
-  ReinsuranceManagement("재보험 처리", UnderwritingCmd::manageReinsurance);
+  Progress("인수 진행", (underwriting) -> UnderwritingCmd.progressUnderwrite(underwriting)),
+  Collaboration("공동인수 진행", (underwriting) -> UnderwritingCmd.manageCollaboration(underwriting)),
+  Reinsurance("재보험 진행", (underwriting) -> UnderwritingCmd.manageReinsurance(underwriting));
 
   private final String label;
-  private final Runnable runnable;
+  private final Consumer<Underwriting> operator;
 
-  UWManagement(String label, Runnable runnable) {
+  UWManagement(String label, Consumer<Underwriting> operator) {
     this.label = label;
-    this.runnable = runnable;
+    this.operator = operator;
   }
 
+  public void execute(Underwriting underwriting) {
+    operator.accept(underwriting);
+  }
+
+  @Override
   public void execute() {
-    runnable.run();
+
   }
 
   @Override

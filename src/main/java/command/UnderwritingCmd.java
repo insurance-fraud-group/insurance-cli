@@ -5,9 +5,8 @@ import command.menu.underwriting.UnderwritingMenu;
 import command.parser.UnderwritingParser;
 import domain.AcceptancePolicy;
 import domain.Contract;
-import domain.Customer;
-import domain.Insurance;
 import domain.Underwriting;
+import java.util.Arrays;
 import java.util.List;
 import service.impl.UnderwritingServiceImpl;
 import utils.Session;
@@ -61,16 +60,22 @@ public class UnderwritingCmd extends Command {
     printTable(unsignedUnderwritingList);
 
     Underwriting underwriting = unsignedUnderwritingList.get(input());
-    Contract contract = underwriting.getContract();
-    Customer customer = contract.getCustomer();
-    Insurance insurance = contract.getInsurance();
-
     System.out.println("인수심사 대기 고객의 이름, 보험정보, 보험료는 다음과 같습니다.");
-    System.out.println("이름: " + customer.toString());
-    System.out.println("보험정보: " + insurance.getCoverDescription());
-    System.out.println("보험료: " + insurance.getPremium());
+    Contract contract = underwriting.getContract();
+    System.out.println("이름: " + contract.getCustomer().toString());
+    System.out.println("보험정보: " + contract.getInsurance().getCoverDescription());
+    System.out.println("보험료: " + contract.getInsurance().getPremium());
 
-    printTitle("점수 입력");
+    int selectedMenu = selectCommand(UWManagement.values());
+    Arrays.stream(UWManagement.values()).forEach(menu -> {
+      if (selectedMenu == menu.ordinal()) {
+        menu.execute(underwriting);
+      }
+    });
+  }
+
+  public static void progressUnderwrite(Underwriting underwriting) {
+    printTitle("인수 진행");
     System.out.println("신체적, 재정적, 환경적, 도덕적 요인의 점수를 1~5점 사이로 입력해주세요.");
 
     underwriting.setPhysicalFactorScore(underwritingParser.getPhysicalFactorScore());
@@ -80,20 +85,16 @@ public class UnderwritingCmd extends Command {
 
     System.out.println("\n인수심사가 " + (underwritingService.underwrite(underwriting) ? "승인" : "거절")
         + "되었습니다.");
-
-    System.out.println("선택된 보험을 다른 방식으로 처리하시겠습니까?");
-    printTitle("공동인수 , 재보험");
-    executeCommand(UWManagement.values());
   }
 
-  public static void manageCollaboration() {
-    printTitle("공동 인수 관리");
+  public static void manageCollaboration(Underwriting underwriting) {
+    printTitle("공동 인수");
     System.out.println("공동 인수 관리 ~~");
     AuthCmd.initialize();
   }
 
-  public static void manageReinsurance() {
-    printTitle("재보험 처리");
+  public static void manageReinsurance(Underwriting underwriting) {
+    printTitle("재보험");
     System.out.println("재보험 처리 ~~");
     AuthCmd.initialize();
   }
