@@ -16,12 +16,10 @@ public class UnderwritingCmd extends Command {
   private static final UnderwritingParser underwritingParser = UnderwritingParser.getInstance();
   private static final UnderwritingServiceImpl underwritingService = new UnderwritingServiceImpl();
 
-
   public static void run() {
     printTitle("인수 심사");
     executeCommand(UnderwritingMenu.values());
   }
-
 
   public static void searchAcceptancePolicy() {
     printTitle("인수정책 조회");
@@ -74,7 +72,7 @@ public class UnderwritingCmd extends Command {
     });
   }
 
-  public static void progressUnderwrite(Underwriting underwriting) {
+  public static void proceedUnderwriting(Underwriting underwriting) {
     printTitle("인수 진행");
     System.out.println("신체적, 재정적, 환경적, 도덕적 요인의 점수를 1~5점 사이로 입력해주세요.");
 
@@ -87,13 +85,13 @@ public class UnderwritingCmd extends Command {
         + "되었습니다.");
   }
 
-  public static void manageCollaboration(Underwriting underwriting) {
+  public static void proceedCollaboration(Underwriting underwriting) {
     printTitle("공동 인수");
     System.out.println("공동 인수 관리 ~~");
     AuthCmd.initialize();
   }
 
-  public static void manageReinsurance(Underwriting underwriting) {
+  public static void proceedReinsurance(Underwriting underwriting) {
     printTitle("재보험");
     System.out.println("재보험 처리 ~~");
     AuthCmd.initialize();
