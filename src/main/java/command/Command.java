@@ -2,6 +2,7 @@ package command;
 
 import command.menu.AuthMenu;
 import command.menu.Menu;
+import command.menu.YesOrNoMenu;
 import command.parser.Parser;
 import dnl.utils.text.table.TextTable;
 import java.lang.reflect.Field;
@@ -20,13 +21,9 @@ public class Command {
   public static void printTitle(String title) {
     System.out.println("\n[" + title + "]");
   }
-  
-  public static void executeCommand(String title, Menu[] menus) {
-    printTitle(title);
-    printMenu(menus);
-    printExitMenu(menus);
 
-    int selectedMenu = input();
+  public static void executeCommand(String title, Menu[] menus) {
+    int selectedMenu = selectCommand(title, menus);
 
     if (selectedMenu == menus.length) {
       AuthCommand.initialize();
@@ -36,6 +33,14 @@ public class Command {
         menu.execute();
       }
     });
+  }
+
+  public static int selectCommand(String title, Menu[] menus) {
+    printTitle(title);
+    printMenu(menus);
+    printExitMenu(menus);
+
+    return input();
   }
 
   private static void printMenu(Menu[] menus) {
