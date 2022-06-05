@@ -1,14 +1,14 @@
 package command.menu.sales;
 
-import command.SalesCommand;
+import command.SalesCmd;
 import command.menu.Menu;
 import domain.Contract;
 import java.util.function.Consumer;
 
 public enum ContractProgress implements Menu {
 
-  ContractConclusion("계약 체결", (contract) -> SalesCommand.concludeContract(contract)),
-  ContractRejection("계약 거절", (contract) -> SalesCommand.rejectContract(contract));
+  ContractConclusion("계약 체결", (contract) -> SalesCmd.concludeContract(contract)),
+  ContractRejection("계약 거절", (contract) -> SalesCmd.rejectContract(contract));
 
   private final String label;
   private final Consumer<Contract> operator;

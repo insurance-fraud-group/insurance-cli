@@ -26,7 +26,7 @@ public class Command {
     int selectedMenu = selectCommand(menus);
 
     if (selectedMenu == menus.length) {
-      AuthCommand.initialize();
+      AuthCmd.initialize();
     }
     Arrays.stream(menus).forEach(menu -> {
       if (selectedMenu == menu.ordinal()) {

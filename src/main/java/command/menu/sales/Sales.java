@@ -1,13 +1,13 @@
 package command.menu.sales;
 
-import command.SalesCommand;
+import command.SalesCmd;
 import command.menu.Menu;
 
 public enum Sales implements Menu {
 
-  SalesManagement("영업 관리", SalesCommand::manageSales),
-  ContractManagement("계약 관리", SalesCommand::manageContract),
-  PaymentManagement("납입금 관리", SalesCommand::managePayment);
+  SalesManagement("영업 관리", SalesCmd::manageSales),
+  ContractManagement("계약 관리", SalesCmd::manageContract),
+  PaymentManagement("납입금 관리", SalesCmd::managePayment);
 
   private final String label;
   private final Runnable runnable;

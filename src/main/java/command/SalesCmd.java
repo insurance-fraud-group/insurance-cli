@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import service.impl.SalesServiceImpl;
 
-public class SalesCommand extends Command {
+public class SalesCmd extends Command {
 
   private static final SalesParser parser = SalesParser.getInstance();
   private static final SalesServiceImpl salesService = new SalesServiceImpl();
@@ -41,7 +41,7 @@ public class SalesCommand extends Command {
     printTable(insurance);
     System.out.println("보험 정보 조회를 완료하였습니다.");
 
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void manageCustomer() {
@@ -61,7 +61,7 @@ public class SalesCommand extends Command {
     printTable(customer);
     System.out.println("고객 정보 조회를 완료하였습니다.");
 
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void signUpCustomer() {
@@ -74,7 +74,7 @@ public class SalesCommand extends Command {
     salesService.createCustomer(customer);
     System.out.println("신규 고객 가입이 완료되었습니다.");
 
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void manageOrganization() {
@@ -89,7 +89,7 @@ public class SalesCommand extends Command {
     printTable(employee, args);
     System.out.println("사원 정보 조회를 완료하였습니다.");
 
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void manageContract() {
@@ -109,7 +109,7 @@ public class SalesCommand extends Command {
     printTable(contract);
     System.out.println("계약 정보 조회를 완료하였습니다.");
 
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void searchUnsignedContract() {
@@ -124,7 +124,7 @@ public class SalesCommand extends Command {
     proceedContract(selectedContract);
     System.out.println("미체결 정보 조회를 완료하였습니다.");
 
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void proceedContract(Contract contract) {
@@ -144,7 +144,7 @@ public class SalesCommand extends Command {
     if (selectYesOrNo()) {
       salesService.makeContractSigned(contract.getId());
       System.out.println("계약 체결이 완료되었습니다.");
-      AuthCommand.initialize();
+      AuthCmd.initialize();
     } else {
       System.out.println("계약 체결을 취소합니다.");
       proceedContract(contract);
@@ -157,7 +157,7 @@ public class SalesCommand extends Command {
     if (selectYesOrNo()) {
       salesService.removeContract(contract.getId());
       System.out.println("계약 거절이 완료되었습니다.");
-      AuthCommand.initialize();
+      AuthCmd.initialize();
     } else {
       System.out.println("계약 거절을 취소합니다.");
       proceedContract(contract);
@@ -180,7 +180,7 @@ public class SalesCommand extends Command {
     salesService.createContract(insurance, customer);
     System.out.println("계약 생성이 완료되었습니다.");
 
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void managePayment() {
