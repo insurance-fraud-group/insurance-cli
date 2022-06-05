@@ -43,6 +43,14 @@ public class Command {
     return input();
   }
 
+  public static boolean selectYesOrNo() {
+    Menu[] menus = YesOrNoMenu.values();
+    printMenu(menus);
+    printExitMenu(menus);
+
+    return input() == 0;
+  }
+
   private static void printMenu(Menu[] menus) {
     Arrays.stream(menus).forEach(menu -> System.out.println(
         Integer.toString(menu.ordinal() + 1).concat(". ").concat(menu.toString())));
