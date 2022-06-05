@@ -2,7 +2,6 @@ package service;
 
 import domain.AcceptancePolicy;
 import domain.Employee;
-import domain.Insurance;
 import domain.Underwriting;
 import java.util.List;
 
@@ -14,11 +13,11 @@ public interface UnderwritingService {
 
   Employee getEmployeeName(Employee employee);
 
-  List<Insurance> manageLossRate();
+  List<Underwriting> searchUnderwriting();
+
+  List<Underwriting> searchUnsignedUnderwriting();
 
   boolean underwrite(Underwriting underwriting);
-
-  void updateInsuranceApproval(Insurance insurance, boolean result);
 
   void manageCollaboration();
 
