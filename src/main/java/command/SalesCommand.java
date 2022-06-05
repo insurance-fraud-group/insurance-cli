@@ -1,9 +1,11 @@
 package command;
 
+import command.menu.sales.ContractManagement;
 import command.menu.sales.CustomerManagement;
 import command.menu.sales.Sales;
 import command.menu.sales.SalesManagement;
 import command.parser.SalesParser;
+import domain.Contract;
 import domain.Customer;
 import domain.Employee;
 import domain.Insurance;
@@ -78,6 +80,34 @@ public class SalesCommand extends Command {
   }
 
   public static void manageContract() {
+    printMenu("계약 관리", ContractManagement.values());
+  }
+
+  public static void searchAllContract() {
+    printTitle("모든 계약 조회");
+    String[] args = {"applicationDate", "customer", "insurance"};
+    List<Contract> contractList = salesService.getContractList();
+    printTable(contractList, args);
+    Contract contract = contractList.get(input());
+    printTable(contract);
+  }
+
+  public static void searchUnsignedContract() {
+    printTitle("미체결 계약 리스트");
+    String[] args = {"applicationDate", "customer", "insurance"};
+    List<Contract> unsignedContractList = salesService.getUnsignedContractList();
+    printTable(unsignedContractList, args);
+
+    Contract selectedContract = unsignedContractList.get(input());
+    printTable(selectedContract);
+    concludeContract(selectedContract);
+  }
+
+  public static void concludeContract(Contract contract) {
+
+  }
+
+  public static void makeContract() {
 
   }
 

@@ -24,7 +24,9 @@ public interface SalesService {
 
   void createContract(Insurance insurance, Customer customer);
 
-  List<Contract> getUnsignedContract();
+  List<Contract> getContractList();
+
+  List<Contract> getUnsignedContractList();
 
   Contract getContract(int id);
 
