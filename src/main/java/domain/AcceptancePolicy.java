@@ -26,11 +26,11 @@ public class AcceptancePolicy {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  private String name;
+  private String description;
+
   @CreationTimestamp
   private Date createdDate;
-
-  private String description;
-  private String name;
 
   @OneToOne
   @JoinColumn(name = "employee_id")

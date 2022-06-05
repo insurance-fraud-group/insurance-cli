@@ -26,12 +26,12 @@ public class Customer {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  private String name;
+  private String job;
+  private LocalDate birth;
+  private String phoneNumber;
   private String accountNumber;
   private String address;
-  private LocalDate birth;
-  private String job;
-  private String name;
-  private String phoneNumber;
 
   @Enumerated(EnumType.STRING)
   private Gender gender;
