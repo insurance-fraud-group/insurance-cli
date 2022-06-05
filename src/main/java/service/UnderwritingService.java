@@ -23,6 +23,4 @@ public interface UnderwritingService {
   void manageCollaboration();
 
   void manageReinsurance();
-
-
 }
