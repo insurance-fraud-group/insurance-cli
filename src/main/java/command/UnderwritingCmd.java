@@ -4,11 +4,11 @@ import command.menu.underwriting.UWManagement;
 import command.menu.underwriting.UnderwritingMenu;
 import command.parser.UnderwritingParser;
 import domain.AcceptancePolicy;
+import domain.Contract;
+import domain.Customer;
 import domain.Insurance;
 import domain.Underwriting;
-import domain.enums.InsuranceType;
 import java.util.List;
-import java.util.stream.Collectors;
 import service.impl.UnderwritingServiceImpl;
 import utils.Session;
 
@@ -52,51 +52,34 @@ public class UnderwritingCmd extends Command {
 
   public static void manageLossRate() {
     printTitle("손해율 관리");
-    System.out.println("현재 등록된 보험 리스트");
-    List<Insurance> insuranceList = underwritingService.manageLossRate();
-    printTable(insuranceList);
-
-    InsuranceType insuranceType = underwritingParser.getInsuranceType();
-    List<Insurance> filteredList = insuranceList.stream()
-        .filter(i -> i.getInsuranceType().name().equals(insuranceType.name()))
-        .collect(Collectors.toList());
-    printTable(filteredList);
-
-    System.out.println("관리할 보험을 선택해주세요");
-    int selectedMenu = input();
-    System.out.println("선택한 보험의 요율은 아래와 같습니다");
-    System.out.println((insuranceList.get(selectedMenu).getPremiumRate()));
-    AuthCmd.initialize();
   }
 
   public static void underwrite() {
     printTitle("인수심사");
-    System.out.println("인수심사 대기 리스트");
-    List<Insurance> insuranceList = underwritingService.getInsuranceList();
-    List<Insurance> filteredList = insuranceList.stream()
-        .filter(i -> i.getAuthorizeType().toString().equals("인가요청")).collect(Collectors.toList());
-    printTable(filteredList);
+    System.out.println("인수심사를 진행할 항목을 선택해주세요.");
+    List<Underwriting> unsignedUnderwritingList = underwritingService.searchUnsignedUnderwriting();
+    printTable(unsignedUnderwritingList);
 
-    System.out.println("인수심사할 보험을 선택해주세요");
-    int selectedMenu = input();
-    Insurance insurance = filteredList.get(selectedMenu);
+    Underwriting underwriting = unsignedUnderwritingList.get(input());
+    Contract contract = underwriting.getContract();
+    Customer customer = contract.getCustomer();
+    Insurance insurance = contract.getInsurance();
 
     System.out.println("인수심사 대기 고객의 이름, 보험정보, 보험료는 다음과 같습니다.");
-    String name = filteredList.get(selectedMenu).getName();
-    String coverDescription = filteredList.get(selectedMenu).getCoverDescription();
-    int premium = filteredList.get(selectedMenu).getPremium();
+    System.out.println("이름: " + customer.toString());
+    System.out.println("보험정보: " + insurance.getCoverDescription());
+    System.out.println("보험료: " + insurance.getPremium());
 
-    System.out.println("이름:" + name + " 보험정보:" + coverDescription + " 보험료:" + premium);
-    System.out.println("신체,재정,환경,도덕적 요인 점수를 입력해주세요 (1~5점 사이)");
-    Underwriting underwriting = Underwriting.builder()
-        .physicalFactorScore(underwritingParser.getPhysicalFactorScore())
-        .financialFactorScore(underwritingParser.getFinancialFactorScore())
-        .environmentalFactorScore(underwritingParser.getEnvironmentFactorScore())
-        .moralFactorScore(underwritingParser.getMoralFactorScore()).build();
-    boolean result = underwritingService.underwrite(underwriting);
+    printTitle("점수 입력");
+    System.out.println("신체적, 재정적, 환경적, 도덕적 요인의 점수를 1~5점 사이로 입력해주세요.");
 
-    System.out.println("선택된 보험에 인수가 " + (result ? "승인" : "거절") + "되었습니다.");
-    underwritingService.updateInsuranceApproval(insurance, result);
+    underwriting.setPhysicalFactorScore(underwritingParser.getPhysicalFactorScore());
+    underwriting.setFinancialFactorScore(underwritingParser.getFinancialFactorScore());
+    underwriting.setEnvironmentalFactorScore(underwritingParser.getEnvironmentFactorScore());
+    underwriting.setMoralFactorScore(underwritingParser.getMoralFactorScore());
+
+    System.out.println("\n인수심사가 " + (underwritingService.underwrite(underwriting) ? "승인" : "거절")
+        + "되었습니다.");
 
     System.out.println("선택된 보험을 다른 방식으로 처리하시겠습니까?");
     printTitle("공동인수 , 재보험");
