@@ -19,7 +19,8 @@ public class UnderwritingCommand extends Command {
 
 
   public static void run() {
-    executeCommand("인수심사", UnderwritingMenu.values());
+    printTitle("인수 심사");
+    executeCommand(UnderwritingMenu.values());
   }
 
 
@@ -103,7 +104,8 @@ public class UnderwritingCommand extends Command {
     underwritingImpl.updateInsuranceApproval(insurance, result);
 
     System.out.println("선택된 보험을 다른 방식으로 처리하시겠습니까?");
-    executeCommand("공동인수 , 재보험", UWManagement.values());
+    printTitle("공동인수 , 재보험");
+    executeCommand(UWManagement.values());
   }
 
   public static void manageCollaboration() {

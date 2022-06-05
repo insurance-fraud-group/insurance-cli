@@ -22,8 +22,8 @@ public class Command {
     System.out.println("\n[" + title + "]");
   }
 
-  public static void executeCommand(String title, Menu[] menus) {
-    int selectedMenu = selectCommand(title, menus);
+  public static void executeCommand(Menu[] menus) {
+    int selectedMenu = selectCommand(menus);
 
     if (selectedMenu == menus.length) {
       AuthCommand.initialize();
@@ -35,8 +35,7 @@ public class Command {
     });
   }
 
-  public static int selectCommand(String title, Menu[] menus) {
-    printTitle(title);
+  public static int selectCommand(Menu[] menus) {
     printMenu(menus);
     printExitMenu(menus);
 
