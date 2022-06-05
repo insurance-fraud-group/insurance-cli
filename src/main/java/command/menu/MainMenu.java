@@ -7,7 +7,7 @@ import command.InsuranceDesignCmd;
 import command.SalesCmd;
 import command.UnderwritingCmd;
 
-public enum MainMenu {
+public enum MainMenu implements Menu{
   ACCIDENT_INVESTIGATOR(AccidentInvestigatorCmd::run),
   ADJUSTER(AdjusterCmd::run),
   CUSTOMER_SERVICE_AGENT(CustomerServiceCmd::run),
