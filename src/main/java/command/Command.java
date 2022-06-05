@@ -1,8 +1,11 @@
 package command;
 
 import command.menu.AuthMenu;
+import command.menu.CustomerServiceMenu;
 import command.menu.Menu;
 import command.menu.YesOrNoMenu;
+import command.menu.sales.Sales;
+import command.menu.underwriting.UnderwritingMenu;
 import command.parser.Parser;
 import dnl.utils.text.table.TextTable;
 import java.lang.reflect.Field;
@@ -12,6 +15,9 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Command {
+
+  private static List<Class<?>> mainMenus =
+      List.of(new Class[]{UnderwritingMenu.class, Sales.class, CustomerServiceMenu.class});
 
   public static int input() {
     System.out.print("> ");
@@ -24,8 +30,12 @@ public class Command {
 
   public static void executeCommand(Menu[] menus) {
     int selectedMenu = selectCommand(menus);
+    Class<?> menuClass = menus[0].getClass();
 
     if (selectedMenu == menus.length) {
+      if (mainMenus.contains(menuClass)) {
+        AuthCmd.exit();
+      }
       AuthCmd.initialize();
     }
     Arrays.stream(menus).forEach(menu -> {
@@ -57,7 +67,10 @@ public class Command {
 
   private static void printExitMenu(Menu[] menus) {
     int last = menus.length + 1;
-    String lastCommand = menus[0].getClass().equals(AuthMenu.class) ? "종료" : "메인으로 돌아가기";
+    Class<?> menuClass = menus[0].getClass();
+
+    String lastCommand = menuClass.equals(AuthMenu.class) ? "종료" :
+        (mainMenus.contains(menuClass) ? "로그아웃" : "메인으로 돌아가기");
     System.out.println(last + ". " + lastCommand);
   }
 

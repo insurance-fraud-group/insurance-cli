@@ -7,7 +7,7 @@ import command.InsuranceDesignCmd;
 import command.SalesCmd;
 import command.UnderwritingCmd;
 
-public enum MainMenu implements Menu{
+public enum SignInMenu implements Menu{
   ACCIDENT_INVESTIGATOR(AccidentInvestigatorCmd::run),
   ADJUSTER(AdjusterCmd::run),
   COUNSELOR(CounselorCmd::run),
@@ -17,7 +17,7 @@ public enum MainMenu implements Menu{
 
   private final Runnable runnable;
 
-  MainMenu(Runnable runnable) {
+  SignInMenu(Runnable runnable) {
     this.runnable = runnable;
   }
 

@@ -23,6 +23,9 @@ public class AuthServiceImpl implements AuthService {
   @Override
   public Employee signIn(Employee request) {
     Employee employee = employeeRepository.findBy("email", request.getEmail());
+    if (employee == null) {
+      return null;
+    }
     return request.getPassword().equals(employee.getPassword()) ? employee : null;
   }
 }

@@ -1,7 +1,7 @@
 package command;
 
 import command.menu.AuthMenu;
-import command.menu.MainMenu;
+import command.menu.SignInMenu;
 import command.parser.AuthParser;
 import domain.Employee;
 import domain.enums.EmployeeType;
@@ -46,11 +46,16 @@ public class AuthCmd extends Command {
       System.exit(0);
     }
 
-    Arrays.stream(MainMenu.values()).forEach(command -> {
+    Arrays.stream(SignInMenu.values()).forEach(command -> {
       EmployeeType employeeType = Session.getSession().getUser().getEmployeeType();
       if (employeeType.name().equals(command.name())) {
         command.execute();
       }
     });
+  }
+
+  public static void exit() {
+    Session.getSession().exit();
+    AuthCmd.run();
   }
 }
