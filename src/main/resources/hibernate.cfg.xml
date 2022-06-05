@@ -24,5 +24,6 @@
     <mapping class="domain.Employee"/>
     <mapping class="domain.Insurance"/>
     <mapping class="domain.Underwriting"/>
+    <mapping class="domain.Transaction"/>
   </session-factory>
 </hibernate-configuration>
