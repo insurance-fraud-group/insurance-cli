@@ -65,6 +65,7 @@ public class Command {
 
     if (list.isEmpty()) {
       System.out.println("데이터가 존재하지 않습니다.");
+      return;
     }
 
     TextTable tt = new TextTable(getTitle(list), getData(list));
@@ -75,6 +76,7 @@ public class Command {
 
     if (list.isEmpty()) {
       System.out.println("데이터가 존재하지 않습니다.");
+      return;
     }
 
     TextTable tt = new TextTable(args, getData(list, args));
