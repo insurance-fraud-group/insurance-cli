@@ -113,14 +113,14 @@ public class SalesCmd extends Command {
     AuthCmd.initialize();
   }
 
-  public static void searchUnsignedContract() {
-    printTitle("미체결 계약 리스트");
+  public static void searchUWCompletedContracts() {
+    printTitle("인수심사가 완료된 계약 조회");
     System.out.println("상세 정보를 조회할 계약을 선택해주세요.");
     String[] args = {"applicationDate", "customer", "insurance"};
-    List<Contract> unsignedContractList = salesService.getUnsignedContractList();
-    printTable(unsignedContractList, args);
+    List<Contract> waitingContractList = salesService.getUWCompletedContracts();
+    printTable(waitingContractList, args);
 
-    Contract selectedContract = unsignedContractList.get(input());
+    Contract selectedContract = waitingContractList.get(input());
     printTable(selectedContract);
     proceedContract(selectedContract);
     System.out.println("미체결 정보 조회를 완료하였습니다.");

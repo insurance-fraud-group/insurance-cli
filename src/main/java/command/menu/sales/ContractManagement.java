@@ -5,9 +5,9 @@ import command.menu.Menu;
 
 public enum ContractManagement implements Menu {
 
-  ContractSearchAll("모든 계약 조회", SalesCmd::searchAllContract),
-  ContractSearchUnsigned("미체결 계약 조회", SalesCmd::searchUnsignedContract),
-  ContractCreation("계약 생성", SalesCmd::makeContract);
+  AllContract("모든 계약 조회", SalesCmd::searchAllContract),
+  UWCompletedContract("인수심사가 완료된 계약 조회", SalesCmd::searchUWCompletedContracts),
+  Creation("계약 생성", SalesCmd::makeContract);
 
   private final String label;
   private final Runnable runnable;
