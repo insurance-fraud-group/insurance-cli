@@ -33,7 +33,7 @@ public class InsuranceParser extends Parser {
 
   public int getInterestRate() {
     System.out.print("요율 : ");
-    return sc.nextInt();
+    return validateInteger();
   }
 
   public int getEntryAge() {
