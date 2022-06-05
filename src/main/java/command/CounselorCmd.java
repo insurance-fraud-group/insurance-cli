@@ -47,17 +47,17 @@ public class CounselorCmd extends Command {
     printTable(customerList);
     Customer interviewee = customerList.get(input());
     Optional.ofNullable(interviewee).ifPresentOrElse(customer -> {
-          System.out.println("사고 정보를 기입해주세요");
-          Accident accident = Accident.builder()
-              .eventLocation(accidentParser.getEventLocation())
-              .accidentType(accidentParser.getAccidentType())
-              .victim(accidentParser.getVictim())
-              .customer(interviewee)
-              .build();
-          String[] args = {"customer", "eventTime", "eventLocation", "accidentType", "victim"};
-          List<Accident> accidents = counselorService.receiveAccident(accident);
-          System.out.println("사고 접수 리스트");
-          printTable(accidents, args);
-        }, () -> System.out.println("피상담자의 정보가 없습니다."));
+      System.out.println("사고 정보를 기입해주세요");
+      Accident accident = Accident.builder()
+          .eventLocation(accidentParser.getEventLocation())
+          .accidentType(accidentParser.getAccidentType())
+          .victim(accidentParser.getVictim())
+          .customer(interviewee)
+          .build();
+      String[] args = {"customer", "eventTime", "eventLocation", "accidentType", "victim"};
+      List<Accident> accidents = counselorService.receiveAccident(accident);
+      System.out.println("사고 접수 리스트");
+      printTable(accidents, args);
+    }, () -> System.out.println("피상담자의 정보가 없습니다."));
   }
 }

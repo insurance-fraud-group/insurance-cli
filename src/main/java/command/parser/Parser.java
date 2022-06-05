@@ -1,7 +1,7 @@
 package command.parser;
 
-import domain.enums.UserType;
 import domain.enums.InsuranceType;
+import domain.enums.UserType;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -55,7 +55,6 @@ public abstract class Parser {
     return (insuranceType < 1 || insuranceType > UserType.values().length) ? getInsuranceType()
         : InsuranceType.values()[insuranceType - 1];
   }
-
 
 
   public abstract void initialize();

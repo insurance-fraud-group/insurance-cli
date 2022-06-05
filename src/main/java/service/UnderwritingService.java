@@ -1,8 +1,8 @@
 package service;
 
 import domain.AcceptancePolicy;
-import domain.User;
 import domain.Underwriting;
+import domain.User;
 import java.util.List;
 
 public interface UnderwritingService {

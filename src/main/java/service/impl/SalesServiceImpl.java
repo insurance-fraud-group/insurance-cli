@@ -2,10 +2,10 @@ package service.impl;
 
 import domain.Contract;
 import domain.Customer;
-import domain.User;
 import domain.Insurance;
 import domain.Transaction;
 import domain.Underwriting;
+import domain.User;
 import domain.enums.TransactionType;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -77,7 +77,8 @@ public class SalesServiceImpl implements SalesService {
   public List<Contract> getUWCompletedContracts() {
     List<Contract> unsignedContractList = contractRepository.findAllBy("signed", false);
     return unsignedContractList != null ? unsignedContractList.stream()
-        .filter(contract -> contract.getUnderwriting().isSigned()).collect(Collectors.toList()) : null;
+        .filter(contract -> contract.getUnderwriting().isSigned()).collect(Collectors.toList())
+        : null;
   }
 
   @Override

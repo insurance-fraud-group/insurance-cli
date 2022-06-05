@@ -1,10 +1,7 @@
 package command.parser;
 
 import domain.enums.AccidentType;
-import domain.enums.InsuranceType;
 import domain.enums.VictimType;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class AccidentParser extends Parser {
