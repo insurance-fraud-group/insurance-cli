@@ -1,6 +1,7 @@
 package domain;
 
 import domain.enums.AccidentType;
+import domain.enums.VictimType;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ public class Accident {
   private LocalDate eventTime;
 
   private String eventLocation;
-  private boolean victim;
+  private VictimType victim;
 
   @Enumerated(EnumType.STRING)
   private AccidentType accidentType;
