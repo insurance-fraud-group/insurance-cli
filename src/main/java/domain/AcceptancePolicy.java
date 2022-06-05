@@ -12,6 +12,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Getter
@@ -25,7 +26,9 @@ public class AcceptancePolicy {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  @CreationTimestamp
   private Date createdDate;
+
   private String description;
   private String name;
 

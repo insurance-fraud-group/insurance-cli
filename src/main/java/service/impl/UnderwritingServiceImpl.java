@@ -1,11 +1,12 @@
 package service.impl;
 
+import domain.AcceptancePolicy;
 import domain.Employee;
 import domain.Insurance;
 import domain.Underwriting;
 import domain.enums.AuthorizeType;
-import java.time.LocalDate;
 import java.util.List;
+import repository.AcceptancePolicyRepository;
 import repository.EmployeeRepository;
 import repository.InsuranceRepository;
 import repository.UnderwritingRepository;
@@ -14,6 +15,7 @@ import service.UnderwritingService;
 public class UnderwritingServiceImpl implements UnderwritingService {
 
   private final UnderwritingRepository underwritingRepository;
+  private final AcceptancePolicyRepository acceptancePolicyRepository;
   private final InsuranceRepository insuranceRepository;
   private final EmployeeRepository employeeRepository;
 
@@ -21,6 +23,7 @@ public class UnderwritingServiceImpl implements UnderwritingService {
     underwritingRepository = new UnderwritingRepository();
     insuranceRepository = new InsuranceRepository();
     employeeRepository = new EmployeeRepository();
+    acceptancePolicyRepository = new AcceptancePolicyRepository();
   }
 
   public List<Insurance> getInsuranceList() {
@@ -29,17 +32,17 @@ public class UnderwritingServiceImpl implements UnderwritingService {
 
 
   public Employee getEmployeeName(Employee employee) {
-    return employeeRepository.findBy("name", employee.getName());
+    return employeeRepository.findBy("name", employee);
   }
 
   @Override
-  public List<Underwriting> searchAcceptancePolicy() {
-    return underwritingRepository.findAll();
+  public List<AcceptancePolicy> searchAcceptancePolicy() {
+    return acceptancePolicyRepository.findAll();
   }
 
   @Override
-  public void createAcceptancePolicy(Underwriting underwriting) {
-    underwritingRepository.save(underwriting);
+  public void createAcceptancePolicy(AcceptancePolicy acceptancePolicy) {
+    acceptancePolicyRepository.save(acceptancePolicy);
   }
 
   @Override

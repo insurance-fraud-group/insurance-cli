@@ -3,19 +3,19 @@ package command;
 import command.menu.underwriting.UWManagement;
 import command.menu.underwriting.UnderwritingMenu;
 import command.parser.UnderwritingParser;
-import domain.Employee;
+import domain.AcceptancePolicy;
 import domain.Insurance;
 import domain.Underwriting;
 import domain.enums.InsuranceType;
 import java.util.List;
 import java.util.stream.Collectors;
 import service.impl.UnderwritingServiceImpl;
+import utils.Session;
 
 public class UnderwritingCmd extends Command {
 
   private static final UnderwritingParser underwritingParser = UnderwritingParser.getInstance();
   private static final UnderwritingServiceImpl underwritingService = new UnderwritingServiceImpl();
-  private static final Employee employee = new Employee();
 
 
   public static void run() {
@@ -26,25 +26,27 @@ public class UnderwritingCmd extends Command {
 
   public static void searchAcceptancePolicy() {
     printTitle("인수정책 조회");
-    String[] args = {"name", "description", "writer", "date"};
-    List<Underwriting> underwritingList = underwritingService.searchAcceptancePolicy();
-    printTable(underwritingList, args);
+    String[] args = {"name", "description", "writer", "createdDate"};
+    List<AcceptancePolicy> acceptancePolicyList = underwritingService.searchAcceptancePolicy();
+    printTable(acceptancePolicyList, args);
     AuthCmd.initialize();
   }
 
   public static void createAcceptancePolicy() {
     printTitle("인수정책 수립");
     System.out.println("인수정책을 수립해주세요");
-    Underwriting input = Underwriting.builder().name(underwritingParser.getName())
+    AcceptancePolicy input = AcceptancePolicy.builder()
+        .name(underwritingParser.getName())
         .description(underwritingParser.getDescription())
-        .writer(underwritingService.getEmployeeName(employee)).build();
+        .writer(underwritingService.getEmployeeName(Session.getSession().getUser()))
+        .build();
     underwritingService.createAcceptancePolicy(input);
     System.out.println("인수정책 수립이 완료되었습니다");
 
     System.out.println("현재 수립된 인수정책 리스트");
-    String[] args = {"name", "description", "writer", "date"};
-    List<Underwriting> underwritingList = underwritingService.searchAcceptancePolicy();
-    printTable(underwritingList, args);
+    String[] args = {"name", "description", "writer", "createdDate"};
+    List<AcceptancePolicy> acceptancePolicyList = underwritingService.searchAcceptancePolicy();
+    printTable(acceptancePolicyList, args);
     AuthCmd.initialize();
   }
 
