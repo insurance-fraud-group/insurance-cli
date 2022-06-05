@@ -38,16 +38,16 @@ public class InsuranceParser extends Parser {
 
   public int getEntryAge() {
     System.out.print("가입가능 연령 : ");
-    return sc.nextInt();
+    return validateInteger();
   }
 
   public int getPremium() {
     System.out.print("보험료 : ");
-    return sc.nextInt();
+    return validateInteger();
   }
 
   public int getPremiumRate() {
     System.out.print("이율 : ");
-    return sc.nextInt();
+    return validateInteger();
   }
 }

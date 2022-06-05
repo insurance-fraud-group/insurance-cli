@@ -55,7 +55,7 @@ public class SalesParser extends Parser {
 
   public boolean getSex() {
     System.out.print("성별(1. 남성 2. 여성): ");
-    return sc.nextInt() == 1;
+    return validateInteger() == 1;
   }
 
 }

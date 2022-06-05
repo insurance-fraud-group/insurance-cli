@@ -22,6 +22,24 @@ public abstract class Parser {
     sc = getScanner();
   }
 
+  public int validateInteger() {
+    while (!sc.hasNextInt()) {
+      sc.next();
+      System.out.println("지정된 범위 내의 숫자를 입력해주세요.");
+    }
+    return sc.nextInt();
+  }
+
+  public int validateInteger(int start, int end) {
+    int value = validateInteger();
+
+    if (value < start || value > end) {
+      value = validateInteger(start, end);
+    }
+
+    return value;
+  }
+
   public InsuranceType getInsuranceType() {
     System.out.println("보험종류를 선택해주세요");
     Arrays.stream(InsuranceType.values()).forEach(type -> {
@@ -32,12 +50,8 @@ public abstract class Parser {
     });
 
     System.out.print("보험종류 : ");
-    while (!sc.hasNextInt()) {
-      sc.next();
-      System.out.println("Please enter a number within the range.");
-    }
 
-    int insuranceType = sc.nextInt();
+    int insuranceType = validateInteger();
     return (insuranceType < 1 || insuranceType > EmployeeType.values().length) ? getInsuranceType()
         : InsuranceType.values()[insuranceType - 1];
   }

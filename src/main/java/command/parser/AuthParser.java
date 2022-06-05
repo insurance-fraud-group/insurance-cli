@@ -34,12 +34,8 @@ public class AuthParser extends Parser {
     });
 
     System.out.print("직군 : ");
-    while (!sc.hasNextInt()) {
-      sc.next();
-      System.out.println("Please enter a number within the range.");
-    }
 
-    int employeeType = sc.nextInt();
+    int employeeType = validateInteger();
     return (employeeType < 1 || employeeType > EmployeeType.values().length) ? getEmployeeType()
         : EmployeeType.values()[employeeType - 1];
   }
