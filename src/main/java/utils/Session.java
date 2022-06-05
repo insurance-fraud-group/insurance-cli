@@ -1,5 +1,6 @@
 package utils;
 
+import command.AuthCmd;
 import domain.Employee;
 import lombok.Getter;
 
@@ -18,6 +19,10 @@ public class Session {
   private Employee user = null;
 
   public void register(Employee user) {
+    if (user == null) {
+      System.out.println("로그인에 실패했습니다.");
+      AuthCmd.run();
+    }
     this.user = user;
     System.out.printf("\n%s님 환영합니다!%n", user.getName());
   }
