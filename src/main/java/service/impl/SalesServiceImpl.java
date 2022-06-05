@@ -91,4 +91,10 @@ public class SalesServiceImpl implements SalesService {
     contractRepository.update(contract);
     return contract;
   }
+
+  @Override
+  public void removeContract(int id) {
+    Contract contract = contractRepository.findById(id);
+    contractRepository.delete(contract);
+  }
 }
