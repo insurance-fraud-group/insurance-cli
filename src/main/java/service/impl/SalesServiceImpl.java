@@ -55,8 +55,8 @@ public class SalesServiceImpl implements SalesService {
     Contract contract = Contract.builder()
         .insurance(insurance).customer(customer)
         .signed(false).build();
-
     contractRepository.save(contract);
+
     underwritingRepository.save(Underwriting.builder()
         .writer(Session.getSession().getUser())
         .contract(contract).signed(false).build());
