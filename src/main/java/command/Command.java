@@ -1,7 +1,10 @@
 package command;
 
+import command.menu.AccidentInvestigatorMenu;
+import command.menu.AdjusterMenu;
 import command.menu.AuthMenu;
-import command.menu.CustomerServiceMenu;
+import command.menu.CounselorMenu;
+import command.menu.InsuranceDesignMenu;
 import command.menu.Menu;
 import command.menu.YesOrNoMenu;
 import command.menu.sales.Sales;
@@ -17,7 +20,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Command {
 
   private static List<Class<?>> mainMenus = List.of(
-      new Class[]{UnderwritingMenu.class, Sales.class, CustomerServiceMenu.class});
+      new Class[]{AccidentInvestigatorMenu.class, AdjusterMenu.class,
+          CounselorMenu.class, InsuranceDesignMenu.class, Sales.class,
+          UnderwritingMenu.class});
 
   public static int input() {
     System.out.print("> ");
