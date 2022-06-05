@@ -64,11 +64,8 @@ public class UnderwritingServiceImpl implements UnderwritingService {
   }
 
   public void updateInsuranceApproval(Insurance insurance, boolean result) {
-    if (result) {
-      insurance.setAuthorizeType(AuthorizeType.AUTHORIZE_PERMITTED);
-    } else {
-      insurance.setAuthorizeType(AuthorizeType.AUTHORIZE_DENIED);
-    }
+    insurance.setAuthorizeType(
+        result ? AuthorizeType.AUTHORIZE_PERMITTED : AuthorizeType.AUTHORIZE_DENIED);
     insuranceRepository.update(insurance);
   }
 
