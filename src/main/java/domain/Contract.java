@@ -42,7 +42,7 @@ public class Contract {
   @JoinColumn(name = "insurance_id")
   private Insurance insurance;
 
-  @OneToOne(mappedBy = "contract")
+  @OneToOne(mappedBy = "contract", orphanRemoval = true)
   private Underwriting underwriting;
 
   @Override
