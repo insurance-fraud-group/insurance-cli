@@ -16,8 +16,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Command {
 
-  private static List<Class<?>> mainMenus =
-      List.of(new Class[]{UnderwritingMenu.class, Sales.class, CustomerServiceMenu.class});
+  private static List<Class<?>> mainMenus = List.of(
+      new Class[]{UnderwritingMenu.class, Sales.class, CustomerServiceMenu.class});
 
   public static int input() {
     System.out.print("> ");
@@ -69,16 +69,15 @@ public class Command {
     int last = menus.length + 1;
     Class<?> menuClass = menus[0].getClass();
 
-    String lastCommand = menuClass.equals(AuthMenu.class) ? "종료" :
-        (mainMenus.contains(menuClass) ? "로그아웃" : "메인으로 돌아가기");
+    String lastCommand = menuClass.equals(AuthMenu.class) ? "종료"
+        : (mainMenus.contains(menuClass) ? "로그아웃" : "메인으로 돌아가기");
     System.out.println(last + ". " + lastCommand);
   }
 
   public static void printTable(List<?> list) {
-
     if (list.isEmpty()) {
-      System.out.println("데이터가 존재하지 않습니다.");
-      return;
+      System.out.println("데이터를 가져오지 못했습니다. 관리자에게 문의하세요.");
+      AuthCmd.initialize();
     }
 
     TextTable tt = new TextTable(getTitle(list), getData(list));
@@ -86,10 +85,9 @@ public class Command {
   }
 
   public static void printTable(List<?> list, String... args) {
-
     if (list.isEmpty()) {
-      System.out.println("데이터가 존재하지 않습니다.");
-      return;
+      System.out.println("데이터를 가져오지 못했습니다. 관리자에게 문의하세요.");
+      AuthCmd.initialize();
     }
 
     TextTable tt = new TextTable(args, getData(list, args));
