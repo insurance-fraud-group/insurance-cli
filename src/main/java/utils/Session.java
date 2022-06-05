@@ -22,6 +22,11 @@ public class Session {
     System.out.printf("\n%s님 환영합니다!%n", user.getName());
   }
 
+  public void exit() {
+    this.user = null;
+    System.out.println("로그아웃 되었습니다!");
+  }
+
   public boolean isExist() {
     return user != null;
   }

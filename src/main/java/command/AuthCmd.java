@@ -53,4 +53,9 @@ public class AuthCmd extends Command {
       }
     });
   }
+
+  public static void exit() {
+    Session.getSession().exit();
+    AuthCmd.run();
+  }
 }
