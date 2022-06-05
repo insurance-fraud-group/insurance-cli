@@ -31,18 +31,8 @@ public class SalesServiceImpl implements SalesService {
   }
 
   @Override
-  public Insurance getInsurance(String insuranceCode) {
-    return insuranceRepository.findById(insuranceCode);
-  }
-
-  @Override
   public List<Employee> getEmployeeList() {
     return employeeRepository.findAll();
-  }
-
-  @Override
-  public Employee getEmployee(int id) {
-    return employeeRepository.findById(id);
   }
 
   @Override
@@ -53,11 +43,6 @@ public class SalesServiceImpl implements SalesService {
   @Override
   public List<Customer> getCustomerList() {
     return customerRepository.findAll();
-  }
-
-  @Override
-  public Customer getCustomer(int id) {
-    return customerRepository.findById(id);
   }
 
   @Override
@@ -77,11 +62,6 @@ public class SalesServiceImpl implements SalesService {
   @Override
   public List<Contract> getUnsignedContractList() {
     return contractRepository.findAllBy("signed", false);
-  }
-
-  @Override
-  public Contract getContract(int id) {
-    return contractRepository.findById(id);
   }
 
   @Override
