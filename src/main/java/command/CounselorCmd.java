@@ -54,8 +54,10 @@ public class CounselorCmd extends Command {
         .victim(accidentParser.getVictim())
         .customer(customer)
         .build();
+
     String[] args = {"customer", "eventTime", "eventLocation", "accidentType", "victim"};
     List<Accident> accidents = counselorService.receiveAccident(accident);
+    System.out.println("사고 접수 리스트");
     printTable(accidents, args);
   }
 }
