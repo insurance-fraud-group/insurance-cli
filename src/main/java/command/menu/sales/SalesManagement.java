@@ -1,13 +1,13 @@
 package command.menu.sales;
 
-import command.SalesCommand;
+import command.SalesCmd;
 import command.menu.Menu;
 
 public enum SalesManagement implements Menu {
 
-  InsuranceManagement("보험 관리", SalesCommand::manageInsurance),
-  CustomerManagement("고객 관리", SalesCommand::manageCustomer),
-  OrganizationManagement("조직 관리", SalesCommand::manageOrganization);
+  InsuranceManagement("보험 관리", SalesCmd::manageInsurance),
+  CustomerManagement("고객 관리", SalesCmd::manageCustomer),
+  OrganizationManagement("조직 관리", SalesCmd::manageOrganization);
 
   private final String label;
   private final Runnable runnable;

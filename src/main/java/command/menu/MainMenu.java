@@ -1,17 +1,19 @@
 package command.menu;
 
-import command.CompensationCommand;
-import command.InsuranceDesignCommand;
-import command.SalesCommand;
-import command.UnderwritingCommand;
+import command.AccidentInvestigatorCmd;
+import command.AdjusterCmd;
+import command.CustomerServiceCmd;
+import command.InsuranceDesignCmd;
+import command.SalesCmd;
+import command.UnderwritingCmd;
 
-public enum MainMenu {
-  ACCIDENT_INVESTIGATOR(CompensationCommand::run),
-  ADJUSTER(CompensationCommand::run),
-  CUSTOMER_SERVICE_AGENT(CompensationCommand::run),
-  ACTUARY(InsuranceDesignCommand::run),
-  SALES(SalesCommand::run),
-  UNDERWRITER(UnderwritingCommand::run);
+public enum MainMenu implements Menu{
+  ACCIDENT_INVESTIGATOR(AccidentInvestigatorCmd::run),
+  ADJUSTER(AdjusterCmd::run),
+  CUSTOMER_SERVICE_AGENT(CustomerServiceCmd::run),
+  ACTUARY(InsuranceDesignCmd::run),
+  SALES(SalesCmd::run),
+  UNDERWRITER(UnderwritingCmd::run);
 
   private final Runnable runnable;
 

@@ -1,11 +1,11 @@
 package command.menu;
 
-import command.AuthCommand;
+import command.AuthCmd;
 
 public enum AuthMenu implements Menu {
 
-  SignIn("로그인", AuthCommand::signIn),
-  SignUp("회원가입", AuthCommand::signUp);
+  SignIn("로그인", AuthCmd::signIn),
+  SignUp("회원가입", AuthCmd::signUp);
 
   private final String label;
   private final Runnable runnable;

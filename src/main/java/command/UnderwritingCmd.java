@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import service.impl.UnderwritingServiceImpl;
 
-public class UnderwritingCommand extends Command {
+public class UnderwritingCmd extends Command {
 
   private static final UnderwritingParser underwritingParser = UnderwritingParser.getInstance();
   private static final UnderwritingServiceImpl underwritingService = new UnderwritingServiceImpl();
@@ -29,7 +29,7 @@ public class UnderwritingCommand extends Command {
     String[] args = {"name", "description", "writer", "date"};
     List<Underwriting> underwritingList = underwritingService.searchAcceptancePolicy();
     printTable(underwritingList, args);
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void createAcceptancePolicy() {
@@ -45,7 +45,7 @@ public class UnderwritingCommand extends Command {
     String[] args = {"name", "description", "writer", "date"};
     List<Underwriting> underwritingList = underwritingService.searchAcceptancePolicy();
     printTable(underwritingList, args);
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void manageLossRate() {
@@ -64,7 +64,7 @@ public class UnderwritingCommand extends Command {
     int selectedMenu = input();
     System.out.println("선택한 보험의 요율은 아래와 같습니다");
     System.out.println((insuranceList.get(selectedMenu).getPremiumRate()));
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void underwrite() {
@@ -108,12 +108,12 @@ public class UnderwritingCommand extends Command {
   public static void manageCollaboration() {
     printTitle("공동 인수 관리");
     System.out.println("공동 인수 관리 ~~");
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 
   public static void manageReinsurance() {
     printTitle("재보험 처리");
     System.out.println("재보험 처리 ~~");
-    AuthCommand.initialize();
+    AuthCmd.initialize();
   }
 }
