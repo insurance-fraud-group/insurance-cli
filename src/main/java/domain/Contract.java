@@ -1,7 +1,7 @@
 package domain;
 
 import java.io.File;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +28,7 @@ public class Contract {
   private int id;
 
   @CreationTimestamp
-  private LocalDateTime applicationDate;
+  private LocalDate applicationDate;
 
   private boolean signed;
   private File subscription;
