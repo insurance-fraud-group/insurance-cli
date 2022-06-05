@@ -70,7 +70,7 @@ public class SalesCmd extends Command {
     System.out.println("신규 고객 정보를 입력해주세요.");
     Customer customer = Customer.builder().accountNumber(parser.getAccountNumber())
         .address(parser.getAddress()).birth(parser.getBirth()).job(parser.getJob())
-        .name(parser.getName()).phoneNumber(parser.getPhoneNumber()).sex(parser.getSex()).build();
+        .name(parser.getName()).phoneNumber(parser.getPhoneNumber()).gender(parser.getGender()).build();
 
     salesService.createCustomer(customer);
     System.out.println("신규 고객 가입이 완료되었습니다.");
