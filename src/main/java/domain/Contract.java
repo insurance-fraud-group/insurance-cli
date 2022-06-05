@@ -1,6 +1,5 @@
 package domain;
 
-import java.io.File;
 import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +31,6 @@ public class Contract {
   private LocalDate applicationDate;
 
   private boolean signed;
-  private File subscription;
 
   @ManyToOne
   @JoinColumn(name = "customer_id")

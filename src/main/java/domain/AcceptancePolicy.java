@@ -26,15 +26,15 @@ public class AcceptancePolicy {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  private String name;
+  private String description;
+
   @CreationTimestamp
   private Date createdDate;
 
-  private String description;
-  private String name;
-
   @OneToOne
-  @JoinColumn(name = "employee_id")
-  private Employee writer;
+  @JoinColumn(name = "user_id")
+  private User writer;
 
   @Override
   public String toString() {

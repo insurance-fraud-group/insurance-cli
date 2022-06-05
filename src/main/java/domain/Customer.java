@@ -1,7 +1,10 @@
 package domain;
 
+import domain.enums.Gender;
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,7 +13,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import net.bytebuddy.asm.Advice.Local;
 
 @Entity
 @Getter
@@ -24,13 +26,15 @@ public class Customer {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  private String name;
+  private String job;
+  private LocalDate birth;
+  private String phoneNumber;
   private String accountNumber;
   private String address;
-  private LocalDate birth;
-  private String job;
-  private String name;
-  private String phoneNumber;
-  private boolean sex;
+
+  @Enumerated(EnumType.STRING)
+  private Gender gender;
 
   @Override
   public String toString() {

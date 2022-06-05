@@ -1,5 +1,6 @@
 package command.parser;
 
+import domain.enums.Gender;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -53,9 +54,8 @@ public class SalesParser extends Parser {
     return sc.next();
   }
 
-  public boolean getSex() {
+  public Gender getGender() {
     System.out.print("성별(1. 남성 2. 여성): ");
-    return validateInteger() == 1;
+    return validateInteger(1, 2) == 1 ? Gender.MALE : Gender.FEMALE;
   }
-
 }

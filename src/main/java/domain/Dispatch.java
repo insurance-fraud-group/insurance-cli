@@ -1,6 +1,5 @@
 package domain;
 
-import java.io.File;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,15 +26,14 @@ public class Dispatch {
 
   private int damage;
   private String accidentDescription;
-  private File evidenceMedia;
 
   @OneToOne
   @JoinColumn(name = "accident_id")
   private Accident accident;
 
   @OneToOne
-  @JoinColumn(name = "employee_id")
-  private Employee accidentInvestigator;
+  @JoinColumn(name = "user_id")
+  private User accidentInvestigator;
 
   @Override
   public String toString() {

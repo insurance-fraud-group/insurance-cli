@@ -1,7 +1,7 @@
 package repository;
 
-import domain.Employee;
+import domain.User;
 
-public class EmployeeRepository extends Repository<Employee, Integer> {
+public class EmployeeRepository extends Repository<User, Integer> {
 
 }

@@ -2,7 +2,7 @@ package service.impl;
 
 import domain.Contract;
 import domain.Customer;
-import domain.Employee;
+import domain.User;
 import domain.Insurance;
 import domain.Transaction;
 import domain.Underwriting;
@@ -21,7 +21,7 @@ import utils.Session;
 public class SalesServiceImpl implements SalesService {
 
   private final InsuranceRepository insuranceRepository;
-  private final EmployeeRepository employeeRepository;
+  private final EmployeeRepository userRepository;
   private final CustomerRepository customerRepository;
   private final ContractRepository contractRepository;
   private final UnderwritingRepository underwritingRepository;
@@ -29,7 +29,7 @@ public class SalesServiceImpl implements SalesService {
 
   public SalesServiceImpl() {
     insuranceRepository = new InsuranceRepository();
-    employeeRepository = new EmployeeRepository();
+    userRepository = new EmployeeRepository();
     customerRepository = new CustomerRepository();
     contractRepository = new ContractRepository();
     underwritingRepository = new UnderwritingRepository();
@@ -42,8 +42,8 @@ public class SalesServiceImpl implements SalesService {
   }
 
   @Override
-  public List<Employee> getEmployeeList() {
-    return employeeRepository.findAll();
+  public List<User> getEmployeeList() {
+    return userRepository.findAll();
   }
 
   @Override

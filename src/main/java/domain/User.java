@@ -1,6 +1,6 @@
 package domain;
 
-import domain.enums.EmployeeType;
+import domain.enums.UserType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,7 +19,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employee {
+public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Employee {
   private String name;
 
   @Enumerated(EnumType.STRING)
-  private EmployeeType employeeType;
+  private UserType userType;
 
   @Override
   public String toString() {

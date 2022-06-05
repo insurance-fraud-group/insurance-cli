@@ -1,10 +1,10 @@
 package service;
 
-import domain.Employee;
+import domain.User;
 
 public interface AuthService {
 
-  Employee signUp(Employee request);
+  User signUp(User request);
 
-  Employee signIn(Employee request);
+  User signIn(User request);
 }
