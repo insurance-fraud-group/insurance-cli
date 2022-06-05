@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Getter
@@ -24,6 +26,9 @@ public class Contract {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
+  @CreationTimestamp
+  private LocalDateTime applicationDate;
 
   private boolean signed;
   private File subscription;

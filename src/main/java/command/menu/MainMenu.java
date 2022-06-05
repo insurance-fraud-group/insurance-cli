@@ -5,7 +5,7 @@ import command.InsuranceDesignCommand;
 import command.SalesCommand;
 import command.UnderwritingCommand;
 
-public enum CommandMenu {
+public enum MainMenu {
   ACCIDENT_INVESTIGATOR(CompensationCommand::run),
   ADJUSTER(CompensationCommand::run),
   CUSTOMER_SERVICE_AGENT(CompensationCommand::run),
@@ -15,7 +15,7 @@ public enum CommandMenu {
 
   private final Runnable runnable;
 
-  CommandMenu(Runnable runnable) {
+  MainMenu(Runnable runnable) {
     this.runnable = runnable;
   }
 

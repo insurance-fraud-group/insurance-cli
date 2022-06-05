@@ -1,5 +1,6 @@
 package command;
 
+import command.menu.AuthMenu;
 import command.menu.Menu;
 import command.parser.Parser;
 import dnl.utils.text.table.TextTable;
@@ -22,17 +23,30 @@ public class Command {
 
   public static void printMenu(String title, Menu[] menus) {
     printTitle(title);
-    Arrays.stream(menus).forEach(menu -> System.out.println(
-        Integer.toString(menu.ordinal() + 1)
-            .concat(". ")
-            .concat(menu.toString())));
+    printMenu(menus);
+    printExitMenu(menus);
 
     int selectedMenu = input();
+
+    if (selectedMenu == menus.length) {
+      AuthCommand.initialize();
+    }
     Arrays.stream(menus).forEach(menu -> {
       if (selectedMenu == menu.ordinal()) {
         menu.execute();
       }
     });
+  }
+
+  private static void printMenu(Menu[] menus) {
+    Arrays.stream(menus).forEach(menu -> System.out.println(
+        Integer.toString(menu.ordinal() + 1).concat(". ").concat(menu.toString())));
+  }
+
+  private static void printExitMenu(Menu[] menus) {
+    int last = menus.length + 1;
+    String lastCommand = menus[0].getClass().equals(AuthMenu.class) ? "종료" : "메인으로 돌아가기";
+    System.out.println(last + ". " + lastCommand);
   }
 
   public static void printTable(List<?> list) {
