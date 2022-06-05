@@ -37,12 +37,8 @@ public class AccidentParser extends Parser {
     });
 
     System.out.print("사고종류 : ");
-    while (!sc.hasNextInt()) {
-      sc.next();
-      System.out.println("Please enter a number within the range.");
-    }
 
-    int accidentType = sc.nextInt();
+    int accidentType = validateInteger(1, 5);
     return (accidentType < 1 || accidentType > AccidentType.values().length) ? getAccidentType()
         : AccidentType.values()[accidentType - 1];
   }
@@ -53,7 +49,8 @@ public class AccidentParser extends Parser {
   }
 
   public boolean getVictim() {
-    System.out.print("가해/피해 여부(true/false) : ");
-    return sc.nextBoolean();
+    System.out.print("가해/피해 여부(1/2) : ");
+    int i = validateInteger(1, 2);
+    return (i == 1) ? true : false;
   }
 }
