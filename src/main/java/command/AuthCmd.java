@@ -1,11 +1,8 @@
 package command;
 
 import command.menu.AuthMenu;
-import command.menu.SignInMenu;
 import command.parser.AuthParser;
 import domain.User;
-import domain.enums.UserType;
-import java.util.Arrays;
 import service.impl.AuthServiceImpl;
 import utils.Session;
 
@@ -17,7 +14,7 @@ public class AuthCmd extends Command {
   public static void run() {
     printTitle("사용자 인증");
     executeCommand(AuthMenu.values());
-    initialize();
+    goHome();
   }
 
   public static void signIn() {
@@ -38,24 +35,5 @@ public class AuthCmd extends Command {
         .userType(parser.getEmployeeType())
         .build();
     Session.getSession().register(authService.signUp(request));
-  }
-
-  public static void initialize() {
-    if (!Session.getSession().isExist()) {
-      System.out.println("프로그램을 종료합니다.");
-      System.exit(0);
-    }
-
-    Arrays.stream(SignInMenu.values()).forEach(command -> {
-      UserType userType = Session.getSession().getUser().getUserType();
-      if (userType.name().equals(command.name())) {
-        command.execute();
-      }
-    });
-  }
-
-  public static void exit() {
-    Session.getSession().exit();
-    AuthCmd.run();
   }
 }

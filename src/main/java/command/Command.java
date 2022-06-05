@@ -1,23 +1,50 @@
 package command;
 
+import command.menu.AccidentInvestigatorMenu;
+import command.menu.AdjusterMenu;
 import command.menu.AuthMenu;
-import command.menu.CustomerServiceMenu;
+import command.menu.CounselorMenu;
+import command.menu.InsuranceDesignMenu;
 import command.menu.Menu;
+import command.menu.SignInMenu;
 import command.menu.YesOrNoMenu;
 import command.menu.sales.Sales;
 import command.menu.underwriting.UnderwritingMenu;
 import command.parser.Parser;
 import dnl.utils.text.table.TextTable;
+import domain.enums.UserType;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import utils.Session;
 
 public class Command {
 
-  private static List<Class<?>> mainMenus = List.of(
-      new Class[]{UnderwritingMenu.class, Sales.class, CustomerServiceMenu.class});
+  private static final List<Class<?>> mainCommandMenus = List.of(
+      AccidentInvestigatorMenu.class, AdjusterMenu.class,
+          CounselorMenu.class, InsuranceDesignMenu.class, Sales.class,
+          UnderwritingMenu.class);
+
+  public static void goHome() {
+    if (!Session.getSession().isExist()) {
+      System.out.println("프로그램을 종료합니다.");
+      System.exit(0);
+    }
+
+    Arrays.stream(SignInMenu.values()).forEach(command -> {
+      UserType userType = Session.getSession().getUser().getUserType();
+      if (userType.name().equals(command.name())) {
+        command.execute();
+      }
+    });
+  }
+
+  public static void logout() {
+    Session.getSession().exit();
+    AuthCmd.run();
+  }
 
   public static int input() {
     System.out.print("> ");
@@ -33,10 +60,10 @@ public class Command {
     Class<?> menuClass = menus[0].getClass();
 
     if (selectedMenu == menus.length) {
-      if (mainMenus.contains(menuClass)) {
-        AuthCmd.exit();
+      if (mainCommandMenus.contains(menuClass)) {
+        logout();
       }
-      AuthCmd.initialize();
+      goHome();
     }
     Arrays.stream(menus).forEach(menu -> {
       if (selectedMenu == menu.ordinal()) {
@@ -70,14 +97,14 @@ public class Command {
     Class<?> menuClass = menus[0].getClass();
 
     String lastCommand = menuClass.equals(AuthMenu.class) ? "종료"
-        : (mainMenus.contains(menuClass) ? "로그아웃" : "메인으로 돌아가기");
+        : (mainCommandMenus.contains(menuClass) ? "로그아웃" : "메인으로 돌아가기");
     System.out.println(last + ". " + lastCommand);
   }
 
   public static void printTable(List<?> list) {
     if (list.isEmpty()) {
       System.out.println("데이터를 가져오지 못했습니다. 관리자에게 문의하세요.");
-      AuthCmd.initialize();
+      goHome();
     }
 
     TextTable tt = new TextTable(getTitle(list), getData(list));
@@ -87,7 +114,7 @@ public class Command {
   public static void printTable(List<?> list, String... args) {
     if (list.isEmpty()) {
       System.out.println("데이터를 가져오지 못했습니다. 관리자에게 문의하세요.");
-      AuthCmd.initialize();
+      goHome();
     }
 
     TextTable tt = new TextTable(args, getData(list, args));

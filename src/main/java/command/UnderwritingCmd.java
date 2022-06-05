@@ -27,7 +27,7 @@ public class UnderwritingCmd extends Command {
     String[] args = {"name", "description", "writer", "createdDate"};
     List<AcceptancePolicy> acceptancePolicyList = underwritingService.searchAcceptancePolicy();
     printTable(acceptancePolicyList, args);
-    AuthCmd.initialize();
+    goHome();
   }
 
   public static void createAcceptancePolicy() {
@@ -45,7 +45,7 @@ public class UnderwritingCmd extends Command {
     String[] args = {"name", "description", "writer", "createdDate"};
     List<AcceptancePolicy> acceptancePolicyList = underwritingService.searchAcceptancePolicy();
     printTable(acceptancePolicyList, args);
-    AuthCmd.initialize();
+    goHome();
   }
 
   public static void manageLossRate() {
@@ -106,7 +106,7 @@ public class UnderwritingCmd extends Command {
     } else {
       System.out.println("정상적으로 취소되었습니다.");
     }
-    AuthCmd.initialize();
+    goHome();
   }
 
   public static void proceedReinsurance(Underwriting underwriting) {
@@ -124,6 +124,6 @@ public class UnderwritingCmd extends Command {
     } else {
       System.out.println("정상적으로 취소되었습니다.");
     }
-    AuthCmd.initialize();
+    goHome();
   }
 }
