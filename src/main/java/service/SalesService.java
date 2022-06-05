@@ -2,8 +2,8 @@ package service;
 
 import domain.Contract;
 import domain.Customer;
-import domain.User;
 import domain.Insurance;
+import domain.User;
 import java.util.List;
 
 public interface SalesService {

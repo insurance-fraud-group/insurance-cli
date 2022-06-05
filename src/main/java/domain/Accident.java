@@ -3,7 +3,6 @@ package domain;
 import domain.enums.AccidentType;
 import domain.enums.VictimType;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

@@ -1,8 +1,8 @@
 package service.impl;
 
 import domain.AcceptancePolicy;
-import domain.User;
 import domain.Underwriting;
+import domain.User;
 import java.util.List;
 import repository.AcceptancePolicyRepository;
 import repository.EmployeeRepository;
