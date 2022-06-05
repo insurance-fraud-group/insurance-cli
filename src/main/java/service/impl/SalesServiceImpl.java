@@ -4,12 +4,15 @@ import domain.Contract;
 import domain.Customer;
 import domain.Employee;
 import domain.Insurance;
+import domain.Transaction;
 import domain.Underwriting;
+import domain.enums.TransactionType;
 import java.util.List;
 import repository.ContractRepository;
 import repository.CustomerRepository;
 import repository.EmployeeRepository;
 import repository.InsuranceRepository;
+import repository.TransactionRepository;
 import repository.UnderwritingRepository;
 import service.SalesService;
 import utils.Session;
@@ -21,6 +24,7 @@ public class SalesServiceImpl implements SalesService {
   private final CustomerRepository customerRepository;
   private final ContractRepository contractRepository;
   private final UnderwritingRepository underwritingRepository;
+  private final TransactionRepository transactionRepository;
 
   public SalesServiceImpl() {
     insuranceRepository = new InsuranceRepository();
@@ -28,6 +32,7 @@ public class SalesServiceImpl implements SalesService {
     customerRepository = new CustomerRepository();
     contractRepository = new ContractRepository();
     underwritingRepository = new UnderwritingRepository();
+    transactionRepository = new TransactionRepository();
   }
 
   @Override
@@ -83,5 +88,9 @@ public class SalesServiceImpl implements SalesService {
   public void removeContract(int id) {
     Contract contract = contractRepository.findById(id);
     contractRepository.delete(contract);
+  }
+
+  public List<Transaction> getTransactionHistory() {
+    return transactionRepository.findAllBy("transactionType", TransactionType.DEPOSIT);
   }
 }
