@@ -95,11 +95,7 @@ public class UnderwritingCmd extends Command {
         .moralFactorScore(underwritingParser.getMoralFactorScore()).build();
     boolean result = underwritingService.underwrite(underwriting);
 
-    if (result) {
-      System.out.println("선택된 보험에 인수가 승인되었습니다.");
-    } else {
-      System.out.println("선택된 보험에 인수가 거절되었습니다");
-    }
+    System.out.println("선택된 보험에 인수가 " + (result ? "승인" : "거절") + "되었습니다.");
     underwritingService.updateInsuranceApproval(insurance, result);
 
     System.out.println("선택된 보험을 다른 방식으로 처리하시겠습니까?");
