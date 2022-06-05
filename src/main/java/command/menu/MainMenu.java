@@ -2,7 +2,7 @@ package command.menu;
 
 import command.AccidentInvestigatorCmd;
 import command.AdjusterCmd;
-import command.CustomerServiceCmd;
+import command.CounselorCmd;
 import command.InsuranceDesignCmd;
 import command.SalesCmd;
 import command.UnderwritingCmd;
@@ -10,7 +10,7 @@ import command.UnderwritingCmd;
 public enum MainMenu implements Menu{
   ACCIDENT_INVESTIGATOR(AccidentInvestigatorCmd::run),
   ADJUSTER(AdjusterCmd::run),
-  CUSTOMER_SERVICE_AGENT(CustomerServiceCmd::run),
+  COUNSELOR(CounselorCmd::run),
   ACTUARY(InsuranceDesignCmd::run),
   SALES(SalesCmd::run),
   UNDERWRITER(UnderwritingCmd::run);
