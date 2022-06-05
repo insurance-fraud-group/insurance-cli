@@ -1,5 +1,6 @@
 package command;
 
+import command.menu.sales.ContractProgress;
 import command.menu.sales.ContractManagement;
 import command.menu.sales.CustomerManagement;
 import command.menu.sales.Sales;
@@ -9,6 +10,7 @@ import domain.Contract;
 import domain.Customer;
 import domain.Employee;
 import domain.Insurance;
+import java.util.Arrays;
 import java.util.List;
 import service.impl.SalesServiceImpl;
 
@@ -121,14 +123,20 @@ public class SalesCommand extends Command {
 
     Contract selectedContract = unsignedContractList.get(input());
     printTable(selectedContract);
-    concludeContract(selectedContract);
+    proceedContract(selectedContract);
     System.out.println("미체결 정보 조회를 완료하였습니다.");
 
     AuthCommand.initialize();
   }
 
-  public static void concludeContract(Contract contract) {
+  public static void proceedContract(Contract contract) {
 
+    int selectedMenu = selectCommand("계약 진행", ContractProgress.values());
+    Arrays.stream(ContractProgress.values()).forEach(menu -> {
+      if (selectedMenu == menu.ordinal()) {
+        menu.execute(contract);
+      }
+    });
   }
 
 
