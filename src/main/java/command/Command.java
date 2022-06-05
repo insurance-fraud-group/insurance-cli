@@ -19,10 +19,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Command {
 
-  private static List<Class<?>> mainMenus = List.of(
-      new Class[]{AccidentInvestigatorMenu.class, AdjusterMenu.class,
+  private static final List<Class<?>> mainCommandMenus = List.of(
+      AccidentInvestigatorMenu.class, AdjusterMenu.class,
           CounselorMenu.class, InsuranceDesignMenu.class, Sales.class,
-          UnderwritingMenu.class});
+          UnderwritingMenu.class);
 
   public static int input() {
     System.out.print("> ");
@@ -38,7 +38,7 @@ public class Command {
     Class<?> menuClass = menus[0].getClass();
 
     if (selectedMenu == menus.length) {
-      if (mainMenus.contains(menuClass)) {
+      if (mainCommandMenus.contains(menuClass)) {
         AuthCmd.exit();
       }
       AuthCmd.initialize();
@@ -75,7 +75,7 @@ public class Command {
     Class<?> menuClass = menus[0].getClass();
 
     String lastCommand = menuClass.equals(AuthMenu.class) ? "종료"
-        : (mainMenus.contains(menuClass) ? "로그아웃" : "메인으로 돌아가기");
+        : (mainCommandMenus.contains(menuClass) ? "로그아웃" : "메인으로 돌아가기");
     System.out.println(last + ". " + lastCommand);
   }
 
