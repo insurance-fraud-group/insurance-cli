@@ -10,9 +10,14 @@ public class CounselorCmd extends Command {
   }
 
   public static void counsel() {
+    printTitle("사고 접수 상담");
+    System.out.println("피상담자의 정보를 입력해주세요");
+
+
   }
 
   public static void receiveAccident() {
+
   }
 
 }
