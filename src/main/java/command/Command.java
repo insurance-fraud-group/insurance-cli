@@ -20,8 +20,8 @@ public class Command {
   public static void printTitle(String title) {
     System.out.println("\n[" + title + "]");
   }
-
-  public static void printMenu(String title, Menu[] menus) {
+  
+  public static void executeCommand(String title, Menu[] menus) {
     printTitle(title);
     printMenu(menus);
     printExitMenu(menus);
