@@ -1,6 +1,5 @@
 package domain;
 
-import java.io.File;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +26,6 @@ public class Dispatch {
 
   private int damage;
   private String accidentDescription;
-  private File evidenceMedia;
 
   @OneToOne
   @JoinColumn(name = "accident_id")

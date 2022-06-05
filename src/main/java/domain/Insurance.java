@@ -2,8 +2,6 @@ package domain;
 
 import domain.enums.AuthorizeType;
 import domain.enums.InsuranceType;
-import domain.enums.Treaty;
-import java.io.File;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -40,9 +38,6 @@ public class Insurance {
 
   @Enumerated(EnumType.STRING)
   private AuthorizeType authorizeType;
-
-  @Enumerated(EnumType.STRING)
-  private Treaty treaty;
 
   @OneToMany(mappedBy = "insurance", fetch = FetchType.EAGER)
   private List<Contract> contractList;
