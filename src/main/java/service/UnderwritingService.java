@@ -15,6 +15,8 @@ public interface UnderwritingService {
 
   List<Underwriting> searchUnderwriting();
 
+  List<Underwriting> searchUnsignedUnderwriting();
+
   boolean underwrite(Underwriting underwriting);
 
   void manageCollaboration();

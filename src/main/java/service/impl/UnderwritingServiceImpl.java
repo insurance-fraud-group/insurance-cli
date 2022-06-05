@@ -41,6 +41,11 @@ public class UnderwritingServiceImpl implements UnderwritingService {
   }
 
   @Override
+  public List<Underwriting> searchUnsignedUnderwriting() {
+    return underwritingRepository.findAllBy("signed", false);
+  }
+
+  @Override
   public boolean underwrite(Underwriting underwriting) {
     boolean signed = checkSigned(underwriting);
     underwriting.setSigned(signed);
