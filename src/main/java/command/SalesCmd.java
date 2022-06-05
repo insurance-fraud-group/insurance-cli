@@ -10,6 +10,7 @@ import domain.Contract;
 import domain.Customer;
 import domain.Employee;
 import domain.Insurance;
+import domain.Transaction;
 import java.util.Arrays;
 import java.util.List;
 import service.impl.SalesServiceImpl;
@@ -184,6 +185,9 @@ public class SalesCmd extends Command {
   }
 
   public static void managePayment() {
-
+    printTitle("납입금 관리");
+    System.out.println("납입 리스트를 가져옵니다.");
+    List<Transaction> transactionHistory = salesService.getTransactionHistory();
+    printTable(transactionHistory);
   }
 }
