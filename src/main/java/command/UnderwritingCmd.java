@@ -110,8 +110,20 @@ public class UnderwritingCmd extends Command {
   }
 
   public static void proceedReinsurance(Underwriting underwriting) {
-    printTitle("재보험");
-    System.out.println("재보험 처리 ~~");
+    printTitle("재보험사 보험사 목록");
+    System.out.println("재보험을 요청할 재보험사를 선택해주세요.");
+    List<InsuranceCompany> insuranceCompanyList = underwritingService.searchInsuranceCompany();
+    printTable(insuranceCompanyList, "id", "name");
+    InsuranceCompany insuranceCompany = insuranceCompanyList.get(input());
+
+    System.out.printf("\n재보험사 %s를 선택하셨습니다. 정말 잔행하시겠습니까?\n", insuranceCompany);
+
+    if (selectYesOrNo()) {
+      underwritingService.makeUnderwritingSigned(underwriting);
+      System.out.println("정상적으로 처리되었습니다.");
+    } else {
+      System.out.println("정상적으로 취소되었습니다.");
+    }
     AuthCmd.initialize();
   }
 }
