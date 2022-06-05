@@ -1,7 +1,6 @@
 package domain;
 
 import java.time.LocalDate;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,13 +26,11 @@ public class Underwriting {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  private String name;
-  private String description;
-
   @CreationTimestamp
   private LocalDate date;
 
-  private String supplier;
+  private boolean signed;
+
   private int environmentalFactorScore;
   private int financialFactorScore;
   private int moralFactorScore;
@@ -44,15 +41,11 @@ public class Underwriting {
   private Employee writer;
 
   @ManyToOne
-  @JoinColumn(name = "insurance_id")
-  private Insurance insurance;
-
-  @ManyToOne
-  @JoinColumn(name = "customer_id")
-  private Customer customer;
+  @JoinColumn(name = "contract_id")
+  private Contract contract;
 
   @Override
   public String toString() {
-    return name;
+    return writer.toString() + "'s " + contract.toString();
   }
 }
