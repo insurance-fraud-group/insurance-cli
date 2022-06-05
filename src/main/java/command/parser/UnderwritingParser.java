@@ -31,4 +31,23 @@ public class UnderwritingParser extends Parser {
     return sc.next();
   }
 
+  public int getEnvironmentFactorScore() {
+    System.out.print("환경적 요인 : ");
+    return sc.nextInt();
+  }
+
+  public int getFinancialFactorScore() {
+    System.out.print("재정적 요인 : ");
+    return sc.nextInt();
+  }
+
+  public int getMoralFactorScore() {
+    System.out.print("도덕적 요인 : ");
+    return sc.nextInt();
+  }
+
+  public int getPhysicalFactorScore() {
+    System.out.print("신체적 요인 : ");
+    return sc.nextInt();
+  }
 }
