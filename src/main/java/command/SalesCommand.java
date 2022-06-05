@@ -152,6 +152,19 @@ public class SalesCommand extends Command {
     }
   }
 
+  public static void rejectContract(Contract contract) {
+    printTitle("계약 거절");
+    System.out.println("계약을 거절하시겠습니까?");
+    if (selectYesOrNo()) {
+      salesService.removeContract(contract.getId());
+      System.out.println("계약 거절이 완료되었습니다.");
+      AuthCommand.initialize();
+    } else {
+      System.out.println("계약 거절을 취소합니다.");
+      proceedContract(contract);
+    }
+  }
+
   public static void makeContract() {
 
   }

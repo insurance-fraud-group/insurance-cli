@@ -31,4 +31,6 @@ public interface SalesService {
   Contract getContract(int id);
 
   Contract makeContractSigned(int id);
+
+  void removeContract(int id);
 }
