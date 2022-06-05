@@ -18,11 +18,11 @@ public class SalesCommand extends Command {
   private static final SalesServiceImpl salesService = new SalesServiceImpl();
 
   public static void run() {
-    printMenu("영업", Sales.values());
+    executeCommand("영업", Sales.values());
   }
 
   public static void manageSales() {
-    printMenu("영업 관리", SalesManagement.values());
+    executeCommand("영업 관리", SalesManagement.values());
   }
 
   public static void manageInsurance() {
@@ -37,7 +37,7 @@ public class SalesCommand extends Command {
   }
 
   public static void manageCustomer() {
-    printMenu("고객 관리", CustomerManagement.values());
+    executeCommand("고객 관리", CustomerManagement.values());
   }
 
   public static void searchCustomer() {
@@ -80,7 +80,7 @@ public class SalesCommand extends Command {
   }
 
   public static void manageContract() {
-    printMenu("계약 관리", ContractManagement.values());
+    executeCommand("계약 관리", ContractManagement.values());
   }
 
   public static void searchAllContract() {

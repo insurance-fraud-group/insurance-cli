@@ -14,7 +14,7 @@ public class InsuranceDesignCommand extends Command {
   private static final InsuranceDesignServiceImpl insuranceImpl = new InsuranceDesignServiceImpl();
 
   public static void run() {
-    printMenu("보험개발", InsuranceDesignMenu.values());
+    executeCommand("보험개발", InsuranceDesignMenu.values());
   }
 
   public static void searchInsurance() {
