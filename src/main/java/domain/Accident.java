@@ -1,6 +1,7 @@
 package domain;
 
 import domain.enums.AccidentType;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,7 +31,7 @@ public class Accident {
   private int id;
 
   @CreationTimestamp
-  private LocalDateTime eventTime;
+  private LocalDate eventTime;
 
   private String eventLocation;
   private boolean victim;

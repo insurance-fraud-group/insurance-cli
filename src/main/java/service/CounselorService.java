@@ -1,7 +1,12 @@
 package service;
 
-public interface CounselorService {
-  void counsel();
+import domain.Accident;
+import domain.Customer;
+import java.util.List;
 
-  void receiveAccident();
+public interface CounselorService {
+
+  List<Accident> receiveAccident(Accident accident);
+
+  List<Customer> counsel();
 }

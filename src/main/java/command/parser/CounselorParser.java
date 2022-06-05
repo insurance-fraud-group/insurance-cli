@@ -1,6 +1,7 @@
 package command.parser;
 
-import domain.enums.AccidentType;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class CounselorParser extends Parser {
 
@@ -28,23 +29,33 @@ public class CounselorParser extends Parser {
     return sc.next();
   }
 
-  public String getBirth() {
-    System.out.print("생년월일 : ");
+  public String getAddress() {
+    System.out.print("주소 : ");
+    return sc.next();
+  }
+
+  public String getJob() {
+    System.out.print("직업 : ");
     return sc.next();
   }
 
   public String getAccountNumber() {
+    System.out.print("계좌번호 : ");
+    return sc.next();
+  }
+
+  public String getPhoneNumber() {
     System.out.print("전화번호 : ");
     return sc.next();
   }
 
-  public String getEventTime() {
-    System.out.print("사고발생 시각 : ");
-    return sc.next();
+  public boolean getSex() {
+    System.out.print("성별 : ");
+    return sc.nextBoolean();
   }
 
-  public boolean getVictim() {
-    System.out.print("가해/피해 여부 : ");
-    return sc.nextBoolean();
+  public LocalDate getBirth() {
+    System.out.print("생년월일(yyyy-mm-dd): ");
+    return LocalDate.parse(sc.next(), DateTimeFormatter.ISO_DATE);
   }
 }
