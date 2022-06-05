@@ -21,4 +21,9 @@ public class InsuranceCompany {
 
   private String name;
   private int shareRate;
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }

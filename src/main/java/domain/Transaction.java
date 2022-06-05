@@ -35,4 +35,9 @@ public class Transaction {
   @ManyToOne
   @JoinColumn(name = "contract_id")
   private Contract contract;
+
+  @Override
+  public String toString() {
+    return contract.toString() + " | " + amount + " " + type;
+  }
 }
