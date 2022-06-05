@@ -1,7 +1,7 @@
 package command;
 
-import command.menu.sales.ContractProgress;
 import command.menu.sales.ContractManagement;
+import command.menu.sales.ContractProgress;
 import command.menu.sales.CustomerManagement;
 import command.menu.sales.Sales;
 import command.menu.sales.SalesManagement;
