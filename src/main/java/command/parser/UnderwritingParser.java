@@ -50,4 +50,9 @@ public class UnderwritingParser extends Parser {
     System.out.print("신체적 요인 : ");
     return validateInteger(1, 5);
   }
+
+  public int getParticipationRate(int max) {
+    System.out.printf("참여 가능 지분 (1%% ~ %d%%): ", max);
+    return validateInteger(1, max);
+  }
 }

@@ -1,6 +1,7 @@
 package service;
 
 import domain.AcceptancePolicy;
+import domain.InsuranceCompany;
 import domain.Underwriting;
 import domain.User;
 import java.util.List;
@@ -22,4 +23,8 @@ public interface UnderwritingService {
   void manageCollaboration();
 
   void manageReinsurance();
+
+  List<InsuranceCompany> searchInsuranceCompany();
+
+  void makeUnderwritingSigned(Underwriting underwriting);
 }

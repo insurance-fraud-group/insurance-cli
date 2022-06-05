@@ -5,6 +5,7 @@ import command.menu.underwriting.UnderwritingMenu;
 import command.parser.UnderwritingParser;
 import domain.AcceptancePolicy;
 import domain.Contract;
+import domain.InsuranceCompany;
 import domain.Underwriting;
 import java.util.Arrays;
 import java.util.List;
@@ -86,8 +87,25 @@ public class UnderwritingCmd extends Command {
   }
 
   public static void proceedCollaboration(Underwriting underwriting) {
-    printTitle("공동 인수");
-    System.out.println("공동 인수 관리 ~~");
+    printTitle("공동 인수 참여 보험사 목록");
+    List<InsuranceCompany> insuranceCompanyList = underwritingService.searchInsuranceCompany();
+    printTable(insuranceCompanyList);
+
+    int totalShareRate = insuranceCompanyList.stream()
+        .mapToInt(insuranceCompany -> insuranceCompany.getShareRate()).sum();
+    int maxShareRate = 100 - totalShareRate;
+
+    System.out.println("\n참여 지분율을 입력해주세요");
+    int participationRate = underwritingParser.getParticipationRate(maxShareRate);
+
+    System.out.printf("\n참여 지분율 %d%%를 입력하셨습니다. 정말 잔행하시겠습니까?\n", participationRate);
+
+    if (selectYesOrNo()) {
+      underwritingService.makeUnderwritingSigned(underwriting);
+      System.out.println("정상적으로 처리되었습니다.");
+    } else {
+      System.out.println("정상적으로 취소되었습니다.");
+    }
     AuthCmd.initialize();
   }
 

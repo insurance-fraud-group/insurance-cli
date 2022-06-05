@@ -1,11 +1,13 @@
 package service.impl;
 
 import domain.AcceptancePolicy;
+import domain.InsuranceCompany;
 import domain.Underwriting;
 import domain.User;
 import java.util.List;
 import repository.AcceptancePolicyRepository;
 import repository.EmployeeRepository;
+import repository.InsuranceCompanyRepository;
 import repository.UnderwritingRepository;
 import service.UnderwritingService;
 
@@ -14,11 +16,13 @@ public class UnderwritingServiceImpl implements UnderwritingService {
   private final UnderwritingRepository underwritingRepository;
   private final AcceptancePolicyRepository acceptancePolicyRepository;
   private final EmployeeRepository userRepository;
+  private final InsuranceCompanyRepository insuranceCompanyRepository;
 
   public UnderwritingServiceImpl() {
     underwritingRepository = new UnderwritingRepository();
     userRepository = new EmployeeRepository();
     acceptancePolicyRepository = new AcceptancePolicyRepository();
+    insuranceCompanyRepository = new InsuranceCompanyRepository();
   }
 
   public User getEmployeeName(User user) {
@@ -68,5 +72,16 @@ public class UnderwritingServiceImpl implements UnderwritingService {
   @Override
   public void manageReinsurance() {
 
+  }
+
+  @Override
+  public List<InsuranceCompany> searchInsuranceCompany() {
+    return insuranceCompanyRepository.findAll();
+  }
+
+  @Override
+  public void makeUnderwritingSigned(Underwriting underwriting) {
+    underwriting.setSigned(true);
+    underwritingRepository.update(underwriting);
   }
 }
