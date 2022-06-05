@@ -16,22 +16,16 @@ public class AuthServiceImpl implements AuthService {
   public Employee signUp(Employee request) {
     Employee employee = Employee.builder().employeeType(request.getEmployeeType())
         .email(request.getEmail()).password(request.getPassword()).name(request.getName()).build();
-
     employeeRepository.save(employee);
-
-    return Employee.builder().employeeType(employee.getEmployeeType())
-        .name(employee.getName()).build();
+    return employee;
   }
 
   @Override
   public Employee signIn(Employee request) {
     Employee employee = employeeRepository.findBy("email", request.getEmail());
-
     if (request.getPassword().equals(employee.getPassword())) {
-      return Employee.builder().employeeType(employee.getEmployeeType())
-          .name(employee.getName()).build();
+      return employee;
     }
-
     return null;
   }
 }
