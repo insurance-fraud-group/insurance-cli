@@ -40,8 +40,8 @@ public class Accident {
   private AccidentType accidentType;
 
   @OneToOne
-  @JoinColumn(name = "customer_id")
-  private Customer customer;
+  @JoinColumn(name = "contract_id")
+  private Contract contract;
 
   @Override
   public String toString() {
