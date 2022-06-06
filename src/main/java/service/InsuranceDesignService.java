@@ -10,8 +10,5 @@ public interface InsuranceDesignService {
 
   void designInsurance(Insurance insurance);
 
-  void requestInsuranceApproval(Insurance insurance);
-
   int getCountByInsuranceType(InsuranceType insuranceType);
-
 }
