@@ -58,4 +58,9 @@ public class SalesParser extends Parser {
     System.out.print("성별(1. 남성 2. 여성): ");
     return validateInteger(1, 2) == 1 ? Gender.MALE : Gender.FEMALE;
   }
+
+  public int getPayment() {
+    System.out.print("납입금: ");
+    return validateInteger();
+  }
 }

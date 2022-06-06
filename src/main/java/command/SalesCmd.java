@@ -1,5 +1,6 @@
 package command;
 
+import command.menu.YesOrNoMenu;
 import command.menu.sales.ContractManagement;
 import command.menu.sales.ContractProgress;
 import command.menu.sales.CustomerManagement;
@@ -9,7 +10,6 @@ import command.parser.SalesParser;
 import domain.Contract;
 import domain.Customer;
 import domain.Insurance;
-import domain.Transaction;
 import domain.User;
 import java.util.Arrays;
 import java.util.List;
@@ -186,8 +186,27 @@ public class SalesCmd extends Command {
 
   public static void managePayment() {
     printTitle("납입금 관리");
-    System.out.println("납입 리스트를 가져옵니다.");
-    List<Transaction> transactionHistory = salesService.getTransactionHistory();
-    printTable(transactionHistory);
+    System.out.println("납부 대상인 고객을 선택해주세요.");
+    List<Customer> customerList = salesService.getCustomerList();
+    printTable(customerList);
+    Customer customer = customerList.get(input());
+
+    if (customer == null) {
+      System.out.println("피상담자의 정보가 없습니다.");
+    } else {
+      System.out.println("납부 받을 계약을 선택해주세요.");
+      List<Contract> contractList = salesService.getContractList(customer);
+      printTable(contractList);
+      Contract contract = contractList.get(input());
+
+      System.out.println("정말 납부를 진행하시겠습니까?");
+      if(selectCommand(YesOrNoMenu.values()) == 0) {
+        salesService.managePayment(parser.getPayment(), contract);
+        System.out.println("정상적으로 접수되었습니다.");
+      } else {
+        System.out.println("정상적으로 취소되었습니다.");
+      }
+    }
+    goHome();
   }
 }

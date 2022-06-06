@@ -58,19 +58,23 @@ public class SalesServiceImpl implements SalesService {
 
   @Override
   public void createContract(Insurance insurance, Customer customer) {
-    Contract contract = Contract.builder()
-        .insurance(insurance).customer(customer)
-        .signed(false).build();
+    Contract contract = Contract.builder().insurance(insurance).customer(customer).signed(false)
+        .build();
     contractRepository.save(contract);
 
-    underwritingRepository.save(Underwriting.builder()
-        .writer(Session.getSession().getUser())
-        .contract(contract).signed(false).build());
+    underwritingRepository.save(
+        Underwriting.builder().writer(Session.getSession().getUser()).contract(contract)
+            .signed(false).build());
   }
 
   @Override
   public List<Contract> getContractList() {
     return contractRepository.findAll();
+  }
+
+  @Override
+  public List<Contract> getContractList(Customer customer) {
+    return customer.getContractList();
   }
 
   @Override
@@ -94,7 +98,9 @@ public class SalesServiceImpl implements SalesService {
     contractRepository.delete(contract);
   }
 
-  public List<Transaction> getTransactionHistory() {
-    return transactionRepository.findAllBy("type", TransactionType.DEPOSIT);
+  public void managePayment(int payment, Contract contract) {
+    Transaction transaction = Transaction.builder().amount(payment).contract(contract)
+        .type(TransactionType.DEPOSIT).build();
+    transactionRepository.save(transaction);
   }
 }

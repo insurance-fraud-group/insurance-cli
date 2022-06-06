@@ -20,6 +20,8 @@ public interface SalesService {
 
   List<Contract> getContractList();
 
+  List<Contract> getContractList(Customer customer);
+
   List<Contract> getUWCompletedContracts();
 
   void makeContractSigned(int id);
