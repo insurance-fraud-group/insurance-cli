@@ -1,12 +1,15 @@
 package service;
 
 import domain.Accident;
+import domain.Contract;
 import domain.Customer;
 import java.util.List;
 
 public interface CounselorService {
 
-  List<Accident> receiveAccident(Accident accident);
+  List<Contract> getContractList(Customer customer);
 
-  List<Customer> counsel();
+  void registerAccident(Accident accident);
+
+  List<Customer> getCustomerList();
 }
