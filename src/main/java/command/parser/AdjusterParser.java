@@ -30,4 +30,9 @@ public class AdjusterParser extends Parser {
     System.out.print("근거 : ");
     return sc.next();
   }
+
+  public int getPayment() {
+    System.out.print("금액 : ");
+    return validateInteger();
+  }
 }

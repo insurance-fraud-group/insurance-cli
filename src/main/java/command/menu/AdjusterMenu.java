@@ -3,7 +3,7 @@ package command.menu;
 import command.AdjusterCmd;
 
 public enum AdjusterMenu implements Menu{
-  EXAMINE("면/부책 검토", AdjusterCmd::examine),
+  EXAMINE("면/부책 검토", AdjusterCmd::examineIndemnity),
   DAMAGE_ADJUSTMENT("손해사정", AdjusterCmd::adjustDamage);
 
   private final String label;

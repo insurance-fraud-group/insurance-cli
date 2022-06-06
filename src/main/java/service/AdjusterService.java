@@ -13,4 +13,8 @@ public interface AdjusterService {
   Dispatch getDispatch(Accident accident);
 
   void registerAdjust(Adjust adjust);
+
+  List<Adjust> searchPendingAdjust();
+
+  void updateAdjust(Adjust adjust);
 }

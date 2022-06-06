@@ -40,8 +40,23 @@ public class AdjusterServiceImpl implements AdjusterService {
 
   @Override
   public void registerAdjust(Adjust adjust) {
-    System.out.println(adjust);
-    adjust.getAccident().setProcessState(ProcessState.INDEMNITY);
+    Accident accident = adjust.getAccident();
+    accident.setProcessState(ProcessState.INDEMNITY);
+    accidentRepository.update(accident);
     adjustRepository.save(adjust);
+  }
+
+  @Override
+  public List<Adjust> searchPendingAdjust() {
+    return adjustRepository.findAll().stream()
+        .filter(adjust -> adjust.getAccident().getProcessState() == ProcessState.INDEMNITY)
+        .filter(adjust -> adjust.isIndemnity() == true)
+        .collect(Collectors.toList());
+  }
+
+  @Override
+  public void updateAdjust(Adjust adjust) {
+    adjust.getAccident().setProcessState(ProcessState.ADJUST);
+    adjustRepository.update(adjust);
   }
 }

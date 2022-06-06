@@ -1,7 +1,6 @@
 package command;
 
 import command.menu.AdjusterMenu;
-import command.menu.YesOrNoMenu;
 import command.parser.AdjusterParser;
 import domain.Accident;
 import domain.Adjust;
@@ -20,7 +19,7 @@ public class AdjusterCmd extends Command {
     executeCommand(AdjusterMenu.values());
   }
 
-  public static void examine() {
+  public static void examineIndemnity() {
     printTitle("면/부책 검토");
     System.out.println("처리할 사고를 선택해주세요.");
     List<Accident> accidentList = adjusterService.searchAccident(ProcessState.DISPATCH_COMPLETE);
@@ -33,7 +32,7 @@ public class AdjusterCmd extends Command {
     printTable(dispatch);
 
     System.out.println("면/부책 검토를 진행하시겠습니까?");
-    if (selectCommand(YesOrNoMenu.values()) == 0) {
+    if (selectYesOrNo()) {
       Adjust adjust = Adjust.builder()
           .indemnity(adjusterParser.getIndemnity())
           .basis(adjusterParser.getBasis())
@@ -48,5 +47,21 @@ public class AdjusterCmd extends Command {
 
   public static void adjustDamage() {
     printTitle("손해사정");
+    System.out.println("손해사정을 진행할 항목을 선택해주세요.");
+    List<Adjust> pendingAdjustList = adjusterService.searchPendingAdjust();
+    printTable(pendingAdjustList);
+
+    Adjust adjust = pendingAdjustList.get(input());
+    printTable(adjust);
+    System.out.println("손해사정을 정말 진행하시겠습니까?");
+
+    if (selectYesOrNo()) {
+      adjust.setPayment(adjusterParser.getPayment());
+      adjusterService.updateAdjust(adjust);
+      System.out.println("손해사정이 완료되었습니다.");
+    } else {
+      System.out.println("손해사정이 취소되었습니다.");
+    }
+    goHome();
   }
 }
