@@ -5,8 +5,7 @@ import command.InsuranceDesignCmd;
 public enum InsuranceDesignMenu implements Menu {
 
   InsuranceSearch("보험조회", InsuranceDesignCmd::searchInsurance),
-  InsuranceDesign("보험설계", InsuranceDesignCmd::designInsurance),
-  InsuranceApprovalRequestion("보험인가 요청", InsuranceDesignCmd::requestInsurance);
+  InsuranceDesign("보험설계", InsuranceDesignCmd::designInsurance);
 
   private final String label;
   private final Runnable runnable;
