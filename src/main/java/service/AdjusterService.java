@@ -17,4 +17,8 @@ public interface AdjusterService {
   List<Adjust> searchPendingAdjust();
 
   void updateAdjust(Adjust adjust);
+
+  List<Adjust> searchCompletedAdjust();
+
+  void compensate(Adjust adjust);
 }

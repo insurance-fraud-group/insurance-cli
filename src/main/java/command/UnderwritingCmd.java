@@ -5,6 +5,7 @@ import command.menu.underwriting.UnderwritingMenu;
 import command.parser.UnderwritingParser;
 import domain.AcceptancePolicy;
 import domain.Contract;
+import domain.Insurance;
 import domain.InsuranceCompany;
 import domain.Underwriting;
 import java.util.Arrays;
@@ -50,6 +51,20 @@ public class UnderwritingCmd extends Command {
 
   public static void manageLossRate() {
     printTitle("손해율 관리");
+    System.out.println("손해율을 계산할 보험을 선택해주세요");
+    List<Insurance> insuranceList = underwritingService.getInsuranceList();
+    printTable(insuranceList);
+    Insurance insurance = insuranceList.get(input());
+
+    printTitle("선택한 보험에 관된 계약");
+    System.out.println("손해율을 계산할 계약을 선택해주세요");
+    List<Contract> contractList = insurance.getContractList();
+    printTable(contractList);
+    Contract contract = contractList.get(input());
+
+    float lossRate =  underwritingService.calculateLossRate(contract);
+    System.out.println("계산된 손해율은 " + lossRate + "입니다.");
+    goHome();
   }
 
   public static void underwrite() {

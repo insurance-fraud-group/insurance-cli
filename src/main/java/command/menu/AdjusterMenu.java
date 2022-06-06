@@ -4,7 +4,8 @@ import command.AdjusterCmd;
 
 public enum AdjusterMenu implements Menu{
   EXAMINE("면/부책 검토", AdjusterCmd::examineIndemnity),
-  DAMAGE_ADJUSTMENT("손해사정", AdjusterCmd::adjustDamage);
+  DAMAGE_ADJUSTMENT("손해사정", AdjusterCmd::adjustDamage),
+  COMPENSATION("보상", AdjusterCmd::compensate);
 
   private final String label;
   private final Runnable runnable;
