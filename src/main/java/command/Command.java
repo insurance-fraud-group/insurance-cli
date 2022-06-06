@@ -103,7 +103,7 @@ public class Command {
 
   public static void printTable(List<?> list) {
     if (list.isEmpty()) {
-      System.out.println("데이터를 가져오지 못했습니다. 관리자에게 문의하세요.");
+      System.out.println("데이터를 가져오지 못했습니다.");
       goHome();
     }
 
@@ -113,7 +113,7 @@ public class Command {
 
   public static void printTable(List<?> list, String... args) {
     if (list.isEmpty()) {
-      System.out.println("데이터를 가져오지 못했습니다. 관리자에게 문의하세요.");
+      System.out.println("데이터를 가져오지 못했습니다.");
       goHome();
     }
 
