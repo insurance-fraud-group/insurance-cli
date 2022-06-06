@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import repository.ContractRepository;
 import repository.CustomerRepository;
-import repository.EmployeeRepository;
+import repository.UserRepository;
 import repository.InsuranceRepository;
 import repository.TransactionRepository;
 import repository.UnderwritingRepository;
@@ -21,7 +21,7 @@ import utils.Session;
 public class SalesServiceImpl implements SalesService {
 
   private final InsuranceRepository insuranceRepository;
-  private final EmployeeRepository userRepository;
+  private final UserRepository userRepository;
   private final CustomerRepository customerRepository;
   private final ContractRepository contractRepository;
   private final UnderwritingRepository underwritingRepository;
@@ -29,7 +29,7 @@ public class SalesServiceImpl implements SalesService {
 
   public SalesServiceImpl() {
     insuranceRepository = new InsuranceRepository();
-    userRepository = new EmployeeRepository();
+    userRepository = new UserRepository();
     customerRepository = new CustomerRepository();
     contractRepository = new ContractRepository();
     underwritingRepository = new UnderwritingRepository();
@@ -42,7 +42,7 @@ public class SalesServiceImpl implements SalesService {
   }
 
   @Override
-  public List<User> getEmployeeList() {
+  public List<User> getUserList() {
     return userRepository.findAll();
   }
 

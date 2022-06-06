@@ -81,7 +81,7 @@ public class SalesCmd extends Command {
   public static void manageOrganization() {
     printTitle("조직 관리");
     System.out.println("상세 정보를 조회할 사원을 선택해주세요.");
-    List<User> userList = salesService.getEmployeeList();
+    List<User> userList = salesService.getUserList();
     printTable(userList, "id", "name");
 
     User user = userList.get(input());

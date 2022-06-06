@@ -24,7 +24,7 @@ public class AuthParser extends Parser {
     System.out.println("Auth");
   }
 
-  public UserType getEmployeeType() {
+  public UserType getUserType() {
     System.out.println("직군을 선택해주세요");
     Arrays.stream(UserType.values()).forEach(type -> {
       System.out.println(
@@ -36,7 +36,7 @@ public class AuthParser extends Parser {
     System.out.print("직군 : ");
 
     int userType = validateInteger();
-    return (userType < 1 || userType > UserType.values().length) ? getEmployeeType()
+    return (userType < 1 || userType > UserType.values().length) ? getUserType()
         : UserType.values()[userType - 1];
   }
 

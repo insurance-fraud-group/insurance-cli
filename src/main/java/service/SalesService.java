@@ -10,7 +10,7 @@ public interface SalesService {
 
   List<Insurance> getInsuranceList();
 
-  List<User> getEmployeeList();
+  List<User> getUserList();
 
   void createCustomer(Customer customer);
 

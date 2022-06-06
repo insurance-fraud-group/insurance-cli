@@ -11,7 +11,7 @@ import domain.enums.TransactionType;
 import java.util.List;
 import java.util.stream.Collectors;
 import repository.AcceptancePolicyRepository;
-import repository.EmployeeRepository;
+import repository.UserRepository;
 import repository.InsuranceCompanyRepository;
 import repository.InsuranceRepository;
 import repository.TransactionRepository;
@@ -22,21 +22,21 @@ public class UnderwritingServiceImpl implements UnderwritingService {
 
   private final UnderwritingRepository underwritingRepository;
   private final AcceptancePolicyRepository acceptancePolicyRepository;
-  private final EmployeeRepository userRepository;
+  private final UserRepository userRepository;
   private final InsuranceCompanyRepository insuranceCompanyRepository;
   private final InsuranceRepository insuranceRepository;
   private final TransactionRepository transactionRepository;
 
   public UnderwritingServiceImpl() {
     underwritingRepository = new UnderwritingRepository();
-    userRepository = new EmployeeRepository();
+    userRepository = new UserRepository();
     acceptancePolicyRepository = new AcceptancePolicyRepository();
     insuranceCompanyRepository = new InsuranceCompanyRepository();
     insuranceRepository = new InsuranceRepository();
     transactionRepository = new TransactionRepository();
   }
 
-  public User getEmployeeName(User user) {
+  public User getUserName(User user) {
     return userRepository.findBy("name", user);
   }
 

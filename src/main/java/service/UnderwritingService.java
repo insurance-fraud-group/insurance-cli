@@ -15,7 +15,7 @@ public interface UnderwritingService {
 
   void createAcceptancePolicy(AcceptancePolicy acceptancePolicy);
 
-  User getEmployeeName(User user);
+  User getUserName(User user);
 
   List<Underwriting> searchUnderwriting();
 
