@@ -3,6 +3,7 @@ package domain;
 import domain.enums.Gender;
 import java.time.LocalDate;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -38,7 +39,7 @@ public class Customer {
   @Enumerated(EnumType.STRING)
   private Gender gender;
 
-  @OneToMany(mappedBy = "customer", orphanRemoval = true)
+  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Contract> contractList;
 
   @Override

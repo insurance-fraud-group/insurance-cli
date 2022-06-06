@@ -53,7 +53,7 @@ public class SalesCmd extends Command {
   public static void searchCustomer() {
     printTitle("고객 조회");
     System.out.println("상세 조회할 고객을 선택해주세요.");
-    String[] args = {"name", "birth", "sex"};
+    String[] args = {"name", "birth", "gender"};
     List<Customer> customerList = salesService.getCustomerList();
     printTable(customerList, args);
 
@@ -72,7 +72,6 @@ public class SalesCmd extends Command {
         .address(parser.getAddress()).birth(parser.getBirth()).job(parser.getJob())
         .name(parser.getName()).phoneNumber(parser.getPhoneNumber()).gender(parser.getGender())
         .build();
-
     salesService.createCustomer(customer);
     System.out.println("신규 고객 가입이 완료되었습니다.");
 
