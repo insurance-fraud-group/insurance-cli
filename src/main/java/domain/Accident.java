@@ -1,6 +1,7 @@
 package domain;
 
 import domain.enums.AccidentType;
+import domain.enums.ProcessState;
 import domain.enums.VictimType;
 import java.time.LocalDate;
 import javax.persistence.Entity;
@@ -38,6 +39,9 @@ public class Accident {
 
   @Enumerated(EnumType.STRING)
   private AccidentType accidentType;
+
+  @Enumerated(EnumType.STRING)
+  private ProcessState processState;
 
   @ManyToOne
   @JoinColumn(name = "contract_id")

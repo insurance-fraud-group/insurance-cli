@@ -6,6 +6,7 @@ import command.parser.AccidentParser;
 import domain.Accident;
 import domain.Contract;
 import domain.Customer;
+import domain.enums.ProcessState;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -42,7 +43,7 @@ public class CounselorCmd extends Command {
           System.out.println("사고 정보를 기입해주세요");
           Accident accident = Accident.builder().eventLocation(accidentParser.getEventLocation())
               .accidentType(accidentParser.getAccidentType()).victim(accidentParser.getVictim())
-              .contract(contract).build();
+              .contract(contract).processState(ProcessState.REGISTERED).build();
           counselorService.registerAccident(accident);
         });
         System.out.println("정상적으로 접수되었습니다.");
