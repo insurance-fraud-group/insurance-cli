@@ -33,5 +33,10 @@ public class CounselorServiceImpl implements CounselorService {
   public void registerAccident(Accident accident) {
     accidentRepository.save(accident);
   }
+
+  @Override
+  public List<Accident> searchAccident() {
+    return accidentRepository.findAll();
+  }
 }
 

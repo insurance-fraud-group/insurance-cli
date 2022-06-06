@@ -12,4 +12,6 @@ public interface CounselorService {
   void registerAccident(Accident accident);
 
   List<Customer> getCustomerList();
+
+  List<Accident> searchAccident();
 }
