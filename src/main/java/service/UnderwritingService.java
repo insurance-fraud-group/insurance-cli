@@ -20,10 +20,6 @@ public interface UnderwritingService {
 
   boolean underwrite(Underwriting underwriting);
 
-  void manageCollaboration();
-
-  void manageReinsurance();
-
   List<InsuranceCompany> searchInsuranceCompany();
 
   void makeUnderwritingSigned(Underwriting underwriting);

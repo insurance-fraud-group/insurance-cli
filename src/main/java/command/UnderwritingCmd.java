@@ -84,6 +84,7 @@ public class UnderwritingCmd extends Command {
 
     System.out.println("\n인수심사가 " + (underwritingService.underwrite(underwriting) ? "승인" : "거절")
         + "되었습니다.");
+    goHome();
   }
 
   public static void proceedCollaboration(Underwriting underwriting) {
@@ -116,7 +117,7 @@ public class UnderwritingCmd extends Command {
     printTable(insuranceCompanyList, "id", "name");
     InsuranceCompany insuranceCompany = insuranceCompanyList.get(input());
 
-    System.out.printf("\n재보험사 %s를 선택하셨습니다. 정말 잔행하시겠습니까?\n", insuranceCompany);
+    System.out.printf("\n재보험사 %s를 선택하셨습니다. 정말 진행하시겠습니까?\n", insuranceCompany);
 
     if (selectYesOrNo()) {
       underwritingService.makeUnderwritingSigned(underwriting);
