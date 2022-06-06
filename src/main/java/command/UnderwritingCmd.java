@@ -37,7 +37,7 @@ public class UnderwritingCmd extends Command {
     AcceptancePolicy input = AcceptancePolicy.builder()
         .name(underwritingParser.getName())
         .description(underwritingParser.getDescription())
-        .writer(underwritingService.getEmployeeName(Session.getSession().getUser()))
+        .writer(underwritingService.getUserName(Session.getSession().getUser()))
         .build();
     underwritingService.createAcceptancePolicy(input);
     System.out.println("인수정책 수립이 완료되었습니다");

@@ -1,15 +1,15 @@
 package service.impl;
 
 import domain.User;
-import repository.EmployeeRepository;
+import repository.UserRepository;
 import service.AuthService;
 
 public class AuthServiceImpl implements AuthService {
 
-  private final EmployeeRepository userRepository;
+  private final UserRepository userRepository;
 
   public AuthServiceImpl() {
-    userRepository = new EmployeeRepository();
+    userRepository = new UserRepository();
   }
 
   @Override

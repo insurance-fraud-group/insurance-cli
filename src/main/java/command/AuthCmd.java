@@ -32,7 +32,7 @@ public class AuthCmd extends Command {
         .email(parser.getEmail())
         .password(parser.getPassword())
         .name(parser.getName())
-        .userType(parser.getEmployeeType())
+        .userType(parser.getUserType())
         .build();
     Session.getSession().register(authService.signUp(request));
   }
