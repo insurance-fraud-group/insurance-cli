@@ -3,7 +3,9 @@ package service.impl;
 import domain.Accident;
 import domain.Adjust;
 import domain.Dispatch;
+import domain.Transaction;
 import domain.enums.ProcessState;
+import domain.enums.TransactionType;
 import java.util.List;
 import java.util.stream.Collectors;
 import repository.AccidentRepository;
@@ -50,13 +52,32 @@ public class AdjusterServiceImpl implements AdjusterService {
   public List<Adjust> searchPendingAdjust() {
     return adjustRepository.findAll().stream()
         .filter(adjust -> adjust.getAccident().getProcessState() == ProcessState.INDEMNITY)
-        .filter(adjust -> adjust.isIndemnity() == true)
+        .filter(Adjust::isIndemnity)
         .collect(Collectors.toList());
   }
 
   @Override
   public void updateAdjust(Adjust adjust) {
-    adjust.getAccident().setProcessState(ProcessState.ADJUST);
+    Accident accident = adjust.getAccident();
+    accident.setProcessState(ProcessState.ADJUST);
+    accidentRepository.update(accident);
     adjustRepository.update(adjust);
+  }
+
+  @Override
+  public List<Adjust> searchCompletedAdjust() {
+    return adjustRepository.findAll().stream()
+        .filter(adjust -> adjust.getAccident().getProcessState() == ProcessState.ADJUST)
+        .filter(Adjust::isIndemnity)
+        .collect(Collectors.toList());
+  }
+
+  @Override
+  public void compensate(Adjust adjust) {
+    Transaction transaction = Transaction.builder()
+        .amount(adjust.getPayment())
+        .type(TransactionType.WITHDRAW)
+        .contract(adjust.getAccident().getContract()).build();
+    transactionRepository.save(transaction);
   }
 }

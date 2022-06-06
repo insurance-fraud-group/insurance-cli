@@ -64,4 +64,23 @@ public class AdjusterCmd extends Command {
     }
     goHome();
   }
+
+  public static void compensate() {
+    printTitle("보상");
+    System.out.println("보상을 진행할 항목을 선택해주세요.");
+    List<Adjust> completedAdjustList = adjusterService.searchCompletedAdjust();
+    printTable(completedAdjustList);
+
+    Adjust adjust = completedAdjustList.get(input());
+    printTable(adjust);
+    System.out.println("보상을 정말 진행하시겠습니까?");
+
+    if (selectYesOrNo()) {
+      adjusterService.compensate(adjust);
+      System.out.println("보상이 완료되었습니다.");
+    } else {
+      System.out.println("보상이 취소되었습니다.");
+    }
+    goHome();
+  }
 }
