@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -39,9 +39,9 @@ public class Accident {
   @Enumerated(EnumType.STRING)
   private AccidentType accidentType;
 
-  @OneToOne
-  @JoinColumn(name = "customer_id")
-  private Customer customer;
+  @ManyToOne
+  @JoinColumn(name = "contract_id")
+  private Contract contract;
 
   @Override
   public String toString() {

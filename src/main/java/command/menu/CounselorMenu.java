@@ -4,8 +4,8 @@ import command.CounselorCmd;
 
 public enum CounselorMenu implements Menu {
 
-  COUNSEL("사고 접수 상담", CounselorCmd::counsel),
-  ACCIDENTRECEIPT("사고 접수", CounselorCmd::receiveAccident);
+  ACCIDENT_RECEIPT("사고 접수", CounselorCmd::receiveAccident),
+  ACCIDENT_LOOKUP("사고 접수 조회", CounselorCmd::lookupAccident);
 
   private final String label;
   private final Runnable runnable;
