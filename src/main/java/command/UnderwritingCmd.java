@@ -50,6 +50,7 @@ public class UnderwritingCmd extends Command {
 
   public static void manageLossRate() {
     printTitle("손해율 관리");
+
   }
 
   public static void underwrite() {

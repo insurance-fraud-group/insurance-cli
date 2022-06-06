@@ -61,7 +61,7 @@ public class UnderwritingServiceImpl implements UnderwritingService {
     return underwriting.getPhysicalFactorScore()
         + underwriting.getMoralFactorScore()
         + underwriting.getFinancialFactorScore()
-        + underwriting.getEnvironmentalFactorScore() > 13;
+        + underwriting.getEnvironmentalFactorScore() > 10;
   }
 
   @Override
