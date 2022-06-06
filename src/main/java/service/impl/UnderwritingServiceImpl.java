@@ -65,16 +65,6 @@ public class UnderwritingServiceImpl implements UnderwritingService {
   }
 
   @Override
-  public void manageCollaboration() {
-
-  }
-
-  @Override
-  public void manageReinsurance() {
-
-  }
-
-  @Override
   public List<InsuranceCompany> searchInsuranceCompany() {
     return insuranceCompanyRepository.findAll();
   }
