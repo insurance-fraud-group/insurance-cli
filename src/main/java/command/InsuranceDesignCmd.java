@@ -43,7 +43,7 @@ public class InsuranceDesignCmd extends Command {
 
   public static void requestInsurance() {
     printTitle("보험인가 요청");
-    System.out.print("보험리스트 : ");
+    System.out.println("보험리스트 : ");
     List<Insurance> insuranceList = insuranceDesignService.searchInsurance();
     printTable(insuranceList);
     System.out.println("인가 요청할 보험을 선택해주세요");
